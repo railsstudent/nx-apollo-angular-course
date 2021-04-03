@@ -2,12 +2,20 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+input AddCourseInput {
+  description: String!
+  languageId: String!
+  name: String!
+}
+
 """Course model"""
 type Course {
   description: String
   id: ID!
   language: Language
+  lessons: [Lesson!]
   name: String
+  paginatedLessons(args: CursorPaginationArgs!): PaginatedItems
 }
 
 input CursorPaginationArgs {
@@ -23,12 +31,33 @@ type Language {
   nativeName: String
 }
 
+"""Lesson model"""
+type Lesson {
+  course: Course
+  id: ID!
+  name: String
+}
+
+type Mutation {
+  addCourse(newCourse: AddCourseInput!): Course!
+  updateCourse(course: UpdateCourseInput!): Course!
+}
+
 """Cursor-based pagination of courses/lessons/sentences"""
 type PaginatedItems {
   courses: [Course!]
   cursor: Float
+  lessons: [Lesson!]
 }
 
 type Query {
+  course(id: String = ""): Course
   courses(args: CursorPaginationArgs!): PaginatedItems
+}
+
+input UpdateCourseInput {
+  description: String
+  id: ID!
+  languageId: String
+  name: String
 }

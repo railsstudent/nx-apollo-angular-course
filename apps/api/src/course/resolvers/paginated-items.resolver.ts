@@ -5,8 +5,9 @@ import { CourseService } from '../services'
 
 @Resolver(() => PaginatedItems)
 export class PaginatedItemsResolver {
-  constructor(private courseService: CourseService) // private lessonService: LessonService,
-  // private sentenceService: SentenceService,
+  constructor(
+    private courseService: CourseService, // private lessonService: LessonService,
+  ) // private sentenceService: SentenceService,
   {}
 
   @Query(() => PaginatedItems, { nullable: true })
