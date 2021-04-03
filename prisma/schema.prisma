@@ -1,0 +1,71 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model course {
+  id          String    @id @default(uuid())
+  name        String?   @unique
+  description String?
+  languageId  String?
+  language    language? @relation(fields: [languageId], references: [id])
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @default(now())
+  lessons     lesson[]
+}
+
+model language {
+  id           String        @id @default(uuid())
+  name         String?
+  nativeName   String?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @default(now())
+  translations translation[]
+
+  course course[]
+  @@unique([name, nativeName], name: "lanaguage_name_nativeName_key")
+}
+
+model lesson {
+  id        String     @id @default(uuid())
+  name      String?
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @default(now())
+  courseId  String
+  course    course     @relation(fields: [courseId], references: [id])
+  sentences sentence[]
+
+  @@unique([name, courseId], name: "lesson_name_course_key")
+}
+
+model sentence {
+  id           String        @id @default(uuid())
+  text         String?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @default(now())
+  lessonId     String
+  lesson       lesson        @relation(fields: [lessonId], references: [id])
+  translations translation[]
+
+  @@unique([text, lessonId], name: "sentence_text_lesson_key")
+}
+
+model translation {
+  id         String    @id @default(uuid())
+  text       String?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @default(now())
+  languageId String?
+  sentenceId String
+  language   language? @relation(fields: [languageId], references: [id])
+  sentence   sentence  @relation(fields: [sentenceId], references: [id])
+
+  @@unique([languageId, sentenceId], name: "translation_languageId_sentenceId_key")
+}
