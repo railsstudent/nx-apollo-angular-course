@@ -1,0 +1,41 @@
+version: '3.7'
+
+services:
+  postgres:
+    container_name: postgres_container
+    image: postgres:12.5-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      PGDATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    restart: always
+    networks:
+      - nx-apollo-angular-course-network
+
+  pgadmin:
+    container_name: pgadmin_container
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
+      PGADMIN_DEFAULT_PASSWORD: pgadmin
+    volumes:
+      - pgadmin:/root/.pgadmin
+    ports:
+      - "5555:80"
+    links:
+      - "postgres:pgsql-server"
+    restart: always
+    networks:
+      - nx-apollo-angular-course-network
+
+volumes:
+  postgres:
+  pgadmin:
+
+networks:
+  nx-apollo-angular-course-network:
+    name: nx-apollo-angular-course-network
