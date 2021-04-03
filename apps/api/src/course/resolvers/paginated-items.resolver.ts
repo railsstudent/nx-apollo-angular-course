@@ -5,19 +5,13 @@ import { CourseService } from '../services'
 
 @Resolver(() => PaginatedItems)
 export class PaginatedItemsResolver {
-  constructor(
-    private courseService: CourseService,
-    // private lessonService: LessonService,
-    // private sentenceService: SentenceService,
-  ) {}
+  constructor(private courseService: CourseService) // private lessonService: LessonService,
+  // private sentenceService: SentenceService,
+  {}
 
   @Query(() => PaginatedItems, { nullable: true })
   async courses(@Args('args') args: CursorPaginationArgs): Promise<PaginatedItems> {
-    // return this.courseService.getCourses(args)
-    return {
-      cursor: -1,
-      courses: []
-    }
+    return this.courseService.getCourses(args)
   }
 
   // @Mutation(() => PaginatedItems)

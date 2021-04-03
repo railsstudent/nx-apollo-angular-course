@@ -1,5 +1,5 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql'
-// import { Language } from './language.entity'
+import { Language } from './language.entity'
 // import { PaginatedItems } from './paginated-items.entity'
 
 @ObjectType({ description: 'Course model' })
@@ -17,8 +17,8 @@ export class Course {
 
   updatedAt?: Date
 
-  // @Field(() => Language, { nullable: true })
-  // language?: Language
+  @Field(() => Language, { nullable: true })
+  language?: Language
 
   // @Field(() => [Lesson], { nullable: true })
   // lessons?: Lesson[]

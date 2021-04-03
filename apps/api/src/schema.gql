@@ -6,12 +6,21 @@
 type Course {
   description: String
   id: ID!
+  language: Language
   name: String
 }
 
 input CursorPaginationArgs {
   cursor: Float = -1
   limit: Int = 10
+}
+
+"""Language model"""
+type Language {
+  fullname: String
+  id: ID!
+  name: String
+  nativeName: String
 }
 
 """Cursor-based pagination of courses/lessons/sentences"""
