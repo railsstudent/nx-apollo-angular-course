@@ -3,9 +3,9 @@
  * This is only a minimal backend to get started.
  */
 
-import { Logger } from '@nestjs/common';
-import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app/app.module';
+import { Logger } from '@nestjs/common'
+import { NestFactory } from '@nestjs/core'
+import { AppModule } from './app/app.module'
 import helmet from 'helmet'
 import rateLimit from 'express-rate-limit'
 import compression from 'compression'
@@ -14,7 +14,7 @@ import morgan from 'morgan'
 import cors from 'cors'
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule)
   app.use(cors())
   app.use(compression())
   app.use(helmet())
@@ -39,12 +39,12 @@ async function bootstrap() {
       max: 500, // limit each IP to 500 requests per windowMs
     }),
   )
-  const globalPrefix = 'api';
-  app.setGlobalPrefix(globalPrefix);
-  const port = process.env.PORT || 3333;
+  const globalPrefix = 'api'
+  app.setGlobalPrefix(globalPrefix)
+  const port = process.env.PORT || 3333
   await app.listen(port, () => {
-    Logger.log('Listening at http://localhost:' + port + '/' + globalPrefix);
-  });
+    Logger.log('Listening at http://localhost:' + port + '/' + globalPrefix)
+  })
 }
 
-bootstrap();
+bootstrap()
