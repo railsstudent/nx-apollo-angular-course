@@ -1,0 +1,25 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+"""Course model"""
+type Course {
+  description: String
+  id: ID!
+  name: String
+}
+
+input CursorPaginationArgs {
+  cursor: Float = -1
+  limit: Int = 10
+}
+
+"""Cursor-based pagination of courses/lessons/sentences"""
+type PaginatedItems {
+  courses: [Course!]
+  cursor: Float
+}
+
+type Query {
+  courses(args: CursorPaginationArgs!): PaginatedItems
+}
