@@ -8,6 +8,11 @@ input AddCourseInput {
   name: String!
 }
 
+input AddLanguageInput {
+  name: String!
+  nativeName: String!
+}
+
 input AddLessonInput {
   courseId: String!
   name: String!
@@ -64,12 +69,14 @@ type Lesson {
 
 type Mutation {
   addCourse(newCourse: AddCourseInput!): Course!
+  addLanguage(newLanguage: AddLanguageInput!): Language!
   addLesson(newLesson: AddLessonInput!): Lesson!
   addSentence(newSentence: AddSentenceInput!): Sentence!
   addTranslation(newTranslation: AddTranslationInput!): Translation!
   deleteSentence(id: String!): DeletedSentence!
   deleteTranslation(id: String!): Translation!
   updateCourse(course: UpdateCourseInput!): Course!
+  updateLanguage(updateLanguage: UpdateLanguageInput!): Language!
   updateLesson(lesson: UpdateLessonInput!): Lesson!
   updateSentence(updateSentence: UpdateSentenceInput!): Sentence!
 }
@@ -85,6 +92,7 @@ type PaginatedItems {
 type Query {
   course(id: String = ""): Course
   courses(args: CursorPaginationArgs!): PaginatedItems
+  getLanguages: [Language!]!
   getLesson(id: String = ""): Lesson
   getSentence(id: String = ""): Sentence!
   getTranslation(languageId: String!, sentenceId: String!): Translation!
@@ -112,6 +120,12 @@ input UpdateCourseInput {
   id: ID!
   languageId: String
   name: String
+}
+
+input UpdateLanguageInput {
+  id: ID!
+  name: String
+  nativeName: String
 }
 
 input UpdateLessonInput {
