@@ -8,6 +8,11 @@ input AddCourseInput {
   name: String!
 }
 
+input AddLessonInput {
+  courseId: String!
+  name: String!
+}
+
 """Course model"""
 type Course {
   description: String
@@ -40,7 +45,9 @@ type Lesson {
 
 type Mutation {
   addCourse(newCourse: AddCourseInput!): Course!
+  addLesson(newLesson: AddLessonInput!): Lesson!
   updateCourse(course: UpdateCourseInput!): Course!
+  updateLesson(lesson: UpdateLessonInput!): Lesson!
 }
 
 """Cursor-based pagination of courses/lessons/sentences"""
@@ -53,11 +60,18 @@ type PaginatedItems {
 type Query {
   course(id: String = ""): Course
   courses(args: CursorPaginationArgs!): PaginatedItems
+  getLesson(id: String = ""): Lesson
 }
 
 input UpdateCourseInput {
   description: String
   id: ID!
   languageId: String
+  name: String
+}
+
+input UpdateLessonInput {
+  courseId: String
+  id: ID!
   name: String
 }
