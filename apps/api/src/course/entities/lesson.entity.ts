@@ -1,7 +1,7 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql'
 import { Course } from './course.entity'
-// import { PaginatedItems } from './paginated-items.entity'
-// import { Sentence } from './sentence.entity'
+import { PaginatedItems } from './paginated-items.entity'
+import { Sentence } from './sentence.entity'
 
 @ObjectType({ description: 'Lesson model' })
 export class Lesson {
@@ -18,9 +18,9 @@ export class Lesson {
   @Field(() => Course, { nullable: true })
   course?: Course
 
-  // @Field(() => [Sentence], { nullable: true })
-  // sentences?: Sentence[]
+  @Field(() => [Sentence], { nullable: true })
+  sentences?: Sentence[]
 
-  // @Field(() => PaginatedItems, { nullable: true })
-  // paginatedSentences?: PaginatedItems
+  @Field(() => PaginatedItems, { nullable: true })
+  paginatedSentences?: PaginatedItems
 }

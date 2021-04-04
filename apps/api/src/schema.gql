@@ -41,6 +41,8 @@ type Lesson {
   course: Course
   id: ID!
   name: String
+  paginatedSentences(args: CursorPaginationArgs!): PaginatedItems
+  sentences: [Sentence!]
 }
 
 type Mutation {
@@ -55,12 +57,30 @@ type PaginatedItems {
   courses: [Course!]
   cursor: Float
   lessons: [Lesson!]
+  sentences: [Sentence!]
 }
 
 type Query {
   course(id: String = ""): Course
   courses(args: CursorPaginationArgs!): PaginatedItems
   getLesson(id: String = ""): Lesson
+}
+
+"""Sentence model"""
+type Sentence {
+  availableTranslations: [Language!]
+  id: ID!
+  lesson: Lesson
+  text: String
+  translations: [Translation!]
+}
+
+"""Translation model"""
+type Translation {
+  id: ID!
+  language: Language
+  sentence: Sentence
+  text: String
 }
 
 input UpdateCourseInput {

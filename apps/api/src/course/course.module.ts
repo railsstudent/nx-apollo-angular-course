@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common'
 import { PrismaModule } from '../prisma'
 import { CourseResolver, LanguageResolver, LessonResolver, PaginatedItemsResolver } from './resolvers'
-import { CourseService, LessonService, UniqueHelper } from './services'
+import { CourseService, LessonService, SentenceService, TranslationService, UniqueHelper } from './services'
 
 @Module({
   imports: [PrismaModule],
@@ -13,6 +13,8 @@ import { CourseService, LessonService, UniqueHelper } from './services'
     PaginatedItemsResolver,
     UniqueHelper,
     LessonService,
+    SentenceService,
+    TranslationService,
   ],
 })
 export class CourseModule {}

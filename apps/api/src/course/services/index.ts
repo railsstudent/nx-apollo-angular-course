@@ -1,3 +1,5 @@
 export * from './course.service'
 export * from './unique.helper'
 export * from './lesson.service'
+export * from './sentence.service'
+export * from './translation.service'
