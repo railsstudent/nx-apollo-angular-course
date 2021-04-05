@@ -442,6 +442,10 @@ export type AddSentenceMutation = (
   { __typename?: 'Mutation' }
   & { addSentence: (
     { __typename?: 'Sentence' }
+    & { availableTranslations?: Maybe<Array<(
+      { __typename?: 'Language' }
+      & Pick<Language, 'id' | 'name'>
+    )>> }
     & SentenceTextFragment
   ) }
 );
@@ -745,6 +749,10 @@ export const AddSentenceDocument = gql`
     mutation addSentence($newSentence: AddSentenceInput!) {
   addSentence(newSentence: $newSentence) {
     ...SentenceText
+    availableTranslations {
+      id
+      name
+    }
   }
 }
     ${SentenceTextFragmentDoc}`;

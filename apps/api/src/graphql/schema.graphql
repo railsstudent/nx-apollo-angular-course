@@ -113,6 +113,10 @@ mutation nextLessons($courseId: String!, $args: CursorPaginationArgs!) {
 mutation addSentence($newSentence: AddSentenceInput!) {
   addSentence (newSentence: $newSentence) {
     ...SentenceText
+    availableTranslations {
+      id
+      name
+    }
   }
 }
 
