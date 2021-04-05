@@ -39,11 +39,9 @@ async function bootstrap() {
       max: 500, // limit each IP to 500 requests per windowMs
     }),
   )
-  const globalPrefix = 'api'
-  app.setGlobalPrefix(globalPrefix)
   const port = process.env.PORT || 3333
   await app.listen(port, () => {
-    Logger.log('Listening at http://localhost:' + port + '/' + globalPrefix)
+    Logger.log('Listening at http://localhost:' + port)
   })
 }
 
