@@ -47,10 +47,7 @@
             "polyfills": "apps/nx-apollo-angular-course/src/polyfills.ts",
             "tsConfig": "apps/nx-apollo-angular-course/tsconfig.app.json",
             "aot": true,
-            "assets": [
-              "apps/nx-apollo-angular-course/src/favicon.ico",
-              "apps/nx-apollo-angular-course/src/assets"
-            ],
+            "assets": ["apps/nx-apollo-angular-course/src/favicon.ico", "apps/nx-apollo-angular-course/src/assets"],
             "styles": ["apps/nx-apollo-angular-course/src/styles.scss"],
             "scripts": []
           },
@@ -142,9 +139,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/nx-apollo-angular-course-e2e/**/*.{js,ts}"
-            ]
+            "lintFilePatterns": ["apps/nx-apollo-angular-course-e2e/**/*.{js,ts}"]
           }
         }
       }
@@ -208,6 +203,28 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["libs/api-interfaces/**/*.ts"]
+          }
+        }
+      }
+    },
+    "data-access": {
+      "projectType": "library",
+      "root": "libs/data-access",
+      "sourceRoot": "libs/data-access/src",
+      "prefix": "nx-apollo-angular-course",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/data-access/src/**/*.ts", "libs/data-access/src/**/*.html"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/data-access"],
+          "options": {
+            "jestConfig": "libs/data-access/jest.config.js",
+            "passWithNoTests": true
           }
         }
       }

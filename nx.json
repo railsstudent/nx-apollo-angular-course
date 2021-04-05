@@ -1,40 +1,25 @@
 {
   "implicitDependencies": {
     "angular.json": "*",
-    "package.json": {
-      "dependencies": "*",
-      "devDependencies": "*"
-    },
+    "package.json": { "dependencies": "*", "devDependencies": "*" },
     "tsconfig.base.json": "*",
     "tslint.json": "*",
     ".eslintrc.json": "*",
     "nx.json": "*"
   },
-  "affected": {
-    "defaultBase": "master"
-  },
+  "affected": { "defaultBase": "master" },
   "npmScope": "nx-apollo-angular-course",
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
-      "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
-      }
+      "options": { "cacheableOperations": ["build", "lint", "test", "e2e"] }
     }
   },
   "projects": {
-    "nx-apollo-angular-course": {
-      "tags": []
-    },
-    "nx-apollo-angular-course-e2e": {
-      "tags": [],
-      "implicitDependencies": ["nx-apollo-angular-course"]
-    },
-    "api": {
-      "tags": []
-    },
-    "api-interfaces": {
-      "tags": []
-    }
+    "nx-apollo-angular-course": { "tags": [] },
+    "nx-apollo-angular-course-e2e": { "tags": [], "implicitDependencies": ["nx-apollo-angular-course"] },
+    "api": { "tags": [] },
+    "api-interfaces": { "tags": [] },
+    "data-access": { "tags": [] }
   }
 }
