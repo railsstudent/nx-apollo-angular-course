@@ -228,6 +228,28 @@
           }
         }
       }
+    },
+    "feature-sets": {
+      "projectType": "library",
+      "root": "libs/feature-sets",
+      "sourceRoot": "libs/feature-sets/src",
+      "prefix": "nx-apollo-angular-course",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/feature-sets/src/**/*.ts", "libs/feature-sets/src/**/*.html"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/feature-sets"],
+          "options": {
+            "jestConfig": "libs/feature-sets/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }

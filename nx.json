@@ -20,6 +20,7 @@
     "nx-apollo-angular-course-e2e": { "tags": [], "implicitDependencies": ["nx-apollo-angular-course"] },
     "api": { "tags": [] },
     "api-interfaces": { "tags": [] },
-    "data-access": { "tags": [] }
+    "data-access": { "tags": [] },
+    "feature-sets": { "tags": [] }
   }
 }
