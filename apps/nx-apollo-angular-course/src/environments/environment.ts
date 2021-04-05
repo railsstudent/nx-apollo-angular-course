@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  graphqlUrl: 'http://localhost:3333/graphql'
-};
+  graphqlUrl: 'http://localhost:3333/graphql',
+}
 
 /*
  * For easier debugging in development mode, you can import the following file
