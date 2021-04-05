@@ -1,0 +1,168 @@
+fragment CourseLanguage on Language {
+  id
+  name
+  fullname
+}
+
+fragment CourseName on Course {
+  id
+  name
+  description
+}
+
+fragment LessonName on Lesson {
+  id
+  name
+}
+
+fragment TranslationText on Translation {
+  id
+  text
+}
+
+fragment SentenceText on Sentence {
+  id
+  text
+}
+
+query AllCourses ($args: CursorPaginationArgs!) {
+  courses (args: $args) {
+    cursor
+    courses {
+      ...CourseName
+      language {
+        ...CourseLanguage
+      }
+    }
+  }
+}
+
+query Course ($courseId: String!, $args: CursorPaginationArgs!) {
+  course(id: $courseId) {
+    ...CourseName
+    language {
+      ...CourseLanguage
+    }
+    paginatedLessons (args: $args) {
+      cursor
+      lessons {
+        id
+        name
+      }
+    }
+  }
+}
+
+query Languages {
+  getLanguages {
+    ...CourseLanguage
+  }
+}
+
+mutation addCourse ($newCourse: AddCourseInput!) {
+  addCourse(newCourse: $newCourse) {
+    ...CourseName,
+    language {
+      ...CourseLanguage
+    }
+  }
+}
+
+query Lesson ($lessonId: String!, $args: CursorPaginationArgs!)  {
+  getLesson(id: $lessonId) {
+    ...LessonName
+    course {
+      ...CourseName
+      language {
+        ...CourseLanguage
+      }
+    }
+    paginatedSentences(args: $args) {
+      cursor
+      sentences {
+        ...SentenceText
+        availableTranslations {
+          id
+          name
+        }
+      }
+    }
+  }
+}
+
+mutation addLesson($newLesson: AddLessonInput!) {
+  addLesson(
+    newLesson: $newLesson
+  ) {
+    ...LessonName
+  }
+}
+
+mutation nextLessons($courseId: String!, $args: CursorPaginationArgs!) {
+  nextLessons(
+    courseId: $courseId,
+    args: $args
+  ) {
+    cursor
+    lessons {
+      ...LessonName
+    }
+  }
+}
+
+mutation addSentence($newSentence: AddSentenceInput!) {
+  addSentence (newSentence: $newSentence) {
+    ...SentenceText
+  }
+}
+
+mutation deleteSentence ($id: String!) {
+  deleteSentence(id: $id) {
+    sentence {
+   	  ...SentenceText
+    }
+    translations {
+      ...TranslationText
+    }
+  }
+}
+
+,mutation nextSentences($id: String!, $args: CursorPaginationArgs!) {
+  nextSentences (lessonId: $id, args: $args) {
+    cursor
+    sentences {
+      ...SentenceText
+      availableTranslations {
+        id
+        name
+      }
+    }
+  }
+}
+
+mutation addTranslation($newTranslation: AddTranslationInput!) {
+  addTranslation(newTranslation: $newTranslation) {
+    ...TranslationText,
+    language {
+      ...CourseLanguage
+    }
+  }
+}
+
+query Translation($sentenceId: String!, $languageId: String!) {
+  getTranslation(sentenceId: $sentenceId, languageId: $languageId) {
+    ...TranslationText
+    language {
+      ...CourseLanguage
+    }
+  }
+}
+
+mutation deleteTranslation ($id: String!) {
+  deleteTranslation (id: $id) {
+    ...TranslationText
+    language {
+      ...CourseLanguage
+    }
+  }
+}
