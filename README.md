@@ -42,7 +42,7 @@ Run `ng serve my-app` for a dev server. Navigate to http://localhost:4200/. The 
 
 ## API server
 
-Run `npm start api` to start nest server. Navigate to http://localhost:3333/graphql to launch GraphQL playground.
+Run `ng serve api` to start nest server. Navigate to http://localhost:3333/graphql to launch GraphQL playground.
 
 ## GraphQL code generation
 
@@ -50,7 +50,7 @@ Run `ng run data-access:generate` to update GraphQL queries and mutations
 
 ## Code scaffolding
 
-Run `ng g component my-component --project=my-app` to generate a new component.
+Run `ng g component my-component --project=my-app --export` to generate a new component.
 
 ## Build
 
