@@ -6,7 +6,7 @@ import { TranslationService } from '../services'
 export class TranslationResolver {
   constructor(private translationService: TranslationService) {}
 
-  @Query(() => Translation)
+  @Query(() => Translation, { nullable: true })
   async getTranslation(
     @Args('sentenceId') sentenceId: string,
     @Args('languageId') languageId: string,

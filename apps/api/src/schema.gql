@@ -96,8 +96,8 @@ type Query {
   courses(args: CursorPaginationArgs!): PaginatedItems
   getLanguages: [Language!]!
   getLesson(id: String = ""): Lesson
-  getSentence(id: String = ""): Sentence!
-  getTranslation(languageId: String!, sentenceId: String!): Translation!
+  getSentence(id: String = ""): Sentence
+  getTranslation(languageId: String!, sentenceId: String!): Translation
 }
 
 """Sentence model"""

@@ -10,7 +10,7 @@ export class SentenceResolver {
     private readonly translationService: TranslationService,
   ) {}
 
-  @Query(() => Sentence)
+  @Query(() => Sentence, { nullable: true })
   async getSentence(@Args('id', { defaultValue: '', type: () => String }) id: string): Promise<Sentence> {
     return await this.sentenceService.getSentence(id)
   }
