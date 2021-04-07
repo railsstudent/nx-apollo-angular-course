@@ -2,3 +2,69 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 /* You can add global styles to this file, and also import other style files */
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  min-height: 100vh;
+  height: 100%;
+}
+
+
+button {
+  padding: 8px 18px;
+  @apply bg-blue-600;
+  @apply text-white;
+  @apply rounded-lg;
+
+  &:hover {
+    cursor: pointer;
+    @apply bg-blue-700;
+  }
+
+  &.back {
+    @apply bg-indigo-500;
+
+    &:hover {
+      @apply bg-indigo-600;
+    }
+  }
+}
+
+input, select {
+  padding: 0.5rem;
+  @apply border;
+  @apply border-gray-400;
+  @apply rounded-lg;
+  &:focus {
+    @apply outline-none;
+    @apply ring-2;
+    @apply ring-blue-400;
+    @apply border-transparent;
+  }
+}
+
+p.title {
+  font-size: 1.2rem;
+}
+
+label.label {
+  @apply m-2;
+}
+
+span.field {
+  @apply mr-2;
+  @apply text-gray-500;
+}
+
+.form-border {
+  @apply border;
+  @apply border-gray-400;
+  @apply shadow-md;
+  @apply rounded-lg;
+}

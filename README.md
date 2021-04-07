@@ -51,6 +51,7 @@ Run `ng run data-access:generate` to update GraphQL queries and mutations
 ## Code scaffolding
 
 Run `ng g component my-component --project=my-app --export` to generate a new component.
+Run `ng generate @schematics/angular:component --name=<name> --project=feature-sets --module=<module name> --export` to generate a new component
 
 ## Build
 
