@@ -21,7 +21,7 @@
     "api": { "tags": [] },
     "api-interfaces": { "tags": [] },
     "data-access": { "tags": [] },
-    "feature-sets": { "tags": [] },
-    "shared": { "tags": [] }
+    "feature-courses": { "tags": [] },
+    "ui-courses": { "tags": [] }
   }
 }

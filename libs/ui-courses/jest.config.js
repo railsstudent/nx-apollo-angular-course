@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'feature-sets',
+  displayName: 'ui-courses',
   preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -14,7 +14,7 @@ module.exports = {
       },
     },
   },
-  coverageDirectory: '../../coverage/libs/feature-sets',
+  coverageDirectory: '../../coverage/libs/ui-courses',
   snapshotSerializers: [
     'jest-preset-angular/build/AngularNoNgAttributesSnapshotSerializer.js',
     'jest-preset-angular/build/AngularSnapshotSerializer.js',

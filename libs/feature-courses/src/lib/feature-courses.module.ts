@@ -6,4 +6,4 @@ import { CourseModule } from './course/course.module'
   imports: [CommonModule, CourseModule],
   exports: [CourseModule],
 })
-export class FeatureSetsModule {}
+export class FeatureCoursesModule {}

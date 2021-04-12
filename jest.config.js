@@ -3,7 +3,7 @@ module.exports = {
     '<rootDir>/apps/nx-apollo-angular-course',
     '<rootDir>/apps/api',
     '<rootDir>/libs/data-access',
-    '<rootDir>/libs/feature-sets',
-    '<rootDir>/libs/shared',
+    '<rootDir>/libs/feature-courses',
+    '<rootDir>/libs/ui-courses',
   ],
 }

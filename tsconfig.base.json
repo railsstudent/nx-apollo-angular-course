@@ -17,8 +17,8 @@
     "paths": {
       "@nx-apollo-angular-course/api-interfaces": ["libs/api-interfaces/src/index.ts"],
       "@nx-apollo-angular-course/data-access": ["libs/data-access/src/index.ts"],
-      "@nx-apollo-angular-course/feature-sets": ["libs/feature-sets/src/index.ts"],
-      "@nx-apollo-angular-course/shared": ["libs/shared/src/index.ts"]
+      "@nx-apollo-angular-course/feature-courses": ["libs/feature-courses/src/index.ts"],
+      "@nx-apollo-angular-course/ui-courses": ["libs/ui-courses/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

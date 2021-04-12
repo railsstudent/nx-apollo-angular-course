@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router'
 const routes: Routes = [
   {
     path: 'courses',
-    loadChildren: () => import('@nx-apollo-angular-course/feature-sets').then((m) => m.CourseModule),
+    loadChildren: () => import('@nx-apollo-angular-course/feature-courses').then((m) => m.CourseModule),
   },
   {
     path: '',

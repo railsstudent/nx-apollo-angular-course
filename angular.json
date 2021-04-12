@@ -239,45 +239,45 @@
         }
       }
     },
-    "feature-sets": {
+    "feature-courses": {
       "projectType": "library",
-      "root": "libs/feature-sets",
-      "sourceRoot": "libs/feature-sets/src",
+      "root": "libs/feature-courses",
+      "sourceRoot": "libs/feature-courses/src",
       "prefix": "nx-apollo-angular-course",
       "architect": {
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/feature-sets/src/**/*.ts", "libs/feature-sets/src/**/*.html"]
+            "lintFilePatterns": ["libs/feature-courses/src/**/*.ts", "libs/feature-courses/src/**/*.html"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/feature-sets"],
+          "outputs": ["coverage/libs/feature-courses"],
           "options": {
-            "jestConfig": "libs/feature-sets/jest.config.js",
+            "jestConfig": "libs/feature-courses/jest.config.js",
             "passWithNoTests": true
           }
         }
       }
     },
-    "shared": {
+    "ui-courses": {
       "projectType": "library",
-      "root": "libs/shared",
-      "sourceRoot": "libs/shared/src",
+      "root": "libs/ui-courses",
+      "sourceRoot": "libs/ui-courses/src",
       "prefix": "nx-apollo-angular-course",
       "architect": {
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/shared/src/**/*.ts", "libs/shared/src/**/*.html"]
+            "lintFilePatterns": ["libs/ui-courses/src/**/*.ts", "libs/ui-courses/src/**/*.html"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/shared"],
+          "outputs": ["coverage/libs/ui-courses"],
           "options": {
-            "jestConfig": "libs/shared/jest.config.js",
+            "jestConfig": "libs/ui-courses/jest.config.js",
             "passWithNoTests": true
           }
         }
