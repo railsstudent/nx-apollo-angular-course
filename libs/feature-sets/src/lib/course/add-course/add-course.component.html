@@ -1,0 +1,20 @@
+<div class="add-course p-2 form-border">
+  <p class="title">New Course</p>
+  <form class="flex flex-col" [formGroup]="form" novalidate (ngSubmit)="onSubmit($event)">
+    <label class="label">
+      <span class="field">Name:</span>
+      <input name="name" type="text" formControlName="name" required maxlength="50" size="50" />
+    </label>
+    <label class="label">
+      <span class="field">Description:</span>
+      <input style="width: 80%" name="description" type="text" formControlName="description" required maxlength="150" />
+    </label>
+    <label class="label">
+      <span class="field">Language:</span>
+      <select formControlName="languageId" style="min-width: 100px">
+        <option [value]="language.id" *ngFor="let language of languages">{{ language.fullname }}</option>
+      </select>
+    </label>
+    <button class="self-start m-2 disabled:opacity-50" [disabled]="!form.valid">Add</button>
+  </form>
+</div>

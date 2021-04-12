@@ -1,0 +1,16 @@
+<div class="add-lesson p-2 form-border">
+  <p class="title">New Lesson</p>
+  <form class="flex flex-col" [formGroup]="form" novalidate (ngSubmit)="onSubmit($event)">
+    <label class="label">
+      <span class="field">Language:</span>
+      <span>{{ language?.fullname }}</span>
+    </label>
+    <div>
+      <label class="label">
+        <span class="field">Name:</span>
+        <input style="width: 80%" name="name" type="text" formControlName="name" required maxlength="50" size="50" />
+      </label>
+      <button class="self-start m-2 disabled:opacity-50" [disabled]="!form.valid">Add</button>
+    </div>
+  </form>
+</div>

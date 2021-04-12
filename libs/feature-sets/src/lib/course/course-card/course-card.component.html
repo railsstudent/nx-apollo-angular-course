@@ -1,0 +1,16 @@
+<div class="course p-2 form-border flex flex-col">
+  <div class="flex-1">
+    <p>
+      <span class="field text-lg">Name: </span><span class="text-lg">{{ course?.name }}</span>
+    </p>
+    <p>
+      <span class="field">Description: </span><span>{{ course?.description }}</span>
+    </p>
+    <p>
+      <span class="field">Language: </span><span>{{ course?.language?.fullname }}</span>
+    </p>
+  </div>
+  <p class="actions">
+    <button class="bg-green-400 hover:bg-green-500" (click)="viewLesson()">See Lessons</button>
+  </p>
+</div>

@@ -15,7 +15,6 @@ body {
   height: 100%;
 }
 
-
 button {
   padding: 8px 18px;
   @apply bg-blue-600;
@@ -36,7 +35,8 @@ button {
   }
 }
 
-input, select {
+input,
+select {
   padding: 0.5rem;
   @apply border;
   @apply border-gray-400;

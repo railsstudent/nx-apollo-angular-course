@@ -125,7 +125,7 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{ts,js}": [
+    "apps/nx-apollo-angular-course/src/app/*.{ts,js},apps/api/src/**/*.{ts,js}": [
       "npm run lint",
       "npm run format",
       "git add"

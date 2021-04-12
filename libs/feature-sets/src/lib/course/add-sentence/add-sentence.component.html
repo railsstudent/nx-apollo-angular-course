@@ -1,0 +1,22 @@
+<div class="add-sentence p-2 form-border">
+  <p class="title">New Sentence</p>
+  <form class="flex flex-col" [formGroup]="form" novalidate (ngSubmit)="onSubmit($event)">
+    <label class="label">
+      <span class="field">Language:</span>
+      <span>{{ language?.fullname }}</span>
+    </label>
+    <label class="label">
+      <span class="field">Text:</span>
+      <input
+        style="width: 80%"
+        name="text"
+        type="text"
+        formControlName="text"
+        required
+        maxlength="1000"
+        placeholder="(max. length: 1000)"
+      />
+    </label>
+    <button class="self-start m-2 disabled:opacity-50" [disabled]="!form.valid">Add</button>
+  </form>
+</div>

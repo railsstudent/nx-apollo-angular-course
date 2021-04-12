@@ -1,23 +1,21 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { CourseListComponent } from '@nx-apollo-angular-course/feature-sets';
-
+import { NgModule } from '@angular/core'
+import { RouterModule, Routes } from '@angular/router'
 
 const routes: Routes = [
   {
     path: 'courses',
-    loadChildren: () => import('@nx-apollo-angular-course/feature-sets').then(m => m.CourseModule)
+    loadChildren: () => import('@nx-apollo-angular-course/feature-sets').then((m) => m.CourseModule),
   },
   {
     path: '',
     redirectTo: 'courses',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
-  { path: '**', component: CourseListComponent }
-];
+  { path: '**', redirectTo: 'courses' },
+]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
