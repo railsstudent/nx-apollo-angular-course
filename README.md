@@ -18,6 +18,11 @@ When using Nx, you can create multiple applications and libraries in the same wo
 
 Run `ng g @nrwl/angular:lib my-lib` to generate a library.
 
+### Examples: 
+`ng generate @nrwl/angular:library data-access --style scss`
+
+`ng generate @nrwl/angular:library feature-sets --style scss`
+
 > You can also use any of the plugins above to generate libraries as well.
 
 Libraries are shareable across libraries and applications. They can be imported from `@nx-apollo-angular-course/mylib`.

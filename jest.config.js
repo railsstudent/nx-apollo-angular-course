@@ -4,5 +4,6 @@ module.exports = {
     '<rootDir>/apps/api',
     '<rootDir>/libs/data-access',
     '<rootDir>/libs/feature-sets',
+    '<rootDir>/libs/shared',
   ],
 }
