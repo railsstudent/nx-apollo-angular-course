@@ -18,10 +18,11 @@ When using Nx, you can create multiple applications and libraries in the same wo
 
 Run `ng g @nrwl/angular:lib my-lib` to generate a library.
 
-### Examples: 
+### Examples:
+
 `ng generate @nrwl/angular:library data-access --style scss`
 
-`ng generate @nrwl/angular:library feature-sets --style scss`
+`ng generate @nrwl/angular:library feature-courses --style scss`
 
 > You can also use any of the plugins above to generate libraries as well.
 
@@ -42,7 +43,7 @@ Run `ng run data-access:generate` to update GraphQL queries and mutations
 ## Code scaffolding
 
 Run `ng g component my-component --project=my-app --export` to generate a new component.
-Run `ng generate @schematics/angular:component --name=<name> --project=feature-sets --module=<module name> --export` to generate a new component
+Run `ng generate @schematics/angular:component --name=<name> --project=feature-courses --module=<module name> --export` to generate a new component
 
 Run `ng generate @schematics/angular:service --name=<name> --project=data-access --export` to generate a new service
 

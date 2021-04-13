@@ -76,6 +76,7 @@ export class CourseListComponent implements OnInit {
           },
         },
       })
+      .catch((err) => console.error(err))
       .finally(() => (this.loading = false))
   }
 }
