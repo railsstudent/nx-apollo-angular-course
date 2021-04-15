@@ -1,9 +1,13 @@
-import { Component, OnInit } from '@angular/core'
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core'
 
 @Component({
   selector: 'nx-apollo-angular-course-load-more-button',
-  templateUrl: './load-more-button.component.html',
-  styleUrls: ['./load-more-button.component.css'],
+  template: `
+    <button [ngClass]="classNames" (click)="callbackFunction(someArg)" [disabled]="loading">
+      {{ loading ? 'Loading...' : 'Load More' }}
+    </button>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoadMoreButtonComponent implements OnInit {
   constructor() {}

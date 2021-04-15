@@ -1,4 +1,4 @@
-import { Language } from '../src/course/entities';
+import { Language } from '../src/course/entities'
 import { PrismaClient } from '@prisma/client'
 import {
   SentenceTranslation,
