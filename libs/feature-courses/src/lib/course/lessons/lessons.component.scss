@@ -1,0 +1,36 @@
+:host {
+  display: block;
+}
+
+.container {
+  max-width: calc(100% - 1rem);
+
+  .header {
+    min-height: 70px;
+    border-bottom: 1px solid #4a4a4a;
+
+    .back, .spacer {
+      flex: 1 1 10%;
+    }
+
+    .course {
+      flex: 1 1 calc(100% - 1rem - 20%);
+    }
+  }
+
+  .main {
+    p {
+      &.lesson {
+        flex-basis: 50%;
+      }
+
+      &.lesson:nth-child(4n - 3), &.lesson:nth-child(4n - 2) {
+        background: #ddd
+      }
+
+      &.lesson:nth-child(4n - 1), &.lesson:nth-child(4n) {
+        background: #dddf8d;
+      }
+    }
+  }
+}
