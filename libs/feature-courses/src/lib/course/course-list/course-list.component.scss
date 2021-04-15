@@ -1,0 +1,27 @@
+:host {
+  display: block;
+}
+
+.container {
+  padding: 0.5rem;
+  max-width: calc(100% - 1rem);
+
+  .course {
+    &-container {
+      flex: 0 1 calc(100% / 4);
+      margin-bottom: 0.5rem;
+    }
+  }
+}
+
+@media only screen  and (max-width: 767px) {
+  .course-container {
+    flex-basis: calc(100% / 3);
+  }
+}
+
+@media only screen  and (max-width: 640px) {
+  .course-container {
+    flex-basis: 50%;
+  }
+}

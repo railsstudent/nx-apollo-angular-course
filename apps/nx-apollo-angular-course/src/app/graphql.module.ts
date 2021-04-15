@@ -10,6 +10,37 @@ export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
     link: httpLink.create({ uri }),
     cache: new InMemoryCache({
       typePolicies: {
+        Query: {
+          fields: {
+            courses: {
+              merge(existing: any, incoming: any, { readField }): any {
+                const existingCourses = existing ? [ ...existing.courses ] : [];
+                const incomingCourses = incoming ? [ ...incoming.courses ] : [];
+
+                const allCourses = [...existingCourses, ...incomingCourses];
+                const allCourseRefs = allCourses.map(s => readField('id', s));
+                const uniqCourses = allCourses.filter((courseRef, index) =>
+                  allCourseRefs.indexOf(readField('id', courseRef)) === index
+                );
+
+                return {
+                  cursor: incoming?.cursor || -1,
+                  courses: uniqCourses,
+                };
+              },
+
+              read(existing: any): any {
+                if (existing) {
+                  return {
+                    cursor: existing.cursor,
+                    courses: [...existing.courses],
+                  };
+                }
+                return existing;
+              },
+             }
+          }
+        },
         Course: {
           fields: {
             paginatedLessons: {
