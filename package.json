@@ -30,7 +30,7 @@
     "prisma:create": "npx prisma migrate dev --create-only --preview-feature",
     "prisma:deploy": "npx prisma migrate deploy --preview-feature",
     "prisma:format": "npx prisma format",
-    "seed": "ts-node scripts/seed.ts",
+    "seed": "ts-node apps/api/scripts/seed.ts",
     "test-api": "nx run api:test --detectOpenHandles"
   },
   "private": true,
@@ -50,7 +50,6 @@
     "@nestjs/platform-express": "^7.0.0",
     "@ngneat/until-destroy": "^8.0.4",
     "@nrwl/angular": "11.6.1",
-    "@prisma/client": "^2.20.1",
     "apollo-angular": "^2.4.0",
     "apollo-server-express": "^2.22.2",
     "body-parser": "^1.19.0",
@@ -92,6 +91,7 @@
     "@nrwl/node": "11.6.1",
     "@nrwl/tao": "11.6.1",
     "@nrwl/workspace": "11.6.1",
+    "@prisma/client": "^2.21.2",
     "@tailwindcss/typography": "^0.4.0",
     "@types/compression": "^1.7.0",
     "@types/cors": "^2.8.10",
@@ -107,32 +107,14 @@
     "eslint": "7.10.0",
     "eslint-config-prettier": "8.1.0",
     "eslint-plugin-cypress": "^2.10.3",
-    "husky": "^6.0.0",
     "jest": "26.2.2",
     "jest-preset-angular": "8.3.2",
-    "lint-staged": "^10.5.4",
     "postcss": "^8.2.9",
     "prettier": "^2.2.1",
-    "prisma": "^2.20.1",
+    "prisma": "^2.21.2",
     "tailwindcss": "^2.1.1",
     "ts-jest": "26.4.0",
     "ts-node": "~9.1.1",
     "typescript": "~4.0.3"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "apps/nx-apollo-angular-course/src/app/*.{ts,js},apps/api/src/**/*.{ts,js}": [
-      "npm run lint",
-      "npm run format",
-      "git add"
-    ],
-    "*.{json,md}": [
-      "npm run format",
-      "git add"
-    ]
   }
 }
