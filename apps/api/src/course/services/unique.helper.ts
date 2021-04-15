@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common'
-import { PrismaService } from './../../prisma'
+import { PrismaService } from '@nx-apollo-angular-course/prisma'
 import { Prisma } from '@prisma/client'
 
 @Injectable()
