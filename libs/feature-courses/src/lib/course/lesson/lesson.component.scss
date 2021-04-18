@@ -1,0 +1,49 @@
+:host {
+  display: block;
+}
+
+.container {
+  max-width: calc(100% - 1rem);
+
+  .header {
+    min-height: 70px;
+    border-bottom: 1px solid #4a4a4a;
+
+    .back, .spacer {
+      flex: 1 1 10%;
+    }
+
+    .lesson {
+      flex: 1 1 calc(100% - 1rem - 20%);
+    }
+  }
+
+  .main {
+    .inputs-container {
+      app-add-sentence, app-add-translation {
+        flex-basis: calc((100% - 2rem) / 2);
+      }
+
+      ::ng-deep app-add-sentence div.add-sentence {
+        height: 100%;
+      }
+    }
+  }
+}
+
+@media only screen  and (max-width: 640px) {
+  .container .main {
+    .inputs-container {
+      @apply flex-col;
+
+      app-add-sentence {
+        @apply mr-0;
+        @apply mb-4;
+      }
+
+      app-add-sentence, app-add-translation {
+        flex-basis: 0;
+      }
+    }
+  }
+}
