@@ -13,6 +13,7 @@ import { AddTranslationComponent } from './add-translation/add-translation.compo
 import { LessonComponent } from './lesson/lesson.component'
 import { SentenceComponent } from './sentence/sentence.component'
 import { UiCoursesModule } from '@nx-apollo-angular-course/ui-courses'
+import { AvailableTranslationComponent } from './available-translation/available-translation.component'
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { UiCoursesModule } from '@nx-apollo-angular-course/ui-courses'
     AddTranslationComponent,
     LessonComponent,
     SentenceComponent,
+    AvailableTranslationComponent,
   ],
   imports: [CommonModule, CourseRoutingModule, ReactiveFormsModule, FormsModule, UiCoursesModule],
   exports: [
@@ -37,6 +39,7 @@ import { UiCoursesModule } from '@nx-apollo-angular-course/ui-courses'
     AddTranslationComponent,
     LessonComponent,
     SentenceComponent,
+    AvailableTranslationComponent,
   ],
 })
 export class CourseModule {}
