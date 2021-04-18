@@ -12,11 +12,11 @@
   <div class="main p-4">
     <div class="inputs-container flex items-stretch mb-4">
       <nx-apollo-angular-course-add-sentence
-        class="mr-4 flex-grow flex-shrink"
+        class="mr-4 flex-grow flex-shrink add-sentence"
         [language]="lesson?.course?.language"
         (submitNewSentence)="submitNewSentence(lesson, $event)"></nx-apollo-angular-course-add-sentence>
       <nx-apollo-angular-course-add-translation
-        class="flex-grow flex-shrink"
+        class="flex-grow flex-shrink add-translation"
         [languages]="languages$ | async"
         [sentences]="lesson?.paginatedSentences?.sentences"
         (submitNewTranlsation)="submitNewTranslation(lesson, $event)"
@@ -39,7 +39,7 @@
     <div class="sentences"
       *ngIf="lesson && lesson.paginatedSentences && lesson.paginatedSentences.sentences && lesson.paginatedSentences.sentences.length > 0 else noSentence">
       <ng-container *ngFor="let sentence of lesson.paginatedSentences.sentences; index as i; trackBy:trackByFunc">
-        <!-- <app-sentence class="mb-4" [sentence]="sentence" [index]="i" [lesson]="lesson"></app-sentence> -->
+        <nx-apollo-angular-course-sentence class="mb-4" [sentence]="sentence" [index]="i" [lesson]="lesson"></nx-apollo-angular-course-sentence>
       </ng-container>
     </div>
   </div>

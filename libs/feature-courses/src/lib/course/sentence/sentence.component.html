@@ -1,1 +1,39 @@
-<p>sentence works!</p>
+<div class="sentence p-2 form-border">
+  <p class="text mb-2"><span class="mr-3">{{index + 1}}. {{ sentence?.text }}</span>
+    <button type="button" class="bg-red-400 rounded-md p-2 inline-flex items-center justify-center text-white hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-red-600"
+      (click)="deleteSentence(sentence?.id || '')">
+      <span class="sr-only">Delete sentence</span>
+      <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </p>
+  <div class="translations" *ngIf="sentence && sentence.availableTranslations && sentence.availableTranslations.length > 0 else noTranslation">
+    <div class="actions flex">
+      <span class="mr-3 field">Available translations:</span>
+      <button class="bg-blue-400 hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-600 mr-2"
+        *ngFor="let availTranslation of sentence.availableTranslations; index as i; trackBy:trackByFunc"
+        (click)="showTranslation(availTranslation)">
+        {{ availTranslation?.name }}
+      </button>
+      <button class="bg-red-400 hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-600" (click)="translate$.next(null)">
+        Close
+      </button>
+    </div>
+    <ng-container *ngIf="(translate$ | async) as selectedSentence">
+      <div class="p-1 mt-2 mb-2 border border-dashed border-green-500 flex justify-between items-center" *ngIf="(selectedTranslation$ | async) as selectedTranslation">
+        <span>Translation: {{ selectedTranslation.text || 'no translation' }}</span>
+        <button type="button" class="bg-red-400 rounded-md p-2 inline-flex items-center justify-center text-white hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-red-600"
+          (click)="deleteTranslation(selectedTranslation.id)">
+          <span class="sr-only">Delete translation</span>
+          <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </ng-container>
+  </div>
+</div>
+<ng-template #noTranslation>
+  <span class="field italic">No translation</span>
+</ng-template>

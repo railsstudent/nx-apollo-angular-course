@@ -20,11 +20,11 @@
 
   .main {
     .inputs-container {
-      app-add-sentence, app-add-translation {
+      .add-sentence, .add-translation {
         flex-basis: calc((100% - 2rem) / 2);
       }
 
-      ::ng-deep app-add-sentence div.add-sentence {
+      ::ng-deep .add-sentence div.add-sentence {
         height: 100%;
       }
     }
@@ -36,12 +36,12 @@
     .inputs-container {
       @apply flex-col;
 
-      app-add-sentence {
+      .add-sentence {
         @apply mr-0;
         @apply mb-4;
       }
 
-      app-add-sentence, app-add-translation {
+      .add-sentence, .add-translation {
         flex-basis: 0;
       }
     }
