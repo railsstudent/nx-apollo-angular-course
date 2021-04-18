@@ -1,4 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing'
+import { CourseService, LessonService, SentenceService } from '../services'
 import { PaginatedItemsResolver } from './paginated-items.resolver'
 
 describe('PaginatedItemsResolver', () => {
@@ -6,7 +7,21 @@ describe('PaginatedItemsResolver', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [PaginatedItemsResolver],
+      providers: [
+        PaginatedItemsResolver,
+        {
+          provide: CourseService,
+          useValue: {},
+        },
+        {
+          provide: LessonService,
+          useValue: {},
+        },
+        {
+          provide: SentenceService,
+          useValue: {},
+        },
+      ],
     }).compile()
 
     resolver = module.get<PaginatedItemsResolver>(PaginatedItemsResolver)

@@ -2,14 +2,15 @@ import { UniqueHelper } from './unique.helper'
 import { Test, TestingModule } from '@nestjs/testing'
 import { PrismaService } from '@nx-apollo-angular-course/prisma'
 import { LessonService } from './lesson.service'
+import { SentenceService } from './sentence.service'
 
-describe('LessonService', () => {
-  let service: LessonService
+describe('SentenceService', () => {
+  let service: SentenceService
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
-        LessonService,
+        SentenceService,
         {
           provide: PrismaService,
           useValue: {},
@@ -21,7 +22,7 @@ describe('LessonService', () => {
       ],
     }).compile()
 
-    service = module.get<LessonService>(LessonService)
+    service = module.get<SentenceService>(SentenceService)
   })
 
   it('should be defined', () => {
