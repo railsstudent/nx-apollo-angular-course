@@ -1,10 +1,9 @@
-import { CursorPaginationArgs } from './../dto/cursor-pagination.dto';
-import { LessonResolver } from './lesson.resolver';
 import { Test, TestingModule } from '@nestjs/testing'
 import { PrismaService } from '@nx-apollo-angular-course/prisma'
 import { LessonService, UniqueHelper, SentenceService } from '../services'
-import { Language, Lesson, PaginatedItems } from '../entities'
-import { AddLessonInput, UpdateLessonInput } from '../dto'
+import { Lesson, PaginatedItems } from '../entities'
+import { AddLessonInput, UpdateLessonInput, CursorPaginationArgs } from '../dto'
+import { LessonResolver } from './lesson.resolver'
 
 describe('LessonResolver', () => {
   let resolver: LessonResolver
@@ -38,16 +37,15 @@ describe('LessonResolver', () => {
   })
 
   it('getLesson should return a lesson', async () => {
-    const result: Lesson =
-      {
+    const result: Lesson = {
+      id: '1',
+      name: 'Greeting',
+      course: {
         id: '1',
-        name: 'Greeting',
-        course: {
-          id: '1',
-          name: 'English 101',
-          description: 'English 101 description'
-        }
-      }
+        name: 'English 101',
+        description: 'English 101 description',
+      },
+    }
 
     const lessonId = '1'
     jest.spyOn(lessonService, 'getLesson').mockImplementation(() => Promise.resolve(result))
@@ -65,10 +63,10 @@ describe('LessonResolver', () => {
       id: '1',
       name: 'new lesson',
       course: {
-        id : '1',
+        id: '1',
         name: 'English 101',
-        description: 'English 101 description'
-      }
+        description: 'English 101 description',
+      },
     }
     jest.spyOn(lessonService, 'addLesson').mockImplementation(() => Promise.resolve(newLesson))
 
@@ -79,17 +77,17 @@ describe('LessonResolver', () => {
     const updateLessonInput: UpdateLessonInput = {
       id: '1',
       name: 'updated lesson',
-      courseId: '1'
+      courseId: '1',
     }
 
     const updateLesson: Lesson = {
       id: '1',
       name: 'updated lesson',
       course: {
-        id : '1',
+        id: '1',
         name: 'English 101',
-        description: 'English 101 description'
-      }
+        description: 'English 101 description',
+      },
     }
     jest.spyOn(lessonService, 'updateLesson').mockImplementation(() => Promise.resolve(updateLesson))
 
@@ -99,17 +97,17 @@ describe('LessonResolver', () => {
   it('paginatedSentences should return sentences belonging to the lesson', async () => {
     const items: PaginatedItems = {
       cursor: 1000,
-      sentences: []
+      sentences: [],
     }
 
     const lesson: Lesson = {
       id: '1',
-      name: 'lesson 1'
+      name: 'lesson 1',
     }
 
     const args: CursorPaginationArgs = {
       cursor: -1,
-      limit: 2
+      limit: 2,
     }
     jest.spyOn(sentenceService, 'getPaginatedSentences').mockImplementation(() => Promise.resolve(items))
 
