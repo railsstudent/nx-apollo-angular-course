@@ -31,7 +31,7 @@
     "prisma:deploy": "npx prisma migrate deploy --preview-feature",
     "prisma:format": "npx prisma format",
     "seed": "ts-node apps/api/scripts/seed.ts",
-    "test-api": "nx run api:test --detectOpenHandles"
+    "test-api": "nx run api:test --detectOpenHandles --watch"
   },
   "private": true,
   "dependencies": {
