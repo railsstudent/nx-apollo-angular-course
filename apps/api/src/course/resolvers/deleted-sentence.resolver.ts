@@ -1,5 +1,5 @@
 import { Args, Mutation, Resolver } from '@nestjs/graphql'
-import { DeletedSentence } from './../entities'
+import { DeletedSentence } from '../entities'
 import { SentenceService } from '../services'
 
 @Resolver(() => DeletedSentence)
