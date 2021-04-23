@@ -1,4 +1,5 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql'
+import { AddTranslationInput } from '../dto'
 import { Sentence, Translation } from '../entities'
 import { TranslationService } from '../services'
 
@@ -12,6 +13,11 @@ export class TranslationResolver {
     @Args('languageId') languageId: string,
   ): Promise<Translation> {
     return this.translationService.getTranslation(sentenceId, languageId)
+  }
+
+  @Mutation(() => Translation)
+  async addTranslation(@Args('newTranslation') input: AddTranslationInput): Promise<Translation> {
+    return this.translationService.addTranslation(input)
   }
 
   @Mutation(() => Translation)

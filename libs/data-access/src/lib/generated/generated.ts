@@ -179,8 +179,8 @@ export type Query = {
   courses?: Maybe<PaginatedItems>
   getLanguages: Array<Language>
   getLesson?: Maybe<Lesson>
-  getSentence: Sentence
-  getTranslation: Translation
+  getSentence?: Maybe<Sentence>
+  getTranslation?: Maybe<Translation>
 }
 
 export type QueryCourseArgs = {
@@ -411,9 +411,11 @@ export type TranslationQueryVariables = Exact<{
 }>
 
 export type TranslationQuery = { __typename?: 'Query' } & {
-  getTranslation: { __typename?: 'Translation' } & {
-    language?: Maybe<{ __typename?: 'Language' } & CourseLanguageFragment>
-  } & TranslationTextFragment
+  getTranslation?: Maybe<
+    { __typename?: 'Translation' } & {
+      language?: Maybe<{ __typename?: 'Language' } & CourseLanguageFragment>
+    } & TranslationTextFragment
+  >
 }
 
 export type DeleteTranslationMutationVariables = Exact<{

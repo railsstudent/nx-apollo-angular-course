@@ -1,9 +1,8 @@
-import { DeletedSentence } from './../entities/deleted-sentence.entity'
 import { Test, TestingModule } from '@nestjs/testing'
 import { SentenceService, UniqueHelper } from '../services'
-import { LanguageResolver } from './language.resolver'
 import { DeletedSentenceResolver } from './deleted-sentence.resolver'
 import { PrismaService } from '@nx-apollo-angular-course/prisma'
+import { DeletedSentence } from '../entities'
 
 describe('DeletedSentenceResolver', () => {
   let resolver: DeletedSentenceResolver

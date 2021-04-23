@@ -25,16 +25,6 @@ export class SentenceResolver {
     return this.sentenceService.updateSentence(input)
   }
 
-  @Mutation(() => Translation)
-  async addTranslation(@Args('newTranslation') input: AddTranslationInput): Promise<Translation> {
-    return this.translationService.addTranslation(input)
-  }
-
-  @ResolveField(() => [Translation])
-  async translations(@Parent() sentence: Sentence): Promise<Translation[]> {
-    return this.translationService.getTranslations(sentence?.id || '')
-  }
-
   @ResolveField(() => [Language])
   async availableTranslations(@Parent() sentence: Sentence): Promise<Language[]> {
     return this.translationService.getAvailableTranslations(sentence?.id || '')

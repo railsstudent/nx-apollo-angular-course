@@ -1,9 +1,9 @@
-import { PaginatedItems } from './../entities/paginated-items.entity'
 import { Test, TestingModule } from '@nestjs/testing'
 import { PrismaService } from '@nx-apollo-angular-course/prisma'
 import { CursorPaginationArgs } from '../dto'
 import { CourseService, LessonService, SentenceService, UniqueHelper } from '../services'
 import { PaginatedItemsResolver } from './paginated-items.resolver'
+import { PaginatedItems } from '../entities'
 
 describe('PaginatedItemsResolver', () => {
   let resolver: PaginatedItemsResolver
