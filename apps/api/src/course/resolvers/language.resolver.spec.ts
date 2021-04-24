@@ -47,6 +47,12 @@ describe('LanguageResolver', () => {
         nativeName: 'Espanol',
         fullname: 'Spanish (Espanol)',
       },
+      {
+        id: '3',
+        name: 'Chinese',
+        nativeName: '中文',
+        fullname: 'Chinese (中文)',
+      },
     ]
     jest.spyOn(translationService, 'getLanguages').mockImplementation(() => Promise.resolve(result))
 

@@ -100,7 +100,7 @@ describe('SentenceResolver', () => {
       {
         id: '2',
         name: 'Chinese',
-        nativeName: 'Chinese',
+        nativeName: '中文',
       },
     ]
 

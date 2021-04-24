@@ -57,6 +57,10 @@ Run `ng test my-app` to execute the unit tests via [Jest](https://jestjs.io).
 
 Run `nx affected:test` to execute the unit tests affected by a change.
 
+Run `ng test api` to execute unit tests of api.
+
+Run `ng test api --watch` to execute unit tests of api in watch mode.
+
 ## Running end-to-end tests
 
 Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
