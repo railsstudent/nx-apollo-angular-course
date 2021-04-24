@@ -6,7 +6,7 @@ import { Prisma } from '@prisma/client'
 export class UniqueHelper {
   constructor(private readonly service: PrismaService) {}
 
-  async findUniqueLanguage(where: Prisma.languageWhereUniqueInput, rejectOnNotFound = false) {
+  async findUniqueLanguage(where: { id: string }, rejectOnNotFound = false) {
     return this.service.language.findUnique({
       where,
       rejectOnNotFound,
@@ -14,7 +14,7 @@ export class UniqueHelper {
   }
 
   async findUniqueCourse(
-    where: Prisma.courseWhereUniqueInput,
+    where: { id?: string, name?: string },
     include: Prisma.courseInclude | null,
     rejectOnNotFound = false,
   ) {
@@ -25,7 +25,7 @@ export class UniqueHelper {
     })
   }
 
-  async findUniqueLesson(where: Prisma.lessonWhereUniqueInput, rejectOnNotFound = false) {
+  async findUniqueLesson(where: { id: string }, rejectOnNotFound = false) {
     return this.service.lesson.findUnique({
       where,
       rejectOnNotFound,
