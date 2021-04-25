@@ -14,7 +14,7 @@ import { CourseModule } from '../course'
         return err
       },
     }),
-    CourseModule
+    CourseModule,
   ],
   controllers: [],
   providers: [],

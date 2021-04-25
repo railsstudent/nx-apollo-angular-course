@@ -5,5 +5,6 @@ module.exports = {
     '<rootDir>/libs/data-access',
     '<rootDir>/libs/feature-courses',
     '<rootDir>/libs/ui-courses',
+    '<rootDir>/apps/api-e2e',
   ],
 }

@@ -22,6 +22,7 @@
     "api-interfaces": { "tags": [] },
     "data-access": { "tags": [] },
     "feature-courses": { "tags": [] },
-    "ui-courses": { "tags": [] }
+    "ui-courses": { "tags": [] },
+    "api-e2e": { "tags": [] }
   }
 }

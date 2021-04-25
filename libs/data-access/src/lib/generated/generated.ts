@@ -149,7 +149,7 @@ export type MutationNextSentencesArgs = {
 }
 
 export type MutationUpdateCourseArgs = {
-  course: UpdateCourseInput
+  updateCourse: UpdateCourseInput
 }
 
 export type MutationUpdateLanguageArgs = {
@@ -157,7 +157,7 @@ export type MutationUpdateLanguageArgs = {
 }
 
 export type MutationUpdateLessonArgs = {
-  lesson: UpdateLessonInput
+  updateLesson: UpdateLessonInput
 }
 
 export type MutationUpdateSentenceArgs = {

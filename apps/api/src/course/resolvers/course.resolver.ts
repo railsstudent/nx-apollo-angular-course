@@ -18,7 +18,7 @@ export class CourseResolver {
   }
 
   @Mutation(() => Course)
-  async updateCourse(@Args('course') input: UpdateCourseInput): Promise<Course> {
+  async updateCourse(@Args('updateCourse') input: UpdateCourseInput): Promise<Course> {
     return this.courseService.updateCourse(input)
   }
 

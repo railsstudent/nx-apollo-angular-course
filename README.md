@@ -61,6 +61,30 @@ Run `ng test api` to execute unit tests of api.
 
 Run `ng test api --watch` to execute unit tests of api in watch mode.
 
+## Create api-e2e project
+
+Run `ng g @nrwl/node:app api-e2e`
+
+```
+"architect": {
+  "lint": {
+    "builder": "@nrwl/linter:eslint",
+    "options": {
+      "lintFilePatterns": ["apps/api-e2e/**/*.ts"]
+    }
+  },
+  "test": {
+    "builder": "@nrwl/jest:jest",
+    "outputs": ["coverage/apps/api-e2e"],
+    "options": {
+      "tsConfig": "apps/api-e2e/tsconfig.spec.json",
+      "jestConfig": "apps/api-e2e/jest.config.js",
+      "passWithNoTests": true
+    }
+  }
+}
+```
+
 ## Running end-to-end tests
 
 Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).

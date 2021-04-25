@@ -191,6 +191,15 @@
             "jestConfig": "apps/api/jest.config.js",
             "passWithNoTests": true
           }
+        },
+        "e2e": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/api"],
+          "options": {
+            "tsConfig": "apps/api/tsconfig.e2e.json",
+            "jestConfig": "apps/api/jest-e2e.config.js",
+            "passWithNoTests": true
+          }
         }
       }
     },
@@ -278,6 +287,28 @@
           "outputs": ["coverage/libs/ui-courses"],
           "options": {
             "jestConfig": "libs/ui-courses/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "api-e2e": {
+      "root": "apps/api-e2e",
+      "sourceRoot": "apps/api-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/api-e2e/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/api-e2e"],
+          "options": {
+            "tsConfig": "apps/api-e2e/tsconfig.spec.json",
+            "jestConfig": "apps/api-e2e/jest.config.js",
             "passWithNoTests": true
           }
         }
