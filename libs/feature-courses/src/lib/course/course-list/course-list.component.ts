@@ -32,13 +32,6 @@ export class CourseListComponent implements OnInit {
   constructor(private service: CourseService, private alertService: AlertService) {}
 
   ngOnInit(): void {
-    // this.courses$ = this.service.getAllCourses({
-    //   offset: 0,
-    //   limit: LIMIT
-    // }).pipe(
-    //   tap(results => this.offset = results.length)
-    // );
-
     this.coursesQuery = this.service.getPaginatedCoursesQueryRef()
 
     this.courses$ = this.coursesQuery.valueChanges.pipe(

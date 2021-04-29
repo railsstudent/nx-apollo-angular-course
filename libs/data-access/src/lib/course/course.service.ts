@@ -117,18 +117,6 @@ export class CourseService {
     )
   }
 
-  // getAllCourses(args: PaginationArgs): Observable<Course[]> {
-  //   return this.allCoursesGQL.watch({ args }, { pollInterval: environment.pollingInterval })
-  //     .valueChanges
-  //     .pipe(
-  //       map(({ data }) => data.courses as Course[]),
-  //       catchError(err => {
-  //         console.error(err);
-  //         return of([] as Course[]);
-  //       }),
-  //     );
-  // }
-
   getPaginatedCoursesQueryRef(): QueryRef<AllCoursesQuery> {
     return this.apollo.watchQuery<AllCoursesQuery>({
       query: AllCoursesDocument,
