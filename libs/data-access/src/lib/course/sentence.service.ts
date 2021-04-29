@@ -158,7 +158,7 @@ export class SentenceService {
               fields: {
                 availableTranslations(existingLanguageRefs = [], { readField }): any[] {
                   const newAvailableLangRef = cache.writeFragment({
-                    data: returnedTranslation,
+                    data: returnedTranslation.language,
                     fragment: gql`
                       fragment NewLanguage on Language {
                         id
