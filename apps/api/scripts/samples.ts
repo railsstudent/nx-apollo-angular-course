@@ -517,6 +517,136 @@ export const ActivitySentences = [
 
 export const DescriptionSentences = [
   {
+    text: 'El es guapo./ Ella es guapa.',
+    translations: [
+      {
+        lang: TRANS_LANG.ENG,
+        text: 'He is good looking./ She is pretty.',
+      },
+      {
+        lang: TRANS_LANG.CHN,
+        text: '他很帥氣。/ 她很漂亮。',
+      },
+    ],
+  },
+  {
+    text: 'El es feo./ Ella es fea.',
+    translations: [
+      {
+        lang: TRANS_LANG.ENG,
+        text: 'He is ugly./ She is ugly.',
+      },
+      {
+        lang: TRANS_LANG.CHN,
+        text: '他很醜。/ 她很醜。',
+      },
+    ],
+  },
+  {
+    text: 'El es bajo./ Ella es baja.',
+    translations: [
+      {
+        lang: TRANS_LANG.ENG,
+        text: 'He is short./ She is short.',
+      },
+      {
+        lang: TRANS_LANG.CHN,
+        text: '他很矮。/ 她很矮。',
+      },
+    ],
+  },
+  {
+    text: 'El es alto./ Ella es alta.',
+    translations: [
+      {
+        lang: TRANS_LANG.ENG,
+        text: 'He is tall./ She is tall.',
+      },
+      {
+        lang: TRANS_LANG.CHN,
+        text: '他很高。/ 她很高。',
+      },
+    ],
+  },
+  {
+    text: 'Ella es joven.',
+    translations: [
+      {
+        lang: TRANS_LANG.ENG,
+        text: 'She is young.',
+      },
+      {
+        lang: TRANS_LANG.CHN,
+        text: '她很年輕。',
+      },
+    ],
+  },
+  {
+    text: 'Ella es mayor.',
+    translations: [
+      {
+        lang: TRANS_LANG.ENG,
+        text: 'She is old.',
+      },
+      {
+        lang: TRANS_LANG.CHN,
+        text: '她年紀大了。',
+      },
+    ],
+  },
+  {
+    text: 'El es calvo./ Ella es calva.',
+    translations: [
+      {
+        lang: TRANS_LANG.ENG,
+        text: 'He is bald./ She is bald.',
+      },
+      {
+        lang: TRANS_LANG.CHN,
+        text: '他是禿頭。 /她是禿頂頭。',
+      },
+    ],
+  },
+  {
+    text: 'El es moreno./ Ella es morena.',
+    translations: [
+      {
+        lang: TRANS_LANG.ENG,
+        text: 'He is dark-haired./ She is dark-haired.',
+      },
+      {
+        lang: TRANS_LANG.CHN,
+        text: '他是黑色頭髮。 /她是黑色頭髮。',
+      },
+    ],
+  },
+  {
+    text: 'El es rubio./ Ella es rubia.',
+    translations: [
+      {
+        lang: TRANS_LANG.ENG,
+        text: 'He is blond./ She is blond.',
+      },
+      {
+        lang: TRANS_LANG.CHN,
+        text: '他是金色頭髮。 /她是金色頭髮。',
+      },
+    ],
+  },
+  {
+    text: 'El es castaño./ Ella es castaña.',
+    translations: [
+      {
+        lang: TRANS_LANG.ENG,
+        text: 'He is chestnut-haired./ She is chestnum-haired.',
+      },
+      {
+        lang: TRANS_LANG.CHN,
+        text: '他是棕色頭髮。 /她是棕色頭髮。',
+      },
+    ],
+  },
+  {
     text:
       'Ella es una mujer joven. Ella tienes el pelo rubio, largo y liso, los ojos azules, boca pequeña y nariz pequeña.',
     translations: [
