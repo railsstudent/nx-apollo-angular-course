@@ -30,7 +30,7 @@
     "prisma:create": "npx prisma migrate dev --create-only --preview-feature",
     "prisma:deploy": "npx prisma migrate deploy --preview-feature",
     "prisma:format": "npx prisma format",
-    "seed": "ts-node apps/api/scripts/seed.ts"
+    "seed": "ts-node --project apps/api/tsconfig.json apps/api/scripts/seed.ts"
   },
   "private": true,
   "dependencies": {

@@ -979,7 +979,7 @@ export const ProfessionSentences = [
         lang: TRANS_LANG.CHN,
         text: '太空人',
       },
-    ]
+    ],
   },
   {
     text: 'El administrativo / La administrativa',
