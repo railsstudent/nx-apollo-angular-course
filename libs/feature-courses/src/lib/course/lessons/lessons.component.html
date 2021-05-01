@@ -1,4 +1,4 @@
-<div class="container font-sans" *ngIf="(course$ | async) as course">
+<div class="container font-sans" *ngIf="course$ | async as course">
   <div class="header p-2 flex justify-between items-center">
     <div class="back">
       <button [routerLink]="['/courses']" class="back">Back</button>
@@ -10,30 +10,33 @@
     <div class="spacer"></div>
   </div>
   <div class="main p-2">
-    <nx-apollo-angular-course-add-lesson class="mb-4" [language]="course?.language" (submitNewLesson)="submitNewLesson(course, $event)"></nx-apollo-angular-course-add-lesson>
-    <nx-apollo-angular-course-alert-error *ngIf="(errMsg$ | async) as msg">
+    <nx-apollo-angular-course-add-lesson
+      class="mb-4"
+      [language]="course?.language"
+      (submitNewLesson)="submitNewLesson(course, $event)"
+    ></nx-apollo-angular-course-add-lesson>
+    <nx-apollo-angular-course-alert-error *ngIf="errMsg$ | async as msg">
       <span class="text-red-800">{{ msg }}</span>
     </nx-apollo-angular-course-alert-error>
-    <nx-apollo-angular-course-alert-success *ngIf="(successMsg$ | async) as msg">
+    <nx-apollo-angular-course-alert-success *ngIf="successMsg$ | async as msg">
       <span class="text-green-800">{{ msg }}</span>
     </nx-apollo-angular-course-alert-success>
     <div class="m-2 ml-0">
       <span class="title mb-4 mr-4">My Lessons</span>
-      <nx-apollo-angular-course-load-more-button [classNames]="'disabled:opacity-50 hover:bg-blue-500'"
+      <nx-apollo-angular-course-load-more-button
         [callbackFunction]="loadMore.bind(this)"
         [someArg]="course"
-        [loading]="loading">
+        [loading]="loading"
+      >
       </nx-apollo-angular-course-load-more-button>
     </div>
-    <ng-container *ngIf="(lessons$ | async) as lessons">
-      <div class="flex flex-wrap" *ngIf="lessons && lessons.length > 0 else noLesson">
-        <p class="lesson p-1 flex-grow-0 flex-shrink" *ngFor="let lesson of lessons; trackBy:trackByFunc">
-          <a class="text-lg" [routerLink]="[ lesson.id ]">{{ lesson.name }}</a>
+    <ng-container *ngIf="lessons$ | async as lessons">
+      <div class="flex flex-wrap" *ngIf="lessons && lessons.length > 0; else noLesson">
+        <p class="lesson p-1 flex-grow-0 flex-shrink" *ngFor="let lesson of lessons; trackBy: trackByFunc">
+          <a class="text-lg" [routerLink]="[lesson.id]">{{ lesson.name }}</a>
         </p>
       </div>
     </ng-container>
   </div>
 </div>
-<ng-template #noLesson>
-  No lesson
-</ng-template>
+<ng-template #noLesson> No lesson </ng-template>

@@ -647,6 +647,240 @@ export const DescriptionSentences = [
     ],
   },
   {
+    text: 'El es pelirrojo./ Ella es pelirroja.',
+    translations: [
+      {
+        lang: TRANS_LANG.ENG,
+        text: 'He is a redhead./ She is a redhead.',
+      },
+      {
+        lang: TRANS_LANG.CHN,
+        text: '他是個紅髮。 /她是紅髮。',
+      },
+    ],
+  },
+  {
+    text: 'Ella tiene el pelo rizado./ Yo tengo el pelo rizado.',
+    translations: [
+      {
+        lang: TRANS_LANG.ENG,
+        text: 'She has curly hair./ I have curly hair.',
+      },
+      {
+        lang: TRANS_LANG.CHN,
+        text: '她有捲曲的頭髮。/我有捲曲的頭髮。',
+      },
+    ],
+  },
+  {
+    text: 'Ella tiene el pelo ondulado./ Yo tengo el pelo ondulado.',
+    translations: [
+      {
+        lang: TRANS_LANG.ENG,
+        text: 'She has wavy hair./ I have wavy hair.',
+      },
+      {
+        lang: TRANS_LANG.CHN,
+        text: '她有波浪形的頭髮。 /我有波浪形的頭髮。',
+      },
+    ],
+  },
+  {
+    text: 'Ella tiene el pelo listo./ Yo tengo el pelo listo.',
+    translations: [
+      {
+        lang: TRANS_LANG.ENG,
+        text: 'She has straight hair./ I have straight hair.',
+      },
+      {
+        lang: TRANS_LANG.CHN,
+        text: '她有直頭髮。 /我有直頭髮。',
+      },
+    ],
+  },
+  {
+    text: 'Ella tiene el pelo corto./ Yo tengo el pelo corto.',
+    translations: [
+      {
+        lang: TRANS_LANG.ENG,
+        text: 'She has short hair./ I have short hair.',
+      },
+      {
+        lang: TRANS_LANG.CHN,
+        text: '她有短頭髮。 /我有短頭髮。',
+      },
+    ],
+  },
+  {
+    text: 'Ella tiene el pelo largo./ Yo tengo el pelo largo.',
+    translations: [
+      {
+        lang: TRANS_LANG.ENG,
+        text: 'She has long hair./ I have long hair.',
+      },
+      {
+        lang: TRANS_LANG.CHN,
+        text: '她有長頭髮。 /我有長頭髮。',
+      },
+    ],
+  },
+  {
+    text: 'Ella tiene el pelo canoso./ Yo tengo el pelo canoso.',
+    translations: [
+      {
+        lang: TRANS_LANG.ENG,
+        text: 'She has gray hair./ I have gray hair.',
+      },
+      {
+        lang: TRANS_LANG.CHN,
+        text: '她有灰白色的頭髮。 /我有灰白色的頭髮。',
+      },
+    ],
+  },
+  {
+    text: 'Ella tiene el pelo teñido./ Yo tengo el pelo teñido.',
+    translations: [
+      {
+        lang: TRANS_LANG.ENG,
+        text: 'She has dyed hair./ I have dyed hair.',
+      },
+      {
+        lang: TRANS_LANG.CHN,
+        text: '她染了頭髮。 /我染了頭髮。',
+      },
+    ],
+  },
+  {
+    text: 'Ella tiene los ojos negros./ Yo tengo los ojos negros.',
+    translations: [
+      {
+        lang: TRANS_LANG.ENG,
+        text: 'She has black eyes./ I have black eyes.',
+      },
+      {
+        lang: TRANS_LANG.CHN,
+        text: '她有黑眼睛。/我有黑眼睛。',
+      },
+    ],
+  },
+  {
+    text: 'Ella tiene los ojos verdes./ Yo tengo los ojos verdes.',
+    translations: [
+      {
+        lang: TRANS_LANG.ENG,
+        text: 'She has green eyes./ I have green eyes.',
+      },
+      {
+        lang: TRANS_LANG.CHN,
+        text: '她有綠眼睛。/我有綠眼睛。',
+      },
+    ],
+  },
+  {
+    text: 'Ella tiene los ojos azules./ Yo tengo los ojos azules.',
+    translations: [
+      {
+        lang: TRANS_LANG.ENG,
+        text: 'She has blue eyes./ I have blue eyes.',
+      },
+      {
+        lang: TRANS_LANG.CHN,
+        text: '她有藍眼睛。/我有藍眼睛。',
+      },
+    ],
+  },
+  {
+    text: 'Ella tiene los ojos marrones./ Yo tengo los ojos marrones.',
+    translations: [
+      {
+        lang: TRANS_LANG.ENG,
+        text: 'She has brown eyes./ I have brown eyes.',
+      },
+      {
+        lang: TRANS_LANG.CHN,
+        text: '她有棕色眼睛。/我有棕色眼睛。',
+      },
+    ],
+  },
+  {
+    text: 'Ella tiene la nariz pequeña.',
+    translations: [
+      {
+        lang: TRANS_LANG.ENG,
+        text: 'She has a small nose.',
+      },
+      {
+        lang: TRANS_LANG.CHN,
+        text: '她有小鼻子。',
+      },
+    ],
+  },
+  {
+    text: 'Ella tiene la nariz grande.',
+    translations: [
+      {
+        lang: TRANS_LANG.ENG,
+        text: 'She has a big nose.',
+      },
+      {
+        lang: TRANS_LANG.CHN,
+        text: '她有大鼻子。',
+      },
+    ],
+  },
+  {
+    text: 'Yo llevo las gafas.',
+    translations: [
+      {
+        lang: TRANS_LANG.ENG,
+        text: 'I wear glasses.',
+      },
+      {
+        lang: TRANS_LANG.CHN,
+        text: '我戴眼鏡。',
+      },
+    ],
+  },
+  {
+    text: 'El lleva la barba.',
+    translations: [
+      {
+        lang: TRANS_LANG.ENG,
+        text: 'He wears the beard',
+      },
+      {
+        lang: TRANS_LANG.CHN,
+        text: '他留著鬍子。',
+      },
+    ],
+  },
+  {
+    text: 'El lleva la perilla.',
+    translations: [
+      {
+        lang: TRANS_LANG.ENG,
+        text: 'He wears the goatee',
+      },
+      {
+        lang: TRANS_LANG.CHN,
+        text: '他留著著山羊鬍子',
+      },
+    ],
+  },
+  {
+    text: 'El lleva el bigote.',
+    translations: [
+      {
+        lang: TRANS_LANG.ENG,
+        text: 'He wears the moustache',
+      },
+      {
+        lang: TRANS_LANG.CHN,
+        text: '他留著著山羊鬍子',
+      },
+    ],
+  },
+  {
     text:
       'Ella es una mujer joven. Ella tienes el pelo rubio, largo y liso, los ojos azules, boca pequeña y nariz pequeña.',
     translations: [

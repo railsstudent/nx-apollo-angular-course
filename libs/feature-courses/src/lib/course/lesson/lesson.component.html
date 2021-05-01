@@ -1,4 +1,4 @@
-<div class="container font-sans" *ngIf="(lesson$ | async) as lesson">
+<div class="container font-sans" *ngIf="lesson$ | async as lesson">
   <div class="header p-2 flex justify-between items-center">
     <div class="back">
       <button [routerLink]="['../']" class="back">Back</button>
@@ -14,7 +14,8 @@
       <nx-apollo-angular-course-add-sentence
         class="mr-4 flex-grow flex-shrink add-sentence"
         [language]="lesson?.course?.language"
-        (submitNewSentence)="submitNewSentence(lesson, $event)"></nx-apollo-angular-course-add-sentence>
+        (submitNewSentence)="submitNewSentence(lesson, $event)"
+      ></nx-apollo-angular-course-add-sentence>
       <nx-apollo-angular-course-add-translation
         class="flex-grow flex-shrink add-translation"
         [languages]="languages$ | async"
@@ -22,28 +23,41 @@
         (submitNewTranlsation)="submitNewTranslation(lesson, $event)"
       ></nx-apollo-angular-course-add-translation>
     </div>
-    <nx-apollo-angular-course-alert-error *ngIf="(errMsg$ | async) as msg">
+    <nx-apollo-angular-course-alert-error *ngIf="errMsg$ | async as msg">
       <span class="text-red-800">{{ msg }}</span>
     </nx-apollo-angular-course-alert-error>
-    <nx-apollo-angular-course-alert-success *ngIf="(successMsg$ | async) as msg">
+    <nx-apollo-angular-course-alert-success *ngIf="successMsg$ | async as msg">
       <span class="text-green-800">{{ msg }}</span>
     </nx-apollo-angular-course-alert-success>
     <div class="m-2 ml-0">
       <span class="title mb-4 mr-4">Sentences</span>
-      <nx-apollo-angular-course-load-more-button [classNames]="'disabled:opacity-50 hover:bg-blue-500'"
+      <nx-apollo-angular-course-load-more-button
+        [color]="'blue'"
         [callbackFunction]="loadMore.bind(this)"
         [someArg]="lesson"
-        [loading]="loading">
+        [loading]="loading"
+      >
       </nx-apollo-angular-course-load-more-button>
     </div>
-    <div class="sentences"
-      *ngIf="lesson && lesson.paginatedSentences && lesson.paginatedSentences.sentences && lesson.paginatedSentences.sentences.length > 0 else noSentence">
-      <ng-container *ngFor="let sentence of lesson.paginatedSentences.sentences; index as i; trackBy:trackByFunc">
-        <nx-apollo-angular-course-sentence class="mb-4" [sentence]="sentence" [index]="i" [lesson]="lesson"></nx-apollo-angular-course-sentence>
+    <div
+      class="sentences"
+      *ngIf="
+        lesson &&
+          lesson.paginatedSentences &&
+          lesson.paginatedSentences.sentences &&
+          lesson.paginatedSentences.sentences.length > 0;
+        else noSentence
+      "
+    >
+      <ng-container *ngFor="let sentence of lesson.paginatedSentences.sentences; index as i; trackBy: trackByFunc">
+        <nx-apollo-angular-course-sentence
+          class="mb-4"
+          [sentence]="sentence"
+          [index]="i"
+          [lesson]="lesson"
+        ></nx-apollo-angular-course-sentence>
       </ng-container>
     </div>
   </div>
 </div>
-<ng-template #noSentence>
-  No sentence found in this lesson
-</ng-template>
+<ng-template #noSentence> No sentence found in this lesson </ng-template>

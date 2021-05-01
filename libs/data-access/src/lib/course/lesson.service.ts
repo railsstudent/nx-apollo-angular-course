@@ -153,7 +153,7 @@ export class LessonService {
       )
       .pipe(
         map(({ data }) => data?.nextSentences as PaginatedItems),
-        catchError((err: Error) => EMPTY),
+        catchError(() => EMPTY),
       )
   }
 }

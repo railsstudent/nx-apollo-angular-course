@@ -1,25 +1,28 @@
 <div class="container p-2">
-  <nx-apollo-angular-course-add-course class="ml-2 mr-2" [languages]="(languages$ | async) || []" (submitNewCourse)="submitNewCourse($event)"></nx-apollo-angular-course-add-course>
-  <nx-apollo-angular-course-alert-error *ngIf="(errMsg$ | async) as msg">
+  <nx-apollo-angular-course-add-course
+    class="ml-2 mr-2"
+    [languages]="(languages$ | async) || []"
+    (submitNewCourse)="submitNewCourse($event)"
+  ></nx-apollo-angular-course-add-course>
+  <nx-apollo-angular-course-alert-error *ngIf="errMsg$ | async as msg">
     <span class="text-red-800">{{ msg }}</span>
   </nx-apollo-angular-course-alert-error>
-  <nx-apollo-angular-course-alert-success *ngIf="(successMsg$ | async) as msg">
+  <nx-apollo-angular-course-alert-success *ngIf="successMsg$ | async as msg">
     <span class="text-green-800">{{ msg }}</span>
   </nx-apollo-angular-course-alert-success>
-  <ng-container *ngIf="(courses$ | async) as courses">
+  <ng-container *ngIf="courses$ | async as courses">
     <div class="flex m-2">
-      <nx-apollo-angular-course-load-more-button [classNames]="'disabled:opacity-50 hover:bg-blue-500'"
-        [callbackFunction]="loadMore.bind(this)"
-        [loading]="loading">
+      <nx-apollo-angular-course-load-more-button [callbackFunction]="loadMore.bind(this)" [loading]="loading">
       </nx-apollo-angular-course-load-more-button>
     </div>
-    <div class="course-list flex flex-wrap" *ngIf="courses else noCourse">
-      <div class="course-container" *ngFor="let course of courses; trackBy:trackByFunc">
-        <nx-apollo-angular-course-course-card class="course-card m-2" [course]="course"></nx-apollo-angular-course-course-card>
+    <div class="course-list flex flex-wrap" *ngIf="courses; else noCourse">
+      <div class="course-container" *ngFor="let course of courses; trackBy: trackByFunc">
+        <nx-apollo-angular-course-course-card
+          class="course-card m-2"
+          [course]="course"
+        ></nx-apollo-angular-course-course-card>
       </div>
     </div>
   </ng-container>
 </div>
-<ng-template #noCourse>
-  No course is found
-</ng-template>
+<ng-template #noCourse> No course is found </ng-template>
