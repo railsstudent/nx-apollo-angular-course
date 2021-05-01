@@ -8,6 +8,7 @@ import {
   AvailableLanguages,
   ActivitySentences,
   DescriptionSentences,
+  ProfessionSentences,
 } from './samples'
 const prisma = new PrismaClient()
 
@@ -124,8 +125,8 @@ async function main() {
     'People 1',
     'Activity',
     'Description of persons',
-    'Professon',
-    'People 2',
+    'Professons',
+    'Places and stores of professions',
     'Shopping 2',
     'Task',
   ]
@@ -151,15 +152,20 @@ async function main() {
     unuse4,
     activityLesson,
     descriptionLesson,
+    professionalLesson,
   ] = resolvedLessons
   console.log('Insert lessons - done')
 
   console.log('Insert sentences - start')
-  await insertSentences(GreetingSentences, introductionLesson.id, newLanguages)
-  await insertSentences(GenderSentences, genderLesson.id, newLanguages)
-  await insertSentences(IntroSentences, introLesson.id, newLanguages)
-  await insertSentences(ActivitySentences, activityLesson.id, newLanguages)
-  await insertSentences(DescriptionSentences, descriptionLesson.id, newLanguages)
+  const createSentences = [
+    insertSentences(GreetingSentences, introductionLesson.id, newLanguages)
+    , insertSentences(GenderSentences, genderLesson.id, newLanguages)
+    , insertSentences(IntroSentences, introLesson.id, newLanguages)
+    , insertSentences(ActivitySentences, activityLesson.id, newLanguages)
+    , insertSentences(DescriptionSentences, descriptionLesson.id, newLanguages)
+    , insertSentences(ProfessionSentences, professionalLesson.id, newLanguages)
+  ]
+  await Promise.all(createSentences)
   console.log('Insert sentences - end')
 }
 
