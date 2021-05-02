@@ -15,6 +15,7 @@ import {
   Translation,
 } from '../generated/generated'
 import { AlertService } from './alert.service'
+import { LessonService } from './lesson.service'
 
 @Injectable({
   providedIn: 'root',
@@ -27,6 +28,7 @@ export class SentenceService {
     private deleteTranslationGQL: DeleteTranslationGQL,
     private deleteSetenceGQL: DeleteSentenceGQL,
     private alertService: AlertService,
+    private lessonService: LessonService
   ) {}
 
   getTranslation(sentenceId: string, languageId: string): Observable<Translation> {
@@ -83,6 +85,9 @@ export class SentenceService {
                     sentences: [...existingSentenceRefs.sentences, newSentenceRef],
                   }
                 },
+                totalSentences(existingTotalSentences = 0): number {
+                  return existingTotalSentences + 1
+                }
               },
             })
           },
@@ -121,6 +126,9 @@ export class SentenceService {
                     sentences: filteredSentences,
                   }
                 },
+                totalSentences(existingTotalSentences = 0): number {
+                  return existingTotalSentences - 1
+                }
               },
             })
 

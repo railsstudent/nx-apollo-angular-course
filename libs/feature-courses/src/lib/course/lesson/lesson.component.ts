@@ -13,7 +13,6 @@ import {
 } from '@nx-apollo-angular-course/data-access'
 import { combineLatest, EMPTY, Observable } from 'rxjs'
 import { finalize, map, pluck, shareReplay, switchMap, tap } from 'rxjs/operators'
-// import { NewSentenceInput, NewTranslationInput } from '../type';
 // import { tag } from 'rxjs-spy/operators/tag';
 // import { create } from 'rxjs-spy';
 // const spy = create();
