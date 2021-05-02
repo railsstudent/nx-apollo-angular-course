@@ -172,13 +172,4 @@ export class SentenceService {
       translations: restTranslations,
     }
   }
-
-  async getTotalSentences(lessonId: string): Promise<number> {
-    await this.uniqueHelper.findUniqueLesson({ id: lessonId }, true)
-    return this.service.sentence.count({
-      where: {
-        lessonId
-      }
-    })
-  }
 }

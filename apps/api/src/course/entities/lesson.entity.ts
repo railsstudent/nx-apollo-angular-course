@@ -23,4 +23,7 @@ export class Lesson {
 
   @Field(() => PaginatedItems, { nullable: true })
   paginatedSentences?: PaginatedItems
+
+  @Field(() => Number, { defaultValue: 0 })
+  totalSentences?: number
 }

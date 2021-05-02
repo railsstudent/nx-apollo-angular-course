@@ -15,6 +15,7 @@ const lessonService = {
     return {
       id,
       name: 'lesson',
+      totalSentences: 10,
       course: {
         id: '2',
         name: 'course',
@@ -86,6 +87,7 @@ describe('LessonResolver (e2e)', () => {
           getLesson(id: "1") {
             id
             name
+            totalSentences
             course {
               id
               name
@@ -108,6 +110,7 @@ describe('LessonResolver (e2e)', () => {
         expect(getLesson).toEqual({
           id: '1',
           name: 'lesson',
+          totalSentences: 10,
           course: {
             id: '2',
             name: 'course',

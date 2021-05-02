@@ -40,6 +40,7 @@ describe('LessonResolver', () => {
     const result: Lesson = {
       id: '1',
       name: 'Greeting',
+      totalSentences: 8,
       course: {
         id: '1',
         name: 'English 101',

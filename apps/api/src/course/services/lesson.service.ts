@@ -46,7 +46,7 @@ export class LessonService {
   }
 
   async getLesson(id: string): Promise<Lesson> {
-    return this.service.lesson.findUnique({
+    const lesson = await this.service.lesson.findUnique({
       where: {
         id,
       },
@@ -59,6 +59,17 @@ export class LessonService {
       },
       rejectOnNotFound: true,
     })
+
+    const totalSentences = await this.service.sentence.count({
+      where: {
+        lessonId: id,
+      },
+    })
+
+    return {
+      ...lesson,
+      totalSentences,
+    }
   }
 
   async addLesson(input: AddLessonInput): Promise<Lesson> {

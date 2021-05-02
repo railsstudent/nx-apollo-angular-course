@@ -86,6 +86,7 @@ export type Lesson = {
   name?: Maybe<Scalars['String']>
   paginatedSentences?: Maybe<PaginatedItems>
   sentences?: Maybe<Array<Sentence>>
+  totalSentences: Scalars['Float']
 }
 
 /** Lesson model */

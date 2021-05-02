@@ -65,6 +65,7 @@ type Lesson {
   name: String
   paginatedSentences(args: CursorPaginationArgs!): PaginatedItems
   sentences: [Sentence!]
+  totalSentences: Float!
 }
 
 type Mutation {
@@ -97,7 +98,6 @@ type Query {
   getLanguages: [Language!]!
   getLesson(id: String = ""): Lesson
   getSentence(id: String = ""): Sentence
-  getTotalSentences(lessonId: String = ""): Float!
   getTranslation(languageId: String!, sentenceId: String!): Translation
 }
 
