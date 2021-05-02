@@ -12,7 +12,7 @@ import {
 } from './samples'
 const prisma = new PrismaClient()
 
-const insertSentences = async (sentences: SentenceTranslation[], lessonId: string, newLanguages: any[]) => {
+const insertSentences = async (sentences: SentenceTranslation[], lessonId: string, newLanguages: Language[]) => {
   for (const sentence of sentences) {
     const newSentence = await prisma.sentence.create({
       data: {
@@ -151,7 +151,7 @@ async function main() {
     unused1,
     unused2,
     unused3,
-    unuse4,
+    unused4,
     activityLesson,
     descriptionLesson,
     professionalLesson,
@@ -168,7 +168,7 @@ async function main() {
     insertSentences(ProfessionSentences, professionalLesson.id, newLanguages),
   ]
   const createSentenceResults = await Promise.all(createSentences)
-  console.log('Insert sentences - end', createSentenceResults)
+  console.log('Insert sentences - end')
 }
 
 main()

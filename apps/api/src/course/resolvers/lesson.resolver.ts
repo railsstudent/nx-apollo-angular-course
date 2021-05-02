@@ -9,7 +9,7 @@ export class LessonResolver {
 
   @Query(() => Lesson, { nullable: true })
   async getLesson(@Args('id', { defaultValue: '', type: () => String }) id?: string): Promise<Lesson | undefined> {
-    return await this.lessonService.getLesson(id)
+    return this.lessonService.getLesson(id)
   }
 
   @Mutation(() => Lesson)

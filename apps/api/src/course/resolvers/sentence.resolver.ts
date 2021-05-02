@@ -12,7 +12,12 @@ export class SentenceResolver {
 
   @Query(() => Sentence, { nullable: true })
   async getSentence(@Args('id', { defaultValue: '', type: () => String }) id: string): Promise<Sentence> {
-    return await this.sentenceService.getSentence(id)
+    return this.sentenceService.getSentence(id)
+  }
+
+  @Query(() => Number, { defaultValue: 0 })
+  async getTotalSentences(@Args('lessonId', { defaultValue: '' }) lessonId: string): Promise<number> {
+    return this.sentenceService.getTotalSentences(lessonId)
   }
 
   @Mutation(() => Sentence)
