@@ -253,7 +253,7 @@ export type CourseLanguageFragment = { __typename?: 'Language' } & Pick<Language
 
 export type CourseNameFragment = { __typename?: 'Course' } & Pick<Course, 'id' | 'name' | 'description'>
 
-export type LessonNameFragment = { __typename?: 'Lesson' } & Pick<Lesson, 'id' | 'name'>
+export type LessonNameFragment = { __typename?: 'Lesson' } & Pick<Lesson, 'id' | 'name' | 'totalSentences'>
 
 export type TranslationTextFragment = { __typename?: 'Translation' } & Pick<Translation, 'id' | 'text'>
 
@@ -447,6 +447,7 @@ export const LessonNameFragmentDoc = gql`
   fragment LessonName on Lesson {
     id
     name
+    totalSentences
   }
 `
 export const TranslationTextFragmentDoc = gql`

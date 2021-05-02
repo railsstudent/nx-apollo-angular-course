@@ -36,8 +36,10 @@
         [callbackFunction]="loadMore.bind(this)"
         [someArg]="lesson"
         [loading]="loading"
+        class="mr-2"
       >
       </nx-apollo-angular-course-load-more-button>
+      <span>({{ lesson?.paginatedSentences?.sentences?.length || 0 }} / {{ lesson?.totalSentences || 0 }})</span>
     </div>
     <div
       class="sentences"
