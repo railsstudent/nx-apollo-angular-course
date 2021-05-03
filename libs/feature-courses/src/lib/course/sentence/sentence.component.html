@@ -1,6 +1,8 @@
 <div class="sentence p-2 form-border">
   <p class="text mb-2">
     <span class="mr-3">{{ index + 1 }}. {{ sentence?.text }}</span>
+    <button type="button" class="bg-green-400 hover:bg-green-500 focus:outline-none mr-2"
+      (click)="saySentence()">Speak</button>
     <button
       type="button"
       class="bg-red-400 rounded-md p-2 inline-flex items-center justify-center text-white hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-red-600"

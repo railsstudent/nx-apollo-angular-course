@@ -63,7 +63,6 @@
     "pg": "^8.5.1",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~6.6.3",
-    "rxjs-web": "^1.0.0-alpha.0",
     "tslib": "^2.0.0",
     "zone.js": "^0.10.2"
   },

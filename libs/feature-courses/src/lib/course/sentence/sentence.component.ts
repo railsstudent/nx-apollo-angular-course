@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { UntilDestroy } from '@ngneat/until-destroy';
-import { Language, Lesson, Sentence, SentenceService, Translation } from '@nx-apollo-angular-course/data-access';
+import { Language, Lesson, Sentence, SentenceService, Translation, VoiceService } from '@nx-apollo-angular-course/data-access'
 import { Subject, of, Observable, BehaviorSubject } from 'rxjs';
 import { distinctUntilChanged, switchMap, tap } from 'rxjs/operators';
 // import { tag } from 'rxjs-spy/operators/tag';
@@ -37,7 +37,7 @@ export class SentenceComponent implements OnInit {
   translate$ = new BehaviorSubject<string | null>(null);
   selectedTranslation$: Observable<Translation | null> | null = null;
 
-  constructor(private sentenceService: SentenceService) { }
+  constructor(private sentenceService: SentenceService, private voiceService: VoiceService) { }
 
   ngOnInit(): void {
     this.selectedTranslation$ = this.translate$
@@ -89,5 +89,13 @@ export class SentenceComponent implements OnInit {
 
     this.sentenceService.deleteSentence(this.lesson, sentenceId)
       .subscribe();
+  }
+
+  saySentence(): void {
+    const text = this.sentence?.text || ''
+    const languageName = this.lesson?.course?.language?.name
+    if (text && languageName) {
+      this.voiceService.speak(text, languageName)
+    }
   }
 }
