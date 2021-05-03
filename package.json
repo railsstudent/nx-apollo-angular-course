@@ -63,6 +63,7 @@
     "pg": "^8.5.1",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~6.6.3",
+    "rxjs-web": "^1.0.0-alpha.0",
     "tslib": "^2.0.0",
     "zone.js": "^0.10.2"
   },
@@ -71,7 +72,7 @@
     "@angular-eslint/eslint-plugin": "~1.0.0",
     "@angular-eslint/eslint-plugin-template": "~1.0.0",
     "@angular-eslint/template-parser": "~1.0.0",
-    "@angular/cli": "^11.2.7",
+    "@angular/cli": "^11.2.11",
     "@angular/compiler-cli": "^11.2.0",
     "@angular/language-service": "^11.2.0",
     "@graphql-codegen/cli": "1.21.3",
