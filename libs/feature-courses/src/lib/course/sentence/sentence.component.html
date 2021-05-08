@@ -1,11 +1,20 @@
 <div class="sentence p-2 form-border">
-  <p class="text mb-2">
-    <span class="mr-3">{{ index + 1 }}. {{ sentence?.text }}</span>
-    <button type="button" class="bg-green-400 hover:bg-green-500 focus:outline-none mr-2"
-      (click)="saySentence()">Speak</button>
+  <div class="mb-2 flex">
+    <div class="flex-auto">
+      <span class="mr-3">{{ index + 1 }}. {{ sentence?.text }}</span>
+      <button
+        type="button"
+        class="bg-green-400 hover:bg-green-500 focus:outline-none mr-2"
+        *ngIf="selectedVoice$ | async as selectedVoice"
+        (click)="saySentence(selectedVoice)"
+      >
+        {{ selectedVoice?.name }}
+      </button>
+    </div>
     <button
       type="button"
       class="bg-red-400 rounded-md p-2 inline-flex items-center justify-center text-white hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-red-600"
+      style="width: 40px; height: 40px"
       (click)="deleteSentence(sentence?.id || '')"
     >
       <span class="sr-only">Delete sentence</span>
@@ -20,7 +29,7 @@
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
       </svg>
     </button>
-  </p>
+  </div>
   <nx-apollo-angular-course-available-translation
     *ngIf="sentence && sentence.availableTranslations && sentence.availableTranslations.length > 0; else noTranslation"
     [availableTranslations]="sentence?.availableTranslations"
