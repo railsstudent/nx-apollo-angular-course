@@ -8,7 +8,7 @@ import { BehaviorSubject } from 'rxjs'
 export class VoiceService {
   private readonly isSupported: boolean
   private voices: SpeechSynthesisVoice[] = []
-  private speakVoices: Record<SpeechLanguage, SpeechSynthesisVoice> = {
+  private speakVoices: Record<SpeechLanguage, SpeechSynthesisVoice | null | undefined> = {
     [SpeechLanguage.English]: null,
     [SpeechLanguage.Chinese]: null,
     [SpeechLanguage.Spanish]: null,
@@ -48,7 +48,7 @@ export class VoiceService {
     return this.voicesAvailableSub$.getValue()
   }
 
-  getSelectedVoice(language: string): SpeechSynthesisVoice {
+  getSelectedVoice(language: string): SpeechSynthesisVoice | null | undefined {
     const speechLanguage = language as keyof typeof SpeechLanguage
     const typedSpeechLanguage = SpeechLanguage[speechLanguage]
     return this.speakVoices[typedSpeechLanguage]

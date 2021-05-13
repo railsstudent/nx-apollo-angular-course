@@ -25,7 +25,7 @@ export class AvailableTranslationComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  trackByFunc(index: number, availableTranslation: Language): string {
+  trackByFunc(_index: number, availableTranslation: Language): string {
     return availableTranslation.id
   }
 }

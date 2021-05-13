@@ -50,7 +50,7 @@ export class CourseListComponent implements OnInit {
     this.successMsg$ = this.alertService.successMsg$
   }
 
-  trackByFunc(index: number, course: Course): string {
+  trackByFunc(_index: number, course: Course): string {
     return course.id
   }
 

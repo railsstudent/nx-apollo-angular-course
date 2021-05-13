@@ -42,7 +42,7 @@ export class SentenceComponent implements OnInit {
 
   translate$ = new BehaviorSubject<string | null>(null)
   selectedTranslation$: Observable<Translation | null> | null = null
-  selectedVoice$: Observable<SpeechSynthesisVoice | undefined>
+  selectedVoice$: Observable<SpeechSynthesisVoice | undefined | null> | null = null
 
   constructor(private sentenceService: SentenceService, private voiceService: VoiceService) {}
   ngOnInit(): void {
@@ -60,7 +60,7 @@ export class SentenceComponent implements OnInit {
     )
 
     const isReady = this.voiceService.isVoicesAvailable()
-    const languageName = this.lesson?.course?.language?.name
+    const languageName = this.lesson?.course?.language?.name || ''
     this.selectedVoice$ = isReady
       ? of(this.voiceService.getSelectedVoice(languageName))
       : this.voiceService.voicesAvailable$.pipe(

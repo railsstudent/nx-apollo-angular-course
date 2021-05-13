@@ -20,7 +20,13 @@
       "@nx-apollo-angular-course/feature-courses": ["libs/feature-courses/src/index.ts"],
       "@nx-apollo-angular-course/ui-courses": ["libs/ui-courses/src/index.ts"],
       "@nx-apollo-angular-course/prisma": ["apps/api/src/prisma/index.ts"]
-    }
+    },
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true
   },
   "exclude": ["node_modules", "tmp"]
 }

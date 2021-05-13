@@ -76,7 +76,7 @@ export class LessonComponent implements OnInit {
     )
   }
 
-  trackByFunc(index: number, sentence: Sentence): string {
+  trackByFunc(_index: number, sentence: Sentence): string {
     return sentence.id
   }
 

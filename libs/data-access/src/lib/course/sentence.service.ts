@@ -15,7 +15,6 @@ import {
   Translation,
 } from '../generated/generated'
 import { AlertService } from './alert.service'
-import { LessonService } from './lesson.service'
 
 @Injectable({
   providedIn: 'root',
@@ -28,7 +27,6 @@ export class SentenceService {
     private deleteTranslationGQL: DeleteTranslationGQL,
     private deleteSetenceGQL: DeleteSentenceGQL,
     private alertService: AlertService,
-    private lessonService: LessonService
   ) {}
 
   getTranslation(sentenceId: string, languageId: string): Observable<Translation> {
@@ -166,7 +164,7 @@ export class SentenceService {
               fields: {
                 availableTranslations(existingLanguageRefs = [], { readField }): any[] {
                   const newAvailableLangRef = cache.writeFragment({
-                    data: returnedTranslation.language,
+                    data: returnedTranslation?.language,
                     fragment: gql`
                       fragment NewLanguage on Language {
                         id

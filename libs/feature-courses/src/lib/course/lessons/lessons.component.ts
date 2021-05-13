@@ -38,7 +38,7 @@ export class LessonsComponent implements OnInit {
     this.successMsg$ = this.alertService.successMsg$;
   }
 
-  trackByFunc(index: number, lesson: Lesson): string {
+  trackByFunc(_index: number, lesson: Lesson): string {
     return lesson.id;
   }
 

@@ -178,7 +178,7 @@ export class CourseService {
       )
       .pipe(
         map(({ data }) => data?.nextLessons as PaginatedItems),
-        catchError((err: Error) => EMPTY),
+        catchError(() => EMPTY),
       )
   }
 }
