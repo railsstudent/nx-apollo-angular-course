@@ -88,6 +88,38 @@ describe('CourseResolver (e2e)', () => {
             language {
               id
               name
+            }
+        }}`,
+      })
+      .expect(200)
+      .expect(({ body }) => {
+        const {
+          data: { course },
+        } = body
+        expect(course).toEqual({
+          id: '1',
+          name: 'course',
+          description: 'course description',
+          language: {
+            id: '1',
+            name: 'English',
+          },
+        })
+      })
+  })
+
+  it('/graphql (POST) course with lessons', () => {
+    return request(app.getHttpServer())
+      .post('/graphql')
+      .send({
+        query: `query {
+          course(id: "1") {
+            id
+            name
+            description
+            language {
+              id
+              name
               nativeName
               fullname
             }
