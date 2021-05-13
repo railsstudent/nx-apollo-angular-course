@@ -37,7 +37,7 @@ button {
 
 input,
 select {
-  padding: 0.5rem;
+  @apply p-1;
   @apply border;
   @apply border-gray-400;
   @apply rounded-lg;
@@ -54,7 +54,7 @@ p.title {
 }
 
 label.label {
-  @apply m-2;
+  @apply m-1;
 }
 
 span.field {
