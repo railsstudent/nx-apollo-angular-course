@@ -21,12 +21,13 @@
       "@nx-apollo-angular-course/ui-courses": ["libs/ui-courses/src/index.ts"],
       "@nx-apollo-angular-course/prisma": ["apps/api/src/prisma/index.ts"]
     },
-    "strict": true,
+    "strict": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
-    "noImplicitAny": true,
-    "noImplicitThis": true
+    "noImplicitAny": false,
+    "noImplicitThis": true,
+    "strictPropertyInitialization": false
   },
   "exclude": ["node_modules", "tmp"]
 }

@@ -9,6 +9,7 @@ import {
   ActivitySentences,
   DescriptionSentences,
   ProfessionSentences,
+  PlacesOfWorkSentences,
 } from './samples'
 const prisma = new PrismaClient()
 
@@ -155,7 +156,9 @@ async function main() {
     activityLesson,
     descriptionLesson,
     professionalLesson,
+    placesOfWorkLesson,
   ] = resolvedLessons
+  console.log(unused1, unused2, unused3, unused4)
   console.log('Insert lessons - done')
 
   console.log('Insert sentences - start')
@@ -166,8 +169,9 @@ async function main() {
     insertSentences(ActivitySentences, activityLesson.id, newLanguages),
     insertSentences(DescriptionSentences, descriptionLesson.id, newLanguages),
     insertSentences(ProfessionSentences, professionalLesson.id, newLanguages),
+    insertSentences(PlacesOfWorkSentences, placesOfWorkLesson, newLanguages)
   ]
-  const createSentenceResults = await Promise.all(createSentences)
+  await Promise.all(createSentences)
   console.log('Insert sentences - end')
 }
 
