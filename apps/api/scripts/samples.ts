@@ -1362,7 +1362,7 @@ export const ProfessionSentences = [
 
 export const PlacesOfWorkSentences = [
   {
-    text: 'La escuela / El colegio',
+    text: 'la escuela / el colegio',
     translations: [
       {
         lang: TRANS_LANG.ENG,
@@ -1375,7 +1375,7 @@ export const PlacesOfWorkSentences = [
     ],
   },
   {
-    text: 'El actor / La cafetería',
+    text: 'el bar / la cafetería',
     translations: [
       {
         lang: TRANS_LANG.ENG,
@@ -1388,7 +1388,7 @@ export const PlacesOfWorkSentences = [
     ],
   },
   {
-    text: 'El restaurante',
+    text: 'el restaurante',
     translations: [
       {
         lang: TRANS_LANG.ENG,
@@ -1401,7 +1401,7 @@ export const PlacesOfWorkSentences = [
     ],
   },
   {
-    text: 'La agencia de viajes',
+    text: 'la agencia de viajes',
     translations: [
       {
         lang: TRANS_LANG.ENG,
@@ -1427,7 +1427,7 @@ export const PlacesOfWorkSentences = [
     ],
   },
   {
-    text: 'La autoescuela',
+    text: 'la autoescuela',
     translations: [
       {
         lang: TRANS_LANG.ENG,
@@ -1440,7 +1440,7 @@ export const PlacesOfWorkSentences = [
     ],
   },
   {
-    text: 'El ayuntamiento',
+    text: 'el ayuntamiento',
     translations: [
       {
         lang: TRANS_LANG.ENG,
@@ -1453,327 +1453,431 @@ export const PlacesOfWorkSentences = [
     ],
   },
   {
-    text: 'El bombero / La bombera',
+    text: 'el banco',
     translations: [
       {
         lang: TRANS_LANG.ENG,
-        text: 'The fireman',
+        text: 'Bank',
       },
       {
         lang: TRANS_LANG.CHN,
-        text: '消防員',
+        text: '銀行',
       },
     ],
   },
   {
-    text: 'El cajero / La cajera',
+    text: 'la bibliolteca',
     translations: [
       {
         lang: TRANS_LANG.ENG,
-        text: 'The cashier',
+        text: 'Library',
       },
       {
         lang: TRANS_LANG.CHN,
-        text: '收銀員',
+        text: '圖書館',
       },
     ],
   },
   {
-    text: 'El camarero / La camarera',
+    text: 'el supermercado',
     translations: [
       {
         lang: TRANS_LANG.ENG,
-        text: 'The waiter/ The waitress',
+        text: 'Supermarket',
       },
       {
         lang: TRANS_LANG.CHN,
-        text: '服務員',
+        text: '超市',
       },
     ],
   },
   {
-    text: 'El carnicero / La carnicera',
+    text: 'la carnicería',
     translations: [
       {
         lang: TRANS_LANG.ENG,
-        text: 'The butcher',
+        text: 'butchery',
       },
       {
         lang: TRANS_LANG.CHN,
-        text: '屠夫',
+        text: '屠房',
       },
     ],
   },
   {
-    text: 'El carpintero / La carpintera',
+    text: 'la verdulería / la frutería',
     translations: [
       {
         lang: TRANS_LANG.ENG,
-        text: 'The carpenter',
+        text: 'Vegetable shop / Fruit shop',
       },
       {
         lang: TRANS_LANG.CHN,
-        text: '木匠',
+        text: '蔬菜水果商 / 水果店',
       },
     ],
   },
   {
-    text: 'El cartero / La cartera',
+    text: 'la charcutería',
     translations: [
       {
         lang: TRANS_LANG.ENG,
-        text: 'The mailman',
+        text: 'processed food shop',
       },
       {
         lang: TRANS_LANG.CHN,
-        text: '郵差',
+        text: '熟食店',
       },
     ],
   },
   {
-    text: 'El científico / La científica',
+    text: 'la pescadería',
     translations: [
       {
         lang: TRANS_LANG.ENG,
-        text: 'The scientist',
+        text: 'Fish shop',
       },
       {
         lang: TRANS_LANG.CHN,
-        text: '科學家',
+        text: '魚店',
       },
     ],
   },
   {
-    text: 'El cocinero / La cocinera',
+    text: 'la panadería',
     translations: [
       {
         lang: TRANS_LANG.ENG,
-        text: 'The chef',
+        text: 'the bakery',
       },
       {
         lang: TRANS_LANG.CHN,
-        text: '廚師',
+        text: '麵包店',
       },
     ],
   },
   {
-    text: 'El dentisa / La dentisa',
+    text: 'la comisaría de policía',
     translations: [
       {
         lang: TRANS_LANG.ENG,
-        text: 'The dentist',
+        text: 'the police station',
       },
       {
         lang: TRANS_LANG.CHN,
-        text: '牙醫',
+        text: '警局',
       },
     ],
   },
   {
-    text: 'El dependiente / La dependienta',
+    text: 'la copistería',
     translations: [
       {
         lang: TRANS_LANG.ENG,
-        text: 'salesperson',
+        text: 'the copy shop',
       },
       {
         lang: TRANS_LANG.CHN,
-        text: '售貨員',
+        text: '影印店',
       },
     ],
   },
   {
-    text: 'El electricista / La electricista',
+    text: 'el estanco',
     translations: [
       {
         lang: TRANS_LANG.ENG,
-        text: 'The electrician',
+        text: 'the tabacco shop',
       },
       {
         lang: TRANS_LANG.CHN,
-        text: '電工',
+        text: '煙草店',
       },
     ],
   },
   {
-    text: 'El empresario / La empresaria',
+    text: 'la oficina de correos',
     translations: [
       {
         lang: TRANS_LANG.ENG,
-        text: 'The business owner',
+        text: 'post office',
       },
       {
         lang: TRANS_LANG.CHN,
-        text: '商人',
+        text: '郵政局',
       },
     ],
   },
   {
-    text: 'El médico / La médica',
+    text: 'la peluquería',
     translations: [
       {
         lang: TRANS_LANG.ENG,
-        text: 'The doctor',
+        text: 'the barber shop',
       },
       {
         lang: TRANS_LANG.CHN,
-        text: '醫生',
+        text: '理髮店',
       },
     ],
   },
   {
-    text: 'El fontanero / La fontanera',
+    text: 'la farmacia',
     translations: [
       {
         lang: TRANS_LANG.ENG,
-        text: 'The plumber',
+        text: 'the pharmacy',
       },
       {
         lang: TRANS_LANG.CHN,
-        text: '水管工',
+        text: '藥店',
       },
     ],
   },
   {
-    text: 'El fotógrafo / La fotógrafa',
+    text: 'la floristería',
     translations: [
       {
         lang: TRANS_LANG.ENG,
-        text: 'The photographer',
+        text: 'the florist',
       },
       {
         lang: TRANS_LANG.CHN,
-        text: '攝影師',
+        text: '花店',
       },
     ],
   },
   {
-    text: 'El ingeniero / La ingeniera',
+    text: 'la tienda de ropa',
     translations: [
       {
         lang: TRANS_LANG.ENG,
-        text: 'The engineer',
+        text: 'the clothing store',
       },
       {
         lang: TRANS_LANG.CHN,
-        text: '工程師',
+        text: '服裝店',
       },
     ],
   },
   {
-    text: 'El juez / La jueza',
+    text: 'la herboristería',
     translations: [
       {
         lang: TRANS_LANG.ENG,
-        text: 'The judge',
+        text: 'the herbal shop',
       },
       {
         lang: TRANS_LANG.CHN,
-        text: '法官',
+        text: '藥材店',
       },
     ],
   },
   {
-    text: 'El profesor / La profesora',
+    text: 'el hotel',
     translations: [
       {
         lang: TRANS_LANG.ENG,
-        text: 'The professor',
+        text: 'the hotel',
       },
       {
         lang: TRANS_LANG.CHN,
-        text: '老師',
+        text: '酒店',
       },
     ],
   },
   {
-    text: 'El mecánico / La mecánica',
+    text: 'el hospital',
     translations: [
       {
         lang: TRANS_LANG.ENG,
-        text: 'The mechanic',
+        text: 'hospital',
       },
       {
         lang: TRANS_LANG.CHN,
-        text: '修理工',
+        text: '醫院',
       },
     ],
   },
   {
-    text: 'El panadero / La panadera',
+    text: 'la iglesia',
     translations: [
       {
         lang: TRANS_LANG.ENG,
-        text: 'The baker',
+        text: 'the church',
       },
       {
         lang: TRANS_LANG.CHN,
-        text: '麵包師',
+        text: '教會',
       },
     ],
   },
   {
-    text: 'El peluquero / La peluquera',
+    text: 'la joyería',
     translations: [
       {
         lang: TRANS_LANG.ENG,
-        text: 'The hairdresser',
+        text: 'the jewelry shop',
       },
       {
         lang: TRANS_LANG.CHN,
-        text: '理髮師',
+        text: '珠寶店',
       },
     ],
   },
   {
-    text: 'El periodista / La periodista',
+    text: 'la librería',
     translations: [
       {
         lang: TRANS_LANG.ENG,
-        text: 'The journalist',
+        text: 'the bookstore',
       },
       {
         lang: TRANS_LANG.CHN,
-        text: '記者',
+        text: '書店',
       },
     ],
   },
   {
-    text: 'El pintor / La pintora',
+    text: 'la gasolinera',
     translations: [
       {
         lang: TRANS_LANG.ENG,
-        text: 'The artist',
+        text: 'the gas station',
       },
       {
         lang: TRANS_LANG.CHN,
-        text: '畫家',
+        text: '加油站',
       },
     ],
   },
   {
-    text: 'El policía / La policía',
+    text: 'La camarera trabaja en un bar',
     translations: [
       {
         lang: TRANS_LANG.ENG,
-        text: 'The police',
+        text: 'The waitress works in a bar',
       },
       {
         lang: TRANS_LANG.CHN,
-        text: '警察',
+        text: '女服務員在酒吧里工作',
       },
     ],
   },
   {
-    text: 'El programador / La programadora',
+    text: 'La panadera trabaja en una panadería',
     translations: [
       {
         lang: TRANS_LANG.ENG,
-        text: 'The programmer',
+        text: 'The baker works in a bakery',
       },
       {
         lang: TRANS_LANG.CHN,
-        text: '程序員',
+        text: '麵包師在麵包店工作',
+      },
+    ],
+  },
+  {
+    text: 'La policía trabaja en una comisaría',
+    translations: [
+      {
+        lang: TRANS_LANG.ENG,
+        text: 'The police work in a police station',
+      },
+      {
+        lang: TRANS_LANG.CHN,
+        text: '警察在警局工作',
+      },
+    ],
+  },
+  {
+    text: 'La cajera trabaja en un supermercado',
+    translations: [
+      {
+        lang: TRANS_LANG.ENG,
+        text: 'The cashier works in a supermarket',
+      },
+      {
+        lang: TRANS_LANG.CHN,
+        text: '收銀員在一家超市工作',
+      },
+    ],
+  },
+  {
+    text: 'La profesora trabaja en un colegio',
+    translations: [
+      {
+        lang: TRANS_LANG.ENG,
+        text: 'The teacher works in a school',
+      },
+      {
+        lang: TRANS_LANG.CHN,
+        text: '老師在學校工作',
+      },
+    ],
+  },
+  {
+    text: 'La carnicera trabaja en un carnicería',
+    translations: [
+      {
+        lang: TRANS_LANG.ENG,
+        text: 'The butcher works in a butcher shop',
+      },
+      {
+        lang: TRANS_LANG.CHN,
+        text: '屠夫在肉店工作',
+      },
+    ],
+  },
+  {
+    text: 'La médica trabaja en el hospital',
+    translations: [
+      {
+        lang: TRANS_LANG.ENG,
+        text: 'The doctor works in the hospital',
+      },
+      {
+        lang: TRANS_LANG.CHN,
+        text: '醫生在醫院工作',
+      },
+    ],
+  },
+  {
+    text: 'La peluquera trabaja en la peluquería',
+    translations: [
+      {
+        lang: TRANS_LANG.ENG,
+        text: 'The hairdresser works in the barber shop',
+      },
+      {
+        lang: TRANS_LANG.CHN,
+        text: '理髮師在理髮店工作',
+      },
+    ],
+  },
+  {
+    text: 'La cartera trabaja en una oficina de correos',
+    translations: [
+      {
+        lang: TRANS_LANG.ENG,
+        text: 'The postman works in a post office',
+      },
+      {
+        lang: TRANS_LANG.CHN,
+        text: '郵差在郵局工作',
+      },
+    ],
+  },
+  {
+    text: 'La dependienta trabaja en una tienda de ropa',
+    translations: [
+      {
+        lang: TRANS_LANG.ENG,
+        text: 'The staff works in a clothing store',
+      },
+      {
+        lang: TRANS_LANG.CHN,
+        text: '店員在一家服裝店工作',
       },
     ],
   },
