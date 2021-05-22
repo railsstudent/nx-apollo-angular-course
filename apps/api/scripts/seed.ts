@@ -126,7 +126,7 @@ async function main() {
     'People 1',
     'Activity',
     'Description of persons',
-    'Professons',
+    'Professions',
     'Places and stores of professions',
     'Shopping 2',
     'Task',
@@ -169,7 +169,7 @@ async function main() {
     insertSentences(ActivitySentences, activityLesson.id, newLanguages),
     insertSentences(DescriptionSentences, descriptionLesson.id, newLanguages),
     insertSentences(ProfessionSentences, professionalLesson.id, newLanguages),
-    insertSentences(PlacesOfWorkSentences, placesOfWorkLesson, newLanguages)
+    insertSentences(PlacesOfWorkSentences, placesOfWorkLesson.id, newLanguages)
   ]
   await Promise.all(createSentences)
   console.log('Insert sentences - end')

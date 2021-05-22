@@ -40,6 +40,10 @@ Run `ng serve api` to start nest server. Navigate to http://localhost:3333/graph
 
 Run `ng run data-access:generate` to update GraphQL queries and mutations
 
+## Populate seed data
+
+Run `ng run api:seed` to clear tables and populate seed data
+
 ## Code scaffolding
 
 Run `ng g component my-component --project=my-app --export` to generate a new component.
@@ -90,6 +94,8 @@ Run `ng g @nrwl/node:app api-e2e`
 Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
 
 Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
+
+Run `ng test api-e2e` to execute the api end-to-end tests.
 
 ## Understand your workspace
 
