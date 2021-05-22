@@ -46,10 +46,16 @@
             "main": "apps/nx-apollo-angular-course/src/main.ts",
             "polyfills": "apps/nx-apollo-angular-course/src/polyfills.ts",
             "tsConfig": "apps/nx-apollo-angular-course/tsconfig.app.json",
-            "aot": true,
             "assets": ["apps/nx-apollo-angular-course/src/favicon.ico", "apps/nx-apollo-angular-course/src/assets"],
             "styles": ["apps/nx-apollo-angular-course/src/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true,
+            "aot": false
           },
           "configurations": {
             "production": {
@@ -308,7 +314,6 @@
           "builder": "@nrwl/jest:jest",
           "outputs": ["coverage/apps/api-e2e"],
           "options": {
-            "tsConfig": "apps/api-e2e/tsconfig.spec.json",
             "jestConfig": "apps/api-e2e/jest.config.js",
             "passWithNoTests": true
           }
