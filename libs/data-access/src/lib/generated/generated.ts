@@ -21,8 +21,10 @@ export type AddCourseInput = {
 }
 
 export type AddLanguageInput = {
+  flag?: Maybe<Scalars['String']>
   name: Scalars['String']
   nativeName: Scalars['String']
+  shinyFlag?: Maybe<Scalars['String']>
 }
 
 export type AddLessonInput = {
@@ -72,10 +74,12 @@ export type DeletedSentence = {
 /** Language model */
 export type Language = {
   __typename?: 'Language'
+  flag?: Maybe<Scalars['String']>
   fullname?: Maybe<Scalars['String']>
   id: Scalars['ID']
   name?: Maybe<Scalars['String']>
   nativeName?: Maybe<Scalars['String']>
+  shinyFlag?: Maybe<Scalars['String']>
 }
 
 /** Lesson model */
@@ -232,9 +236,11 @@ export type UpdateCourseInput = {
 }
 
 export type UpdateLanguageInput = {
+  flag?: Maybe<Scalars['String']>
   id: Scalars['ID']
   name?: Maybe<Scalars['String']>
   nativeName?: Maybe<Scalars['String']>
+  shinyFlag?: Maybe<Scalars['String']>
 }
 
 export type UpdateLessonInput = {
@@ -249,7 +255,10 @@ export type UpdateSentenceInput = {
   text?: Maybe<Scalars['String']>
 }
 
-export type CourseLanguageFragment = { __typename?: 'Language' } & Pick<Language, 'id' | 'name' | 'fullname'>
+export type CourseLanguageFragment = { __typename?: 'Language' } & Pick<
+  Language,
+  'id' | 'name' | 'fullname' | 'flag' | 'shinyFlag'
+>
 
 export type CourseNameFragment = { __typename?: 'Course' } & Pick<Course, 'id' | 'name' | 'description'>
 
@@ -434,6 +443,8 @@ export const CourseLanguageFragmentDoc = gql`
     id
     name
     fullname
+    flag
+    shinyFlag
   }
 `
 export const CourseNameFragmentDoc = gql`

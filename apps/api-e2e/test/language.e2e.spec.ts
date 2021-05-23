@@ -9,11 +9,15 @@ const languages = [
     id: '1',
     name: 'English',
     nativeName: 'English',
+    flag: 'https://www.countryflags.io/us/flat/64.png',
+    shinyFlag: 'https://www.countryflags.io/us/shiny/64.png',
   },
   {
     id: '2',
     name: 'Spanish',
     nativeName: 'Espanol',
+    flag: 'https://www.countryflags.io/es/flat/64.png',
+    shinyFlag: 'https://www.countryflags.io/us/shiny/64.png',
   },
 ]
 const translationService = {
@@ -22,12 +26,14 @@ const translationService = {
   },
 
   addLanguage(input: AddLanguageInput) {
-    const { name, nativeName } = input
+    const { name, nativeName, flag, shinyFlag } = input
     return {
       id: '10',
       name,
       nativeName,
       fullname: `${name} (${nativeName})`,
+      flag,
+      shinyFlag,
     }
   },
 
@@ -63,6 +69,8 @@ describe('LanguageResolver (e2e)', () => {
             id
             name
             nativeName
+            flag
+            shinyFlag
         }}`,
       })
       .expect(200)
@@ -81,12 +89,16 @@ describe('LanguageResolver (e2e)', () => {
         query: `mutation {
           addLanguage (newLanguage: {
             name: "Portuguese",
-            nativeName: "Portugese"
+            nativeName: "Portugese",
+            flag: "https://www.countryflags.io/br/flat/64.png",
+            shinyFlag: "https://www.countryflags.io/br/shiny/64.png",
           }) {
             id
             name
             nativeName
             fullname
+            flag
+            shinyFlag
         }}`,
       })
       .expect(200)
@@ -99,6 +111,8 @@ describe('LanguageResolver (e2e)', () => {
           name: 'Portuguese',
           nativeName: 'Portugese',
           fullname: 'Portuguese (Portugese)',
+          flag: 'https://www.countryflags.io/br/flat/64.png',
+          shinyFlag: 'https://www.countryflags.io/br/shiny/64.png',
         })
       })
   })
@@ -112,11 +126,15 @@ describe('LanguageResolver (e2e)', () => {
             id: "1",
             name: "Portuguese mod",
             nativeName: "Portugese mod"
+            flag: "https://www.countryflags.io/br/flat/64.png",
+            shinyFlag: "https://www.countryflags.io/br/shiny/64.png",
           }) {
             id
             name
             nativeName
             fullname
+            flag
+            shinyFlag
         }}`,
       })
       .expect(200)
@@ -129,6 +147,8 @@ describe('LanguageResolver (e2e)', () => {
           name: 'Portuguese mod',
           nativeName: 'Portugese mod',
           fullname: 'Portuguese mod (Portugese mod)',
+          flag: 'https://www.countryflags.io/br/flat/64.png',
+          shinyFlag: 'https://www.countryflags.io/br/shiny/64.png',
         })
       })
   })

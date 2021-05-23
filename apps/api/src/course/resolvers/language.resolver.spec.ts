@@ -40,18 +40,24 @@ describe('LanguageResolver', () => {
         name: 'English',
         nativeName: 'English',
         fullname: 'English (English)',
+        flag: 'https://www.countryflags.io/us/flat/64.png',
+        shinyFlag: 'https://www.countryflags.io/us/flat/64.png',
       },
       {
         id: '2',
         name: 'Spanish',
         nativeName: 'Espanol',
         fullname: 'Spanish (Espanol)',
+        flag: 'https://www.countryflags.io/es/flat/64.png',
+        shinyFlag: 'https://www.countryflags.io/us/flat/64.png',
       },
       {
         id: '3',
         name: 'Chinese',
         nativeName: '中文',
         fullname: 'Chinese (中文)',
+        flag: 'https://www.countryflags.io/hk/flat/64.png',
+        shinyFlag: 'https://www.countryflags.io/us/flat/64.png',
       },
     ]
     jest.spyOn(translationService, 'getLanguages').mockImplementation(() => Promise.resolve(result))
@@ -59,7 +65,7 @@ describe('LanguageResolver', () => {
     expect(await resolver.getLanguages()).toEqual(result)
   })
 
-  it('addLanguage should create and return a language', async () => {
+  it('addLanguage should create and return a language with default flag', async () => {
     const newLanguageInput: AddLanguageInput = {
       name: 'English',
       nativeName: 'English',
@@ -69,6 +75,30 @@ describe('LanguageResolver', () => {
       ...newLanguageInput,
       id: '1',
       fullname: 'English (English)',
+      flag: '',
+      shinyFlag: '',
+    }
+    jest.spyOn(translationService, 'addLanguage').mockImplementation(() => Promise.resolve(newLanguage))
+
+    expect(await resolver.addLanguage(newLanguageInput)).toEqual(newLanguage)
+  })
+
+  it('addLanguage should create and return a language with flag', async () => {
+    const flag = 'https://www.countryflags.io/us/flat/64.png'
+    const shinyFlag = 'https://www.countryflags.io/us/shiny/64.png'
+    const newLanguageInput: AddLanguageInput = {
+      name: 'English',
+      nativeName: 'English',
+      flag,
+      shinyFlag,
+    }
+
+    const newLanguage: Language = {
+      ...newLanguageInput,
+      id: '1',
+      fullname: 'English (English)',
+      flag,
+      shinyFlag,
     }
     jest.spyOn(translationService, 'addLanguage').mockImplementation(() => Promise.resolve(newLanguage))
 
@@ -80,6 +110,8 @@ describe('LanguageResolver', () => {
       id: '1',
       name: 'English mod',
       nativeName: 'English mod',
+      flag: 'flag mod',
+      shinyFlag: 'shinyFlag mod',
     }
 
     const updateLanguage: Language = {

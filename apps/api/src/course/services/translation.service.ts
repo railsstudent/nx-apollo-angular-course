@@ -77,7 +77,7 @@ export class TranslationService {
   }
 
   async addLanguage(input: AddLanguageInput): Promise<Language> {
-    const { name, nativeName } = input
+    const { name, nativeName, flag = '', shinyFlag = '' } = input
 
     const existingLanguage = await this.service.language.findFirst({
       where: {
@@ -95,6 +95,8 @@ export class TranslationService {
       data: {
         name,
         nativeName,
+        flag,
+        shinyFlag,
       },
     })
   }

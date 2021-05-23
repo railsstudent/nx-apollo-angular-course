@@ -3,7 +3,7 @@ version: '3.7'
 services:
   postgres:
     container_name: postgres_container
-    image: postgres:12.5-alpine
+    image: postgres:12.7-alpine
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -11,7 +11,7 @@ services:
     volumes:
       - postgres:/data/postgres
     ports:
-      - "5432:5432"
+      - '5432:5432'
     restart: always
     networks:
       - nx-apollo-angular-course-network
@@ -25,9 +25,9 @@ services:
     volumes:
       - pgadmin:/root/.pgadmin
     ports:
-      - "5555:80"
+      - '5555:80'
     links:
-      - "postgres:pgsql-server"
+      - 'postgres:pgsql-server'
     restart: always
     networks:
       - nx-apollo-angular-course-network

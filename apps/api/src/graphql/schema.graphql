@@ -2,6 +2,8 @@ fragment CourseLanguage on Language {
   id
   name
   fullname
+  flag
+  shinyFlag
 }
 
 fragment CourseName on Course {
@@ -26,8 +28,8 @@ fragment SentenceText on Sentence {
   text
 }
 
-query AllCourses ($args: CursorPaginationArgs!) {
-  courses (args: $args) {
+query AllCourses($args: CursorPaginationArgs!) {
+  courses(args: $args) {
     cursor
     courses {
       ...CourseName
@@ -38,13 +40,13 @@ query AllCourses ($args: CursorPaginationArgs!) {
   }
 }
 
-query Course ($courseId: String!, $args: CursorPaginationArgs!) {
+query Course($courseId: String!, $args: CursorPaginationArgs!) {
   course(id: $courseId) {
     ...CourseName
     language {
       ...CourseLanguage
     }
-    paginatedLessons (args: $args) {
+    paginatedLessons(args: $args) {
       cursor
       lessons {
         id
@@ -60,16 +62,16 @@ query Languages {
   }
 }
 
-mutation addCourse ($newCourse: AddCourseInput!) {
+mutation addCourse($newCourse: AddCourseInput!) {
   addCourse(newCourse: $newCourse) {
-    ...CourseName,
+    ...CourseName
     language {
       ...CourseLanguage
     }
   }
 }
 
-query Lesson ($lessonId: String!, $args: CursorPaginationArgs!)  {
+query Lesson($lessonId: String!, $args: CursorPaginationArgs!) {
   getLesson(id: $lessonId) {
     ...LessonName
     course {
@@ -92,18 +94,13 @@ query Lesson ($lessonId: String!, $args: CursorPaginationArgs!)  {
 }
 
 mutation addLesson($newLesson: AddLessonInput!) {
-  addLesson(
-    newLesson: $newLesson
-  ) {
+  addLesson(newLesson: $newLesson) {
     ...LessonName
   }
 }
 
 mutation nextLessons($courseId: String!, $args: CursorPaginationArgs!) {
-  nextLessons(
-    courseId: $courseId,
-    args: $args
-  ) {
+  nextLessons(courseId: $courseId, args: $args) {
     cursor
     lessons {
       ...LessonName
@@ -112,7 +109,7 @@ mutation nextLessons($courseId: String!, $args: CursorPaginationArgs!) {
 }
 
 mutation addSentence($newSentence: AddSentenceInput!) {
-  addSentence (newSentence: $newSentence) {
+  addSentence(newSentence: $newSentence) {
     ...SentenceText
     availableTranslations {
       id
@@ -121,10 +118,10 @@ mutation addSentence($newSentence: AddSentenceInput!) {
   }
 }
 
-mutation deleteSentence ($id: String!) {
+mutation deleteSentence($id: String!) {
   deleteSentence(id: $id) {
     sentence {
-   	  ...SentenceText
+      ...SentenceText
     }
     translations {
       ...TranslationText
@@ -132,8 +129,8 @@ mutation deleteSentence ($id: String!) {
   }
 }
 
-,mutation nextSentences($id: String!, $args: CursorPaginationArgs!) {
-  nextSentences (lessonId: $id, args: $args) {
+mutation nextSentences($id: String!, $args: CursorPaginationArgs!) {
+  nextSentences(lessonId: $id, args: $args) {
     cursor
     sentences {
       ...SentenceText
@@ -147,7 +144,7 @@ mutation deleteSentence ($id: String!) {
 
 mutation addTranslation($newTranslation: AddTranslationInput!) {
   addTranslation(newTranslation: $newTranslation) {
-    ...TranslationText,
+    ...TranslationText
     language {
       ...CourseLanguage
     }
@@ -163,8 +160,8 @@ query Translation($sentenceId: String!, $languageId: String!) {
   }
 }
 
-mutation deleteTranslation ($id: String!) {
-  deleteTranslation (id: $id) {
+mutation deleteTranslation($id: String!) {
+  deleteTranslation(id: $id) {
     ...TranslationText
     language {
       ...CourseLanguage

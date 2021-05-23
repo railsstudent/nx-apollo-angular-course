@@ -50,8 +50,7 @@ async function main() {
   for (const language of AvailableLanguages) {
     const newLanguage = await prisma.language.create({
       data: {
-        name: language.name,
-        nativeName: language.nativeName,
+        ...language,
       },
     })
     newLanguages.push(newLanguage)
@@ -169,7 +168,7 @@ async function main() {
     insertSentences(ActivitySentences, activityLesson.id, newLanguages),
     insertSentences(DescriptionSentences, descriptionLesson.id, newLanguages),
     insertSentences(ProfessionSentences, professionalLesson.id, newLanguages),
-    insertSentences(PlacesOfWorkSentences, placesOfWorkLesson.id, newLanguages)
+    insertSentences(PlacesOfWorkSentences, placesOfWorkLesson.id, newLanguages),
   ]
   await Promise.all(createSentences)
   console.log('Insert sentences - end')

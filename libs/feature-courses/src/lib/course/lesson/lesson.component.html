@@ -4,6 +4,7 @@
       <button [routerLink]="['../']" class="back">Back</button>
     </div>
     <div class="lesson text-2xl text-center">
+      <img *ngIf="lesson?.course?.language?.flag" [ngSrc]="lesson?.course?.language?.flag">
       <p>{{ lesson?.course?.name }}</p>
       <p>{{ lesson?.name }}</p>
     </div>

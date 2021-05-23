@@ -101,6 +101,15 @@ Run `ng test api-e2e` to execute the api end-to-end tests.
 
 Run `nx dep-graph` to see a diagram of the dependencies of your projects.
 
+## PostgreSQL Database
+
+```
+Host:     pgsql-server
+Database: postgres
+Username: postgres
+Password: postgres
+```
+
 ## Further help
 
 Visit the [Nx Documentation](https://nx.dev/angular) to learn more.

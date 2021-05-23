@@ -29,7 +29,9 @@ model language {
   updatedAt    DateTime      @default(now())
   translations translation[]
 
-  course course[]
+  course    course[]
+  flag      String?  @default("")
+  shinyFlag String?  @default("")
   @@unique([name, nativeName], name: "lanaguage_name_nativeName_key")
 }
 

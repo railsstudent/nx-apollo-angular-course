@@ -14,6 +14,12 @@ export class Language {
   @Field(() => String, { nullable: true })
   fullname?: string
 
+  @Field(() => String, { nullable: true })
+  flag?: string
+
+  @Field(() => String, { nullable: true })
+  shinyFlag?: string
+
   createdAt?: Date
 
   updatedAt?: Date
