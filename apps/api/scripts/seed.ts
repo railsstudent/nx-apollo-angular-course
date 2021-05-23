@@ -10,6 +10,7 @@ import {
   DescriptionSentences,
   ProfessionSentences,
   PlacesOfWorkSentences,
+  PrepositionSentences,
 } from './samples'
 const prisma = new PrismaClient()
 
@@ -127,7 +128,7 @@ async function main() {
     'Description of persons',
     'Professions',
     'Places and stores of professions',
-    'Shopping 2',
+    'Preposition of place',
     'Task',
   ]
 
@@ -156,6 +157,7 @@ async function main() {
     descriptionLesson,
     professionalLesson,
     placesOfWorkLesson,
+    prepositionPlaceLesson,
   ] = resolvedLessons
   console.log(unused1, unused2, unused3, unused4)
   console.log('Insert lessons - done')
@@ -169,6 +171,7 @@ async function main() {
     insertSentences(DescriptionSentences, descriptionLesson.id, newLanguages),
     insertSentences(ProfessionSentences, professionalLesson.id, newLanguages),
     insertSentences(PlacesOfWorkSentences, placesOfWorkLesson.id, newLanguages),
+    insertSentences(PrepositionSentences, prepositionPlaceLesson.id, newLanguages),
   ]
   await Promise.all(createSentences)
   console.log('Insert sentences - end')
