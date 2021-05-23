@@ -3,10 +3,17 @@
     <div class="back">
       <button [routerLink]="['../']" class="back">Back</button>
     </div>
-    <div class="lesson text-2xl text-center">
-      <img *ngIf="lesson?.course?.language?.flag" [ngSrc]="lesson?.course?.language?.flag">
-      <p>{{ lesson?.course?.name }}</p>
-      <p>{{ lesson?.name }}</p>
+    <div class="lesson text-2xl flex justify-center">
+      <img
+        style="margin-right: 0.25rem"
+        *ngIf="lesson?.course?.language?.shinyFlag"
+        [src]="lesson?.course?.language?.shinyFlag"
+        [alt]="lesson?.course?.language?.name + ' flag'"
+      />
+      <div class="text-center">
+        <p>{{ lesson?.course?.name }}</p>
+        <p>{{ lesson?.name }}</p>
+      </div>
     </div>
     <div class="spacer"></div>
   </div>

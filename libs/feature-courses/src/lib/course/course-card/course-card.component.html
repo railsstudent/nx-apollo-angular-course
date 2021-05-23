@@ -1,7 +1,6 @@
 <div class="course p-2 form-border flex flex-col">
   <div class="flex-1">
     <p>
-      <img *ngIf="course?.language?.flag" [ngSrc]="course?.language?.flag">
       <span class="field text-lg">Name: </span><span class="text-lg">{{ course?.name }}</span>
     </p>
     <p>
@@ -9,6 +8,7 @@
     </p>
     <p>
       <span class="field">Language: </span><span>{{ course?.language?.fullname }}</span>
+      <img *ngIf="course?.language?.flag" [src]="course?.language?.flag" [alt]="course?.name + ' flag'" />
     </p>
   </div>
   <p class="actions">

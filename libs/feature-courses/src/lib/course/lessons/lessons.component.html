@@ -3,9 +3,17 @@
     <div class="back">
       <button [routerLink]="['/courses']" class="back">Back</button>
     </div>
-    <div class="course text-2xl text-center">
-      <p>{{ course?.name }}</p>
-      <p>{{ course?.description }}</p>
+    <div class="course text-2xl flex justify-center">
+      <img
+        style="margin-right: 0.25rem"
+        *ngIf="course?.language?.shinyFlag"
+        [src]="course?.language?.shinyFlag"
+        [alt]="lesson?.course?.language?.name + ' flag'"
+      />
+      <div class="text-center">
+        <p>{{ course?.name }}</p>
+        <p>{{ course?.description }}</p>
+      </div>
     </div>
     <div class="spacer"></div>
   </div>

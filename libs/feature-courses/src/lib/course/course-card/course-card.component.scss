@@ -6,11 +6,16 @@
 .course {
   height: 100%;
   > p {
-    margin-top: 0.25rem;
-    margin-bottom: 0.25rem;
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
   }
 
   .actions {
-    padding: 0.5rem 0;
+    padding: 0.25rem 0;
+  }
+
+  img {
+    display: inline;
+    width: 32px;
   }
 }
