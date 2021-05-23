@@ -31,9 +31,7 @@ input AddTranslationInput {
   text: String!
 }
 
-"""
-Course model
-"""
+"""Course model"""
 type Course {
   description: String
   id: ID!
@@ -48,17 +46,13 @@ input CursorPaginationArgs {
   limit: Int = 10
 }
 
-"""
-Deleted sentence model
-"""
+"""Deleted sentence model"""
 type DeletedSentence {
   sentence: Sentence
   translations: [Translation!]
 }
 
-"""
-Language model
-"""
+"""Language model"""
 type Language {
   flag: String
   fullname: String
@@ -68,9 +62,7 @@ type Language {
   shinyFlag: String
 }
 
-"""
-Lesson model
-"""
+"""Lesson model"""
 type Lesson {
   course: Course
   id: ID!
@@ -96,9 +88,7 @@ type Mutation {
   updateSentence(updateSentence: UpdateSentenceInput!): Sentence!
 }
 
-"""
-Cursor-based pagination of courses/lessons/sentences
-"""
+"""Cursor-based pagination of courses/lessons/sentences"""
 type PaginatedItems {
   courses: [Course!]
   cursor: Float
@@ -115,9 +105,7 @@ type Query {
   getTranslation(languageId: String!, sentenceId: String!): Translation
 }
 
-"""
-Sentence model
-"""
+"""Sentence model"""
 type Sentence {
   availableTranslations: [Language!]
   id: ID!
@@ -126,9 +114,7 @@ type Sentence {
   translations: [Translation!]
 }
 
-"""
-Translation model
-"""
+"""Translation model"""
 type Translation {
   id: ID!
   language: Language
