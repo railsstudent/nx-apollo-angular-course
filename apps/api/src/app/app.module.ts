@@ -8,7 +8,7 @@ import { CourseModule } from '../course'
   imports: [
     ThrottlerModule.forRoot({
       ttl: 60,
-      limit: 10,
+      limit: 100,
     }),
     GraphQLModule.forRoot({
       autoSchemaFile: join(process.cwd(), 'apps/api/src/schema.gql'),
