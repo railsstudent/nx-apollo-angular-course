@@ -1,10 +1,15 @@
 import { Module } from '@nestjs/common'
 import { GraphQLModule } from '@nestjs/graphql'
+import { ThrottlerModule } from '@nestjs/throttler'
 import { join } from 'path'
 import { CourseModule } from '../course'
 
 @Module({
   imports: [
+    ThrottlerModule.forRoot({
+      ttl: 60,
+      limit: 10,
+    }),
     GraphQLModule.forRoot({
       autoSchemaFile: join(process.cwd(), 'apps/api/src/schema.gql'),
       sortSchema: true,
