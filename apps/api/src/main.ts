@@ -9,9 +9,9 @@ import { AppModule } from './app/app.module'
 import helmet from 'helmet'
 import rateLimit from 'express-rate-limit'
 import compression from 'compression'
-import * as bodyParser from 'body-parser'
 import morgan from 'morgan'
 import cors from 'cors'
+import * as express from 'express'
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
@@ -29,8 +29,8 @@ async function bootstrap() {
       },
     }),
   )
-  app.use(bodyParser.json())
-  app.use(bodyParser.urlencoded({ extended: false }))
+  app.use(express.json())
+  app.use(express.urlencoded({ extended: false }))
   app.use(morgan('dev'))
 
   app.use(
