@@ -36,7 +36,7 @@ describe('PaginatedItemsResolver', () => {
         },
         {
           provide: GqlThrottlerGuard,
-          useValue: {}
+          useValue: {},
         },
       ],
     }).compile()

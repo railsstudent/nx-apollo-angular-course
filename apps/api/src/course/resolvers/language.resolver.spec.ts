@@ -32,7 +32,7 @@ describe('LanguageResolver', () => {
         },
         {
           provide: GqlThrottlerGuard,
-          useValue: {}
+          useValue: {},
         },
       ],
     }).compile()

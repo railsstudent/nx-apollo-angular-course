@@ -34,7 +34,7 @@ describe('LessonResolver', () => {
         },
         {
           provide: GqlThrottlerGuard,
-          useValue: {}
+          useValue: {},
         },
       ],
     }).compile()

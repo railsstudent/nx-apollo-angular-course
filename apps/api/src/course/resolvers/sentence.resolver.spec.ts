@@ -34,7 +34,7 @@ describe('SentenceResolver', () => {
         },
         {
           provide: GqlThrottlerGuard,
-          useValue: {}
+          useValue: {},
         },
       ],
     }).compile()

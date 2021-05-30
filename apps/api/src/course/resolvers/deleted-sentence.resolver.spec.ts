@@ -31,7 +31,7 @@ describe('DeletedSentenceResolver', () => {
         },
         {
           provide: GqlThrottlerGuard,
-          useValue: {}
+          useValue: {},
         },
       ],
     }).compile()
