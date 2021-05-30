@@ -15,6 +15,6 @@
         <option [value]="language.id" *ngFor="let language of languages">{{ language.fullname }}</option>
       </select>
     </label>
-    <button class="self-start m-2 disabled:opacity-50" [disabled]="!form.valid">Add</button>
+    <button class="self-start m-2 disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-blue-600" [disabled]="!form.valid">Add</button>
   </form>
 </div>
