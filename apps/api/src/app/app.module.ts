@@ -3,6 +3,7 @@ import { GraphQLModule } from '@nestjs/graphql'
 import { ThrottlerModule } from '@nestjs/throttler'
 import { join } from 'path'
 import { CourseModule } from '../course'
+import { GQLModule } from '../gql'
 
 @Module({
   imports: [
@@ -18,7 +19,9 @@ import { CourseModule } from '../course'
         console.log(err)
         return err
       },
+      context: ({ req, res }) => ({ req, res })
     }),
+    GQLModule,
     CourseModule,
   ],
   controllers: [],

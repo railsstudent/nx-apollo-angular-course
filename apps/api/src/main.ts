@@ -7,7 +7,6 @@ import { Logger } from '@nestjs/common'
 import { NestFactory } from '@nestjs/core'
 import { AppModule } from './app/app.module'
 import helmet from 'helmet'
-import rateLimit from 'express-rate-limit'
 import compression from 'compression'
 import morgan from 'morgan'
 import cors from 'cors'
@@ -33,12 +32,6 @@ async function bootstrap() {
   app.use(express.urlencoded({ extended: false }))
   app.use(morgan('dev'))
 
-  app.use(
-    rateLimit({
-      windowMs: 15 * 60 * 1000, // 15 minutes
-      max: 500, // limit each IP to 500 requests per windowMs
-    }),
-  )
   const port = process.env.PORT || 3333
   await app.listen(port, () => {
     Logger.log('Listening at http://localhost:' + port)

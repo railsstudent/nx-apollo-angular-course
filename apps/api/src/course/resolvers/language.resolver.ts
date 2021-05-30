@@ -1,8 +1,11 @@
+import { UseGuards } from '@nestjs/common'
 import { Args, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql'
 import { AddLanguageInput, UpdateLanguageInput } from '../dto'
 import { Language } from '../entities'
 import { TranslationService } from '../services'
+import { GqlThrottlerGuard } from '@nx-apollo-angular-course/gql';
 
+@UseGuards(GqlThrottlerGuard)
 @Resolver(() => Language)
 export class LanguageResolver {
   constructor(private translationService: TranslationService) {}

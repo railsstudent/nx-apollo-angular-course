@@ -1,8 +1,11 @@
+import { UseGuards } from '@nestjs/common'
 import { Args, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql'
+import { GqlThrottlerGuard } from '@nx-apollo-angular-course/gql'
 import { AddSentenceInput, UpdateSentenceInput } from '../dto'
 import { Language, Sentence } from '../entities'
 import { SentenceService, TranslationService } from '../services'
 
+@UseGuards(GqlThrottlerGuard)
 @Resolver(() => Sentence)
 export class SentenceResolver {
   constructor(

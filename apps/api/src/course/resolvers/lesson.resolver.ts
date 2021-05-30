@@ -1,8 +1,11 @@
+import { UseGuards } from '@nestjs/common'
 import { Args, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql'
+import { GqlThrottlerGuard } from '@nx-apollo-angular-course/gql'
 import { AddLessonInput, CursorPaginationArgs, UpdateLessonInput } from '../dto'
 import { Lesson, PaginatedItems } from '../entities'
 import { LessonService, SentenceService } from '../services'
 
+@UseGuards(GqlThrottlerGuard)
 @Resolver(() => Lesson)
 export class LessonResolver {
   constructor(private lessonService: LessonService, private sentenceService: SentenceService) {}
