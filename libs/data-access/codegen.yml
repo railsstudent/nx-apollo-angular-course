@@ -1,9 +1,9 @@
 overwrite: true
-schema: "http://localhost:3333/graphql"
-documents: "apps/api/src/gql/schema.graphql"
+schema: 'http://localhost:3333/graphql'
+documents: 'apps/api/src/gql/schema.graphql'
 generates:
   libs/data-access/src/lib/generated/generated.ts:
     plugins:
-      - "typescript"
-      - "typescript-operations"
-      - "typescript-apollo-angular"
+      - 'typescript'
+      - 'typescript-operations'
+      - 'typescript-apollo-angular'

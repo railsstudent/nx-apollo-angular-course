@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common'
-import { GqlThrottlerGuard } from './gql-throttle.guard';
+import { GqlThrottlerGuard } from './gql-throttle.guard'
 
 @Module({
   providers: [GqlThrottlerGuard],

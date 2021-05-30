@@ -19,7 +19,7 @@ import { GQLModule } from '../gql'
         console.log(err)
         return err
       },
-      context: ({ req, res }) => ({ req, res })
+      context: ({ req, res }) => ({ req, res }),
     }),
     GQLModule,
     CourseModule,
