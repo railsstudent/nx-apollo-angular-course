@@ -4,6 +4,8 @@ import { SentenceResolver } from './sentence.resolver'
 import { PrismaService } from '@nx-apollo-angular-course/prisma'
 import { Language, Sentence } from '../entities'
 import { AddSentenceInput, UpdateSentenceInput } from '../dto'
+import { GqlThrottlerGuard } from '@nx-apollo-angular-course/gql'
+import { ThrottlerModule } from '@nestjs/throttler'
 
 describe('SentenceResolver', () => {
   let resolver: SentenceResolver
@@ -12,6 +14,12 @@ describe('SentenceResolver', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
+      imports: [
+        ThrottlerModule.forRoot({
+          ttl: 60,
+          limit: 100,
+        }),
+      ],
       providers: [
         SentenceResolver,
         SentenceService,
@@ -23,6 +31,10 @@ describe('SentenceResolver', () => {
         {
           provide: UniqueHelper,
           useValue: {},
+        },
+        {
+          provide: GqlThrottlerGuard,
+          useValue: {}
         },
       ],
     }).compile()

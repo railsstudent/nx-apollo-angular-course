@@ -4,6 +4,8 @@ import { CourseService, LessonService, UniqueHelper } from '../services'
 import { CourseResolver } from './course.resolver'
 import { AddCourseInput, CursorPaginationArgs, UpdateCourseInput } from '../dto'
 import { Course, PaginatedItems } from '../entities'
+import { GqlThrottlerGuard } from '@nx-apollo-angular-course/gql'
+import { ThrottlerModule } from '@nestjs/throttler'
 
 describe('CourseResolver', () => {
   let resolver: CourseResolver
@@ -12,6 +14,12 @@ describe('CourseResolver', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
+      imports: [
+        ThrottlerModule.forRoot({
+          ttl: 60,
+          limit: 100,
+        }),
+      ],
       providers: [
         CourseResolver,
         CourseService,
@@ -24,6 +32,10 @@ describe('CourseResolver', () => {
           provide: UniqueHelper,
           useValue: {},
         },
+        {
+          provide: GqlThrottlerGuard,
+          useValue: {}
+        }
       ],
     }).compile()
 

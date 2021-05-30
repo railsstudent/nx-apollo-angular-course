@@ -4,6 +4,8 @@ import { TranslationService, UniqueHelper } from '../services'
 import { LanguageResolver } from './language.resolver'
 import { Language } from '../entities'
 import { AddLanguageInput, UpdateLanguageInput } from '../dto'
+import { GqlThrottlerGuard } from '@nx-apollo-angular-course/gql'
+import { ThrottlerModule } from '@nestjs/throttler'
 
 describe('LanguageResolver', () => {
   let resolver: LanguageResolver
@@ -11,6 +13,12 @@ describe('LanguageResolver', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
+      imports: [
+        ThrottlerModule.forRoot({
+          ttl: 60,
+          limit: 100,
+        }),
+      ],
       providers: [
         LanguageResolver,
         TranslationService,
@@ -21,6 +29,10 @@ describe('LanguageResolver', () => {
         {
           provide: UniqueHelper,
           useValue: {},
+        },
+        {
+          provide: GqlThrottlerGuard,
+          useValue: {}
         },
       ],
     }).compile()

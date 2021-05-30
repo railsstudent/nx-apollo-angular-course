@@ -4,6 +4,8 @@ import { CursorPaginationArgs } from '../dto'
 import { CourseService, LessonService, SentenceService, UniqueHelper } from '../services'
 import { PaginatedItemsResolver } from './paginated-items.resolver'
 import { PaginatedItems } from '../entities'
+import { GqlThrottlerGuard } from '@nx-apollo-angular-course/gql'
+import { ThrottlerModule } from '@nestjs/throttler'
 
 describe('PaginatedItemsResolver', () => {
   let resolver: PaginatedItemsResolver
@@ -13,6 +15,12 @@ describe('PaginatedItemsResolver', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
+      imports: [
+        ThrottlerModule.forRoot({
+          ttl: 60,
+          limit: 100,
+        }),
+      ],
       providers: [
         PaginatedItemsResolver,
         CourseService,
@@ -25,6 +33,10 @@ describe('PaginatedItemsResolver', () => {
         {
           provide: UniqueHelper,
           useValue: {},
+        },
+        {
+          provide: GqlThrottlerGuard,
+          useValue: {}
         },
       ],
     }).compile()

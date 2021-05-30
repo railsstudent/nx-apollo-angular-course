@@ -3,6 +3,8 @@ import { SentenceService, UniqueHelper } from '../services'
 import { DeletedSentenceResolver } from './deleted-sentence.resolver'
 import { PrismaService } from '@nx-apollo-angular-course/prisma'
 import { DeletedSentence } from '../entities'
+import { GqlThrottlerGuard } from '@nx-apollo-angular-course/gql'
+import { ThrottlerModule } from '@nestjs/throttler'
 
 describe('DeletedSentenceResolver', () => {
   let resolver: DeletedSentenceResolver
@@ -10,6 +12,12 @@ describe('DeletedSentenceResolver', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
+      imports: [
+        ThrottlerModule.forRoot({
+          ttl: 60,
+          limit: 100,
+        }),
+      ],
       providers: [
         DeletedSentenceResolver,
         SentenceService,
@@ -20,6 +28,10 @@ describe('DeletedSentenceResolver', () => {
         {
           provide: UniqueHelper,
           useValue: {},
+        },
+        {
+          provide: GqlThrottlerGuard,
+          useValue: {}
         },
       ],
     }).compile()

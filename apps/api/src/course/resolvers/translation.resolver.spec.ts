@@ -4,6 +4,8 @@ import { PrismaService } from '@nx-apollo-angular-course/prisma'
 import { Translation } from '../entities'
 import { AddTranslationInput } from '../dto'
 import { TranslationResolver } from './translation.resolver'
+import { GqlThrottlerGuard } from '@nx-apollo-angular-course/gql'
+import { ThrottlerModule } from '@nestjs/throttler'
 
 describe('SentenceResolver', () => {
   let resolver: TranslationResolver
@@ -11,6 +13,12 @@ describe('SentenceResolver', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
+      imports: [
+        ThrottlerModule.forRoot({
+          ttl: 60,
+          limit: 100,
+        }),
+      ],
       providers: [
         TranslationResolver,
         TranslationService,
@@ -21,6 +29,10 @@ describe('SentenceResolver', () => {
         {
           provide: UniqueHelper,
           useValue: {},
+        },
+        {
+          provide: GqlThrottlerGuard,
+          useValue: {}
         },
       ],
     }).compile()
