@@ -1,7 +1,7 @@
 <div class="container font-sans" *ngIf="course$ | async as course">
   <div class="header p-2 flex justify-between items-center">
     <div class="back">
-      <button [routerLink]="['/courses']" class="back">Back</button>
+      <button [routerLink]="['/courses']" class="back focus:outline-none focus:ring-2 focus:ring-blue-600">Back</button>
     </div>
     <div class="course text-2xl flex justify-center">
       <img
