@@ -30,7 +30,6 @@
     "prisma:create": "npx prisma migrate dev --create-only --preview-feature",
     "prisma:deploy": "npx prisma migrate deploy --preview-feature",
     "prisma:format": "npx prisma format",
-    "nx:latest": "nx migrate latest",
     "nx:migrate": "nx migrate --run-migrations"
   },
   "private": true,

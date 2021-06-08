@@ -1,8 +1,7 @@
 import { Language } from '../src/course/entities'
 import { PrismaClient } from '@prisma/client'
+import { GreetingSentences } from './greeting'
 import {
-  SentenceTranslation,
-  GreetingSentences,
   GenderSentences,
   IntroSentences,
   AvailableLanguages,
@@ -12,6 +11,7 @@ import {
   PlacesOfWorkSentences,
   PrepositionSentences,
 } from './samples'
+import { SentenceTranslation } from './types'
 const prisma = new PrismaClient()
 
 const insertSentences = async (sentences: SentenceTranslation[], lessonId: string, newLanguages: Language[]) => {
