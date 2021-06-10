@@ -2,16 +2,17 @@ import { Language } from '../src/course/entities'
 import { PrismaClient } from '@prisma/client'
 import { GreetingSentences } from './greeting'
 import {
-  GenderSentences,
-  IntroSentences,
   AvailableLanguages,
-  ActivitySentences,
-  DescriptionSentences,
-  ProfessionSentences,
-  PlacesOfWorkSentences,
-  PrepositionSentences,
 } from './samples'
 import { SentenceTranslation } from './types'
+import { GenderSentences } from './gender'
+import { IntroSentences } from './intro'
+import { ActivitySentences } from './activity'
+import { DescriptionSentences } from './description'
+import { ProfessionSentences } from './profession'
+import { PlacesOfWorkSentences } from './places-of-work'
+import { PrepositionSentences } from './preposition'
+
 const prisma = new PrismaClient()
 
 const insertSentences = async (sentences: SentenceTranslation[], lessonId: string, newLanguages: Language[]) => {
