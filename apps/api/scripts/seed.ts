@@ -1,9 +1,7 @@
 import { Language } from '../src/course/entities'
 import { PrismaClient } from '@prisma/client'
 import { GreetingSentences } from './greeting'
-import {
-  AvailableLanguages,
-} from './samples'
+import { AvailableLanguages } from './samples'
 import { SentenceTranslation } from './types'
 import { GenderSentences } from './gender'
 import { IntroSentences } from './intro'

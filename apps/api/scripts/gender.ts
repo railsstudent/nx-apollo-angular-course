@@ -1,4 +1,4 @@
-import { SentenceTranslation, TRANS_LANG } from "./types";
+import { SentenceTranslation, TRANS_LANG } from './types'
 
 export const GenderSentences: SentenceTranslation[] = [
   {

@@ -1,7 +1,7 @@
 export enum TRANS_LANG {
-    ENG = 'English',
-    CHN = 'Chinese',
-    POR = 'Portuguese',
+  ENG = 'English',
+  CHN = 'Chinese',
+  POR = 'Portuguese',
 }
 
 export interface SentenceTranslation {
