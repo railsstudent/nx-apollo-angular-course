@@ -287,4 +287,17 @@ export const RestaurantSentences: SentenceTranslation[] = [
       },
     ],
   },
+  {
+    text: 'Helados',
+    translations: [
+      {
+        lang: TRANS_LANG.ENG,
+        text: 'Ice creams',
+      },
+      {
+        lang: TRANS_LANG.CHN,
+        text: '雪糕',
+      },
+    ],
+  },
 ]
