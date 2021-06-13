@@ -14,6 +14,7 @@ import { LessonComponent } from './lesson/lesson.component'
 import { SentenceComponent } from './sentence/sentence.component'
 import { UiCoursesModule } from '@nx-apollo-angular-course/ui-courses'
 import { AvailableTranslationComponent } from './available-translation/available-translation.component'
+import { VoiceModule } from '../voice';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { AvailableTranslationComponent } from './available-translation/available
     SentenceComponent,
     AvailableTranslationComponent,
   ],
-  imports: [CommonModule, CourseRoutingModule, ReactiveFormsModule, FormsModule, UiCoursesModule],
+  imports: [CommonModule, CourseRoutingModule, ReactiveFormsModule, FormsModule, UiCoursesModule, VoiceModule],
   exports: [
     CourseListComponent,
     LessonsComponent,

@@ -1,15 +1,12 @@
 <div class="sentence p-2 form-border">
   <div class="mb-2 flex">
-    <div class="flex-auto">
+    <div class="flex-auto flex flex-wrap">
       <span class="mr-3">{{ index + 1 }}. {{ sentence?.text }}</span>
-      <button
-        type="button"
-        class="bg-green-400 hover:bg-green-500 focus:outline-none mr-2"
-        *ngIf="selectedVoice$ | async as selectedVoice"
-        (click)="saySentence(selectedVoice)"
-      >
-        {{ selectedVoice?.name }}
-      </button>
+      <ng-container *ngIf="selectedVoice$ | async as selectedVoice">
+        <nx-apollo-angular-course-rate-control
+          [voiceName]="selectedVoice.name" (saySentence)="saySentence($event, selectedVoice)">
+        </nx-apollo-angular-course-rate-control>
+      </ng-container>
     </div>
     <button
       type="button"
