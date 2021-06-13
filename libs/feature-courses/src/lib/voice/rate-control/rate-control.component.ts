@@ -1,20 +1,21 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core'
 
 @Component({
   selector: 'nx-apollo-angular-course-rate-control',
   templateUrl: './rate-control.component.html',
-  styles: [`
-    :host {
-      display: block;
-    }
+  styles: [
+    `
+      :host {
+        display: block;
+      }
 
-    .volume {
-      width: 250px;
-    }
-  `]
+      .volume {
+        width: 250px;
+      }
+    `,
+  ],
 })
-export class RateControlComponent implements OnInit {
-
+export class RateControlComponent {
   @Input()
   voiceName: string
 
@@ -25,10 +26,6 @@ export class RateControlComponent implements OnInit {
   max = 1
   step = 0.01
   volume = 1
-
-  constructor() { }
-
-  ngOnInit(): void {}
 
   changeVolume(value: number) {
     this.volume = value
