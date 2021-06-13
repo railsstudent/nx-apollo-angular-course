@@ -55,7 +55,7 @@ export class VoiceService {
   }
 
   speak(speechInput: TextToSpeech): void {
-    const { text, voice } = speechInput
+    const { text, voice, rate } = speechInput
     if (!this.isSupported) {
       return
     }
@@ -65,7 +65,7 @@ export class VoiceService {
     if (voice) {
       const utterance = new SpeechSynthesisUtterance(text)
       utterance.voice = voice
-      utterance.rate = 0.75
+      utterance.rate = rate
       utterance.volume = 1
       utterance.pitch = 1
       window.speechSynthesis.speak(utterance)

@@ -28,7 +28,7 @@ export const RestaurantSentences: SentenceTranslation[] = [
     ],
   },
   {
-    text: 'Una sándwich con queso',
+    text: 'Un sándwich con queso',
     translations: [
       {
         lang: TRANS_LANG.ENG,
@@ -41,7 +41,7 @@ export const RestaurantSentences: SentenceTranslation[] = [
     ],
   },
   {
-    text: 'Un hamburgesa de pescado',
+    text: 'Una hamburgesa de pescado',
     translations: [
       {
         lang: TRANS_LANG.ENG,
@@ -54,7 +54,7 @@ export const RestaurantSentences: SentenceTranslation[] = [
     ],
   },
   {
-    text: 'Una sándwich de pescado',
+    text: 'Un sándwich de pescado',
     translations: [
       {
         lang: TRANS_LANG.ENG,
@@ -171,7 +171,7 @@ export const RestaurantSentences: SentenceTranslation[] = [
     ],
   },
   {
-    text: 'Con or sin sal',
+    text: 'Con o sin sal',
     translations: [
       {
         lang: TRANS_LANG.ENG,
@@ -184,7 +184,7 @@ export const RestaurantSentences: SentenceTranslation[] = [
     ],
   },
   {
-    text: 'Con or sin azúcar',
+    text: 'Con o sin azúcar',
     translations: [
       {
         lang: TRANS_LANG.ENG,

@@ -104,10 +104,10 @@ export class SentenceComponent implements OnInit {
     this.sentenceService.deleteSentence(this.lesson, sentenceId).subscribe()
   }
 
-  saySentence(selectedVoice: SpeechSynthesisVoice): void {
+  saySentence(rate: number, selectedVoice: SpeechSynthesisVoice): void {
     const text = this.sentence?.text || ''
     if (text && selectedVoice) {
-      this.voiceService.speak({ text, voice: selectedVoice })
+      this.voiceService.speak({ text, voice: selectedVoice, rate })
     }
   }
 }

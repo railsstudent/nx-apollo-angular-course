@@ -1,18 +1,18 @@
-export type NewCourseInput = {
+export interface NewCourseInput {
   name: string
   description: string
   languageId: string
 }
 
-export type NewLessonInput = {
+export interface NewLessonInput {
   name: string
 }
 
-export type NewSentenceInput = {
+export interface NewSentenceInput {
   text: string
 }
 
-export type NewTranslationInput = {
+export interface NewTranslationInput {
   text: string
   sentenceId: string
   languageId: string
