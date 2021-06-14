@@ -10,7 +10,11 @@ import { Component, EventEmitter, Input, Output } from '@angular/core'
       }
 
       .volume {
-        width: 250px;
+        width: 300px;
+      }
+
+      .volume-label {
+        width: 30px;
       }
     `,
   ],

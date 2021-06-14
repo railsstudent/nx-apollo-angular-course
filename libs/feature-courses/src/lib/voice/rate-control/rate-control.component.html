@@ -6,9 +6,9 @@
   >
     {{ voiceName }}
   </button>
-  <div class="flex items-center flex-nowrap">
+  <div class="flex items-center flex-nowrap volume">
     <label class="mr-2">Speed: </label>
-    <input class="volume mr-2" type="range" id="volume" name="volume" [min]="min" [max]="max" [value]="volume" [step]="step"
+    <input class="mr-2 flex-auto" type="range" id="volume" name="volume" [min]="min" [max]="max" [value]="volume" [step]="step"
       list="tickmarks" (change)="changeVolume($event.target.valueAsNumber)">
     <datalist id="tickmarks">
       <option value="0"></option>
@@ -23,6 +23,6 @@
       <option value="0.9"></option>
       <option value="1" label="1"></option>
     </datalist>
-    <span>{{ volume }}</span>
+    <label class="volume-label">{{ volume }}</label>
   </div>
 </div>
