@@ -23,14 +23,10 @@
     }
   },
   "projects": {
-    "nx-apollo-angular-course": {
+    "api": {
       "tags": []
     },
-    "nx-apollo-angular-course-e2e": {
-      "tags": [],
-      "implicitDependencies": ["nx-apollo-angular-course"]
-    },
-    "api": {
+    "api-e2e": {
       "tags": []
     },
     "api-interfaces": {
@@ -42,10 +38,14 @@
     "feature-courses": {
       "tags": []
     },
-    "ui-courses": {
+    "nx-apollo-angular-course": {
       "tags": []
     },
-    "api-e2e": {
+    "nx-apollo-angular-course-e2e": {
+      "tags": [],
+      "implicitDependencies": ["nx-apollo-angular-course"]
+    },
+    "ui-courses": {
       "tags": []
     }
   }

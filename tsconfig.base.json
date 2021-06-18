@@ -18,9 +18,9 @@
       "@nx-apollo-angular-course/api-interfaces": ["libs/api-interfaces/src/index.ts"],
       "@nx-apollo-angular-course/data-access": ["libs/data-access/src/index.ts"],
       "@nx-apollo-angular-course/feature-courses": ["libs/feature-courses/src/index.ts"],
-      "@nx-apollo-angular-course/ui-courses": ["libs/ui-courses/src/index.ts"],
+      "@nx-apollo-angular-course/gql": ["apps/api/src/gql/index.ts"],
       "@nx-apollo-angular-course/prisma": ["apps/api/src/prisma/index.ts"],
-      "@nx-apollo-angular-course/gql": ["apps/api/src/gql/index.ts"]
+      "@nx-apollo-angular-course/ui-courses": ["libs/ui-courses/src/index.ts"]
     },
     "strict": false,
     "noUnusedLocals": true,
