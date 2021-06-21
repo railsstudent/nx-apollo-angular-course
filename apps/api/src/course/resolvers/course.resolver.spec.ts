@@ -1,10 +1,10 @@
 import { Test, TestingModule } from '@nestjs/testing'
-import { PrismaService } from '@nx-apollo-angular-course/prisma'
+import { PrismaService } from '../../prisma'
 import { CourseService, LessonService, UniqueHelper } from '../services'
 import { CourseResolver } from './course.resolver'
 import { AddCourseInput, CursorPaginationArgs, UpdateCourseInput } from '../dto'
 import { Course, PaginatedItems } from '../entities'
-import { GqlThrottlerGuard } from '@nx-apollo-angular-course/gql'
+import { GqlThrottlerGuard } from '../../gql'
 import { ThrottlerModule } from '@nestjs/throttler'
 
 describe('CourseResolver', () => {

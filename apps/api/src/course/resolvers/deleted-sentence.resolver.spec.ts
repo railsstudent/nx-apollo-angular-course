@@ -1,9 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing'
 import { SentenceService, UniqueHelper } from '../services'
 import { DeletedSentenceResolver } from './deleted-sentence.resolver'
-import { PrismaService } from '@nx-apollo-angular-course/prisma'
+import { PrismaService } from '../../prisma'
 import { DeletedSentence } from '../entities'
-import { GqlThrottlerGuard } from '@nx-apollo-angular-course/gql'
+import { GqlThrottlerGuard } from '../../gql'
 import { ThrottlerModule } from '@nestjs/throttler'
 
 describe('DeletedSentenceResolver', () => {

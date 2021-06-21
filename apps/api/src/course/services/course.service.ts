@@ -4,6 +4,7 @@ import { PrismaService } from '../../prisma'
 import { AddCourseInput, CursorPaginationArgs, UpdateCourseInput } from '../dto'
 import { Course, PaginatedItems } from '../entities'
 import { UniqueHelper } from './unique.helper'
+import { Prisma } from '@prisma/client'
 
 @Injectable()
 export class CourseService {
@@ -25,14 +26,14 @@ export class CourseService {
       take,
       orderBy: [
         {
-          createdAt: 'asc',
+          createdAt: Prisma.SortOrder.asc
         },
       ],
       include: {
         language: true,
       },
     }
-    const findOptions: any = where ? { ...baseOptions, where } : baseOptions
+    const findOptions = where ? { ...baseOptions, where } : baseOptions
     const courses = await this.service.course.findMany(findOptions)
     const nextCursor = courses && courses.length > 0 ? courses[courses.length - 1].createdAt.getTime() : -1
 

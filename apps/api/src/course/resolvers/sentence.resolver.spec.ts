@@ -1,10 +1,10 @@
 import { Test, TestingModule } from '@nestjs/testing'
 import { TranslationService, SentenceService, UniqueHelper } from '../services'
 import { SentenceResolver } from './sentence.resolver'
-import { PrismaService } from '@nx-apollo-angular-course/prisma'
+import { PrismaService } from '../../prisma'
 import { Language, Sentence } from '../entities'
 import { AddSentenceInput, UpdateSentenceInput } from '../dto'
-import { GqlThrottlerGuard } from '@nx-apollo-angular-course/gql'
+import { GqlThrottlerGuard } from '../../gql'
 import { ThrottlerModule } from '@nestjs/throttler'
 
 describe('SentenceResolver', () => {

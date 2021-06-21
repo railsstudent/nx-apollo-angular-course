@@ -1,10 +1,10 @@
 import { Test, TestingModule } from '@nestjs/testing'
-import { PrismaService } from '@nx-apollo-angular-course/prisma'
+import { PrismaService } from '../../prisma'
 import { CursorPaginationArgs } from '../dto'
 import { CourseService, LessonService, SentenceService, UniqueHelper } from '../services'
 import { PaginatedItemsResolver } from './paginated-items.resolver'
 import { PaginatedItems } from '../entities'
-import { GqlThrottlerGuard } from '@nx-apollo-angular-course/gql'
+import { GqlThrottlerGuard } from '../../gql'
 import { ThrottlerModule } from '@nestjs/throttler'
 
 describe('PaginatedItemsResolver', () => {

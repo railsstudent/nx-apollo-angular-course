@@ -1,6 +1,6 @@
 import { UniqueHelper } from './unique.helper'
 import { Test, TestingModule } from '@nestjs/testing'
-import { PrismaService } from '@nx-apollo-angular-course/prisma'
+import { PrismaService } from '../../prisma'
 import { SentenceService } from './sentence.service'
 
 describe('SentenceService', () => {
