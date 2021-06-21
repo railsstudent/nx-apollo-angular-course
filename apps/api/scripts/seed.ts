@@ -11,6 +11,7 @@ import { ProfessionSentences } from './profession'
 import { PlacesOfWorkSentences } from './places-of-work'
 import { PrepositionSentences } from './preposition'
 import { RestaurantSentences } from './restaurant'
+import { WeatherSentences } from './weather'
 
 const prisma = new PrismaClient()
 
@@ -129,7 +130,7 @@ async function main() {
     'Professions',
     'Places and stores of professions',
     'Preposition of place',
-    'Task',
+    'Weather',
   ]
 
   const spanishLevel1LastLessonIdx = 6
@@ -158,6 +159,7 @@ async function main() {
     professionalLesson,
     placesOfWorkLesson,
     prepositionPlaceLesson,
+    weatherLesson,
   ] = resolvedLessons
   console.log(unused1, unused3, unused4)
   console.log('Insert lessons - done')
@@ -173,6 +175,7 @@ async function main() {
     insertSentences(PlacesOfWorkSentences, placesOfWorkLesson.id, newLanguages),
     insertSentences(PrepositionSentences, prepositionPlaceLesson.id, newLanguages),
     insertSentences(RestaurantSentences, restaurantLesson.id, newLanguages),
+    insertSentences(WeatherSentences, weatherLesson.id, newLanguages)
   ]
   await Promise.all(createSentences)
   console.log('Insert sentences - end')
