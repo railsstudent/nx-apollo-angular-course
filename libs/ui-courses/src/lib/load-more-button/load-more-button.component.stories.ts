@@ -17,7 +17,7 @@ const Template: Story<LoadMoreButtonComponent> = (args: LoadMoreButtonComponent)
 });
 
 const callback = (args: unknown) => {
-  console.log('Callback fired', args)
+  alert(`called back fired, args: ${args}`)
 }
 
 export const Primary = Template.bind({});
