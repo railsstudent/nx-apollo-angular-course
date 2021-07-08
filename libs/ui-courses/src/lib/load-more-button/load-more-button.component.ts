@@ -24,8 +24,6 @@ export class LoadMoreButtonComponent implements OnInit {
 
   classNames = 'disabled:opacity-50 focus:outline-none focus:ring-2'
 
-  constructor() {}
-
   ngOnInit(): void {
     this.classNames = `${this.classNames} bg-${this.color}-500 hover:bg-${this.color}-600 focus:ring-${this.color}-700`
   }

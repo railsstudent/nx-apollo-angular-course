@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core'
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core'
 import { UntilDestroy } from '@ngneat/until-destroy'
 import { QueryRef } from 'apollo-angular'
 import { Observable, of } from 'rxjs'
@@ -29,7 +29,7 @@ export class CourseListComponent implements OnInit {
   cursor = -1
   loading = false
 
-  constructor(private service: CourseService, private alertService: AlertService) {}
+  constructor(private service: CourseService, private alertService: AlertService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.coursesQuery = this.service.getPaginatedCoursesQueryRef()
@@ -70,6 +70,9 @@ export class CourseListComponent implements OnInit {
         },
       })
       .catch((err) => console.error(err))
-      .finally(() => (this.loading = false))
+      .finally(() => {
+        this.loading = false
+        this.cdr.markForCheck()
+      })
   }
 }

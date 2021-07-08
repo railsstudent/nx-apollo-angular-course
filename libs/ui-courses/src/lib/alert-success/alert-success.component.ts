@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core'
+import { Component, ChangeDetectionStrategy } from '@angular/core'
 
 @Component({
   selector: 'nx-apollo-angular-course-alert-success',
@@ -13,9 +13,6 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core'
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AlertSuccessComponent implements OnInit {
+export class AlertSuccessComponent {
   opened = true
-  constructor() {}
-
-  ngOnInit(): void {}
 }
