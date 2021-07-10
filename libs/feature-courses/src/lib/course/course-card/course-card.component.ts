@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core'
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
 import { Router } from '@angular/router'
 import { Course } from '@nx-apollo-angular-course/data-access'
 
@@ -8,13 +8,11 @@ import { Course } from '@nx-apollo-angular-course/data-access'
   styleUrls: ['./course-card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CourseCardComponent implements OnInit {
+export class CourseCardComponent {
   @Input()
   course: Course | undefined = undefined
 
   constructor(private router: Router) {}
-
-  ngOnInit(): void {}
 
   viewLesson(): void {
     if (!this.course) {
