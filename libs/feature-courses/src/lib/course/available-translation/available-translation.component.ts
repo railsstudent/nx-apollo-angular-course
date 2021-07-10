@@ -1,11 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
+import { Component, EventEmitter, Input, Output } from '@angular/core'
 import { Language, Translation } from '@nx-apollo-angular-course/data-access'
 
 @Component({
   selector: 'nx-apollo-angular-course-available-translation',
   templateUrl: './available-translation.component.html',
 })
-export class AvailableTranslationComponent implements OnInit {
+export class AvailableTranslationComponent {
   @Input()
   availableTranslations: Translation[] = []
 
@@ -20,10 +20,6 @@ export class AvailableTranslationComponent implements OnInit {
 
   @Output()
   closeTranslation = new EventEmitter<void>()
-
-  constructor() {}
-
-  ngOnInit(): void {}
 
   trackByFunc(_index: number, availableTranslation: Language): string {
     return availableTranslation.id
