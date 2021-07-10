@@ -37,3 +37,15 @@ Primary.args = {
     availableTranslations,
     selectedTranslation:  availableTranslations[0],
 }
+
+export const English = Template.bind({});
+English.args = {
+  availableTranslations,
+  selectedTranslation:  availableTranslations[1],
+}
+
+export const Portuguese = Template.bind({});
+Portuguese.args = {
+  availableTranslations,
+  selectedTranslation:  availableTranslations[2],
+}
