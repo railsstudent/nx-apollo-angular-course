@@ -7,7 +7,7 @@ import { Language, Translation } from '@nx-apollo-angular-course/data-access'
 })
 export class AvailableTranslationComponent {
   @Input()
-  availableTranslations: Translation[] = []
+  availableTranslations: Language[] = []
 
   @Input()
   selectedTranslation: Translation | null = null

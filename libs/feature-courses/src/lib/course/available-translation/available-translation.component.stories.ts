@@ -12,7 +12,7 @@ export default {
   ],
 } as Meta<AvailableTranslationComponent>;
 
-export const actionData = {
+export const availableTranslationActionsData = {
   deleteTranslation: action('deleteTranslation'),
   showTranslation: action('showTranslation'),
   closeTranslation: action('closeTranslation'),
@@ -22,14 +22,14 @@ const Template: Story<AvailableTranslationComponent> = (args: AvailableTranslati
   component: AvailableTranslationComponent,
   props: {
     ...args,
-    ...actionData,
+    ...availableTranslationActionsData,
   }
 });
 
 const availableTranslations = [
-  { id: '101', name: 'Chinese', text: '早安' },
-  { id: '102', name: 'English', text: 'Good Morning' },
-  { id: '103', name: 'Portuguese', text: 'Bom dia' },
+  { id: '101', name: 'Chinese' },
+  { id: '102', name: 'English' },
+  { id: '103', name: 'Portuguese' },
 ]
 
 export const Primary = Template.bind({});

@@ -12,7 +12,7 @@ export default {
   ],
 } as Meta<RateControlComponent>;
 
-export const actionsData = {
+export const rateControlActionsData = {
   saySentence: action('saySentence')
 }
 
@@ -20,7 +20,7 @@ const Template: Story<RateControlComponent> = (args: RateControlComponent) => ({
   component: RateControlComponent,
   props: {
     ...args,
-    ...actionsData,
+    ...rateControlActionsData,
   }
 });
 
