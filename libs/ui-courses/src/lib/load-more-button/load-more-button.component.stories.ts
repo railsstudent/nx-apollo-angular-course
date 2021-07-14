@@ -1,5 +1,6 @@
-import { moduleMetadata, Story, Meta } from '@storybook/angular';
-import { LoadMoreButtonComponent } from './load-more-button.component';
+import { action } from '@storybook/addon-actions'
+import { moduleMetadata, Story, Meta } from '@storybook/angular'
+import { LoadMoreButtonComponent } from './load-more-button.component'
 
 export default {
   title: 'LoadMoreButtonComponent',
@@ -7,23 +8,24 @@ export default {
   decorators: [
     moduleMetadata({
       imports: [],
-    })
+    }),
   ],
-} as Meta<LoadMoreButtonComponent>;
+} as Meta<LoadMoreButtonComponent>
+
+const loadMoreActionsData = {
+  loadMore: action('loadMore'),
+}
 
 const Template: Story<LoadMoreButtonComponent> = (args: LoadMoreButtonComponent) => ({
   component: LoadMoreButtonComponent,
-  props: args,
-});
+  props: {
+    ...args,
+    ...loadMoreActionsData,
+  },
+})
 
-const callback = (args: unknown) => {
-  alert(`called back fired, args: ${args}`)
-}
-
-export const Primary = Template.bind({});
+export const Primary = Template.bind({})
 Primary.args = {
-    loading:  false,
-    callbackFunction: callback.bind(this),
-    someArg:  1,
-    color:  'green',
+  loading: false,
+  color: 'green',
 }

@@ -99,7 +99,7 @@ export class LessonComponent implements OnInit {
     }
   }
 
-  loadMore(lesson: Lesson): void {
+  loadMoreSentences(lesson: Lesson): void {
     if (lesson) {
       this.loading = true
       this.lessonService

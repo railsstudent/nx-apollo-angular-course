@@ -12,7 +12,7 @@
   </nx-apollo-angular-course-alert-success>
   <ng-container *ngIf="courses$ | async as courses">
     <div class="flex m-2">
-      <nx-apollo-angular-course-load-more-button [callbackFunction]="loadMore.bind(this)" [loading]="loading">
+      <nx-apollo-angular-course-load-more-button (loadMore)="loadMoreCourses()" [loading]="loading">
       </nx-apollo-angular-course-load-more-button>
     </div>
     <div class="course-list flex flex-wrap" *ngIf="courses; else noCourse">

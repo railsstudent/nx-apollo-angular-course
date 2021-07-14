@@ -31,11 +31,7 @@
     </nx-apollo-angular-course-alert-success>
     <div class="m-2 ml-0">
       <span class="title mb-4 mr-4">My Lessons</span>
-      <nx-apollo-angular-course-load-more-button
-        [callbackFunction]="loadMore.bind(this)"
-        [someArg]="course"
-        [loading]="loading"
-      >
+      <nx-apollo-angular-course-load-more-button (loadMore)="loadMoreLessons(course)" [loading]="loading">
       </nx-apollo-angular-course-load-more-button>
     </div>
     <ng-container *ngIf="lessons$ | async as lessons">

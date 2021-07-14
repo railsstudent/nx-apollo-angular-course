@@ -41,8 +41,7 @@
       <span class="title mb-4 mr-4">Sentences</span>
       <nx-apollo-angular-course-load-more-button
         [color]="'blue'"
-        [callbackFunction]="loadMore.bind(this)"
-        [someArg]="lesson"
+        (loadMore)="loadMoreSentences(lesson)"
         [loading]="loading"
         class="mr-2"
       >

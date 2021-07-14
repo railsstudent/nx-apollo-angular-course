@@ -1,9 +1,9 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core'
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 
 @Component({
   selector: 'nx-apollo-angular-course-load-more-button',
   template: `
-    <button [ngClass]="classNames" (click)="callbackFunction(someArg)" [disabled]="loading">
+    <button [ngClass]="classNames" (click)="loadMore.emit()" [disabled]="loading">
       {{ loading ? 'Loading...' : 'Load More' }}
     </button>
   `,
@@ -14,13 +14,10 @@ export class LoadMoreButtonComponent implements OnInit {
   loading = false
 
   @Input()
-  callbackFunction!: (args: any) => void
-
-  @Input()
-  someArg: any | undefined = undefined
-
-  @Input()
   color = 'blue'
+
+  @Output()
+  loadMore = new EventEmitter<void>()
 
   classNames = 'disabled:opacity-50 focus:outline-none focus:ring-2'
 
