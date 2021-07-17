@@ -1,13 +1,12 @@
-import { TextToSpeech } from '@nx-apollo-angular-course/api-interfaces';
-import { SentenceService, VoiceService } from '@nx-apollo-angular-course/data-access';
-import { moduleMetadata, Story, Meta } from '@storybook/angular';
-import { SentenceComponent } from './sentence.component';
-import { RateControlComponent } from '../../voice/rate-control/rate-control.component';
-import { of } from 'rxjs';
-import { availableTranslationActionsData } from '../available-translation/available-translation.component.stories';
-import { rateControlActionsData } from '../../voice/rate-control/rate-control.component.stories';
-import { AvailableTranslationComponent } from '../available-translation/available-translation.component';
-import { CommonModule } from '@angular/common';
+import { TextToSpeech } from '@nx-apollo-angular-course/api-interfaces'
+import { SentenceService, VoiceService } from '@nx-apollo-angular-course/data-access'
+import { moduleMetadata, Story, Meta } from '@storybook/angular'
+import { SentenceComponent } from './sentence.component'
+import { RateControlComponent } from '../../voice/rate-control/rate-control.component'
+import { EMPTY, of } from 'rxjs'
+import { rateControlActionsData } from '../../voice/rate-control/rate-control.component.stories'
+import { AvailableTranslationComponent } from '../available-translation/available-translation.component'
+import { CommonModule } from '@angular/common'
 
 const mockVoiceService = () => {
   return {
@@ -31,13 +30,13 @@ const mockVoiceService = () => {
       alert(`text: ${text}`)
       alert(voice)
       alert(`rate: ${rate}`)
-    }
+    },
   }
 }
 
 const availableTranslations = [
-  { id: '101', name: 'Chinese' },
-  { id: '102', name: 'English' },
+  { id: '101', name: 'English' },
+  { id: '102', name: 'Chinese' },
   { id: '103', name: 'Portuguese' },
 ]
 
@@ -49,7 +48,7 @@ const translations = [
       name: 'English',
       fullname: 'English',
     },
-    text: 'Good Morning'
+    text: 'Good Morning',
   },
   {
     id: '2',
@@ -58,7 +57,7 @@ const translations = [
       name: 'Chinese',
       fullname: 'Chinese',
     },
-    text: '早安'
+    text: '早安',
   },
   {
     id: '3',
@@ -67,8 +66,8 @@ const translations = [
       name: 'Portuguese',
       fullname: 'Portuguese',
     },
-    text: 'Bom dia'
-  }
+    text: 'Bom dia',
+  },
 ]
 
 const sentence = {
@@ -78,12 +77,29 @@ const sentence = {
   translations,
 }
 
+const mockSentenceService = () => ({
+  getTranslation(_sentenceId, languageId) {
+    const translation = translations.find((translation) => translation.language.id === languageId)
+    return translation ? of(translation) : EMPTY
+  },
+  deleteSentence: () => {
+    console.log('sentenceService deleteSentence called')
+    return of(sentence)
+  },
+  deleteTranslate: (_sentenceId, translationId) => {
+    const translation = sentence.translations.find((translation) => translation.id === translationId)
+    const languageId = translation?.language?.id || ''
+    sentence.availableTranslations = sentence.availableTranslations.filter((language) => language.id !== languageId)
+    return of(translation)
+  },
+})
+
 export default {
   title: 'SentenceComponent',
   component: SentenceComponent,
   subcomponents: {
     AvailableTranslationComponent,
-    RateControlComponent
+    RateControlComponent,
   },
   decorators: [
     moduleMetadata({
@@ -92,43 +108,34 @@ export default {
       providers: [
         {
           provide: VoiceService,
-          useFactory: mockVoiceService
+          useFactory: mockVoiceService,
         },
         {
           provide: SentenceService,
-          userFactory: () => ({
-            getTranslation(_sentenceId, languageId) {
-              return translations.find(translation => translation.language.id === languageId)
-            },
-            deleteSentence: () => {
-              console.log('sentenceService deleteSentence called')
-              return of(sentence)
-            }
-          }),
-        }
-      ]
+          useFactory: mockSentenceService,
+        },
+      ],
     }),
   ],
-} as Meta<SentenceComponent>;
+} as Meta<SentenceComponent>
 
 const Template: Story<SentenceComponent> = (args: SentenceComponent) => ({
   component: SentenceComponent,
   props: {
     ...args,
     ...rateControlActionsData,
-    ...availableTranslationActionsData,
-  }
-});
+  },
+})
 
-export const Primary = Template.bind({});
+export const Primary = Template.bind({})
 Primary.args = {
-    sentence,
-    index:  1,
-    lesson:  {
-      course: {
-        language: {
-          name: 'Spanish'
-        }
-      }
+  sentence,
+  index: 1,
+  lesson: {
+    course: {
+      language: {
+        name: 'Spanish',
+      },
     },
+  },
 }

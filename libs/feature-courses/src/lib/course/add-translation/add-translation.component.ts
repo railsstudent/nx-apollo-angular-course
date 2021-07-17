@@ -22,7 +22,7 @@ export class AddTranslationComponent implements OnInit, OnChanges {
   sentences: Sentence[] | undefined | null = []
 
   @Output()
-  submitNewTranlsation = new EventEmitter<NewTranslationInput>()
+  submitNewTranslation = new EventEmitter<NewTranslationInput>()
 
   form = new FormGroup({})
 
@@ -64,6 +64,6 @@ export class AddTranslationComponent implements OnInit, OnChanges {
     if (!this.form.valid) {
       return
     }
-    this.submitNewTranlsation.emit(this.form.value)
+    this.submitNewTranslation.emit(this.form.value)
   }
 }

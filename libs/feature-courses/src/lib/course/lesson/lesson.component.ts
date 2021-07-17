@@ -88,7 +88,7 @@ export class LessonComponent implements OnInit {
     }
   }
 
-  submitNewTranslation(lesson: Lesson, newInput: NewTranslationInput): void {
+  submitTranslation(lesson: Lesson, newInput: NewTranslationInput): void {
     if (newInput && lesson) {
       const sentence = (lesson?.paginatedSentences?.sentences || []).find((s) => s.id === newInput.sentenceId)
       if (!sentence) {
