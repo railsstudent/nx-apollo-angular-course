@@ -28,7 +28,7 @@
         class="flex-grow flex-shrink add-translation"
         [languages]="languages$ | async"
         [sentences]="lesson?.paginatedSentences?.sentences"
-        (submitNewTranslation)="submitTranslation(lesson, $event)"
+        (submitNewTranslation)="submitNewTranslation(lesson, $event)"
       ></nx-apollo-angular-course-add-translation>
     </div>
     <nx-apollo-angular-course-alert-error *ngIf="errMsg$ | async as msg">
