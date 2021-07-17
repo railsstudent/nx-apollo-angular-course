@@ -82,7 +82,7 @@ const mockAlerService = () => {
   }
 }
 
-const mockLessonService = () => ({
+const mockLessonService = (alertService: AlertService) => ({
   addLesson(course: Course, newLesson: AddLessonInput) {
     const lesson = {
       id: `${Date.now()}`,
@@ -91,17 +91,16 @@ const mockLessonService = () => ({
       totalSentences: 0,
     }
 
-    const service = mockAlerService()
-    service.clearMsgs()
+    alertService.clearMsgs()
 
     const exist = !!course.paginatedLessons.lessons.find((lesson) => lesson.name === newLesson.name)
 
     if (exist) {
-      service.setError('Lesson exists')
+      alertService.setError('Lesson exists')
       return EMPTY
     } else {
       course.paginatedLessons.lessons.push(lesson)
-      service.setSuccess('Lesson added successfully')
+      alertService.setSuccess('Lesson added successfully')
       return of(lesson)
     }
   },
@@ -146,16 +145,17 @@ export default {
           useFactory: mockActiveRoute,
         },
         {
+          provide: AlertService,
+          useFactory: mockAlerService,
+        },
+        {
           provide: CourseService,
           useFactory: mockCourseService,
         },
         {
           provide: LessonService,
-          useFactory: mockLessonService,
-        },
-        {
-          provide: AlertService,
-          useFactory: mockAlerService,
+          useFactory: (alertService: AlertService) => mockLessonService(alertService),
+          deps: [AlertService],
         },
       ],
     }),

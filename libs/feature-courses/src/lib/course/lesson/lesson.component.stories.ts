@@ -1,18 +1,29 @@
-import { ReactiveFormsModule } from '@angular/forms';
-import { AddTranslationComponent } from './../add-translation/add-translation.component';
-import { AddSentenceComponent } from './../add-sentence/add-sentence.component';
-import { moduleMetadata, Story, Meta } from '@storybook/angular';
-import { LessonComponent } from './lesson.component';
+import { ReactiveFormsModule } from '@angular/forms'
+import { AddTranslationComponent } from './../add-translation/add-translation.component'
+import { AddSentenceComponent } from './../add-sentence/add-sentence.component'
+import { moduleMetadata, Story, Meta } from '@storybook/angular'
+import { LessonComponent } from './lesson.component'
 import {
   AlertErrorComponent,
   AlertSuccessComponent,
   LoadMoreButtonComponent,
 } from '@nx-apollo-angular-course/ui-courses'
-import { of, Subject } from 'rxjs';
-import { AlertService, CourseService, LessonService, SentenceService } from '@nx-apollo-angular-course/data-access';
-import { action } from '@storybook/addon-actions';
-import { ActivatedRoute } from '@angular/router';
-import { ChangeDetectorRef } from '@angular/core';
+import { EMPTY, of, Subject } from 'rxjs'
+import {
+  AddSentenceInput,
+  AlertService,
+  CourseService,
+  Lesson,
+  LessonService,
+  Sentence,
+  SentenceService,
+} from '@nx-apollo-angular-course/data-access'
+import { action } from '@storybook/addon-actions'
+import { ActivatedRoute } from '@angular/router'
+import { CommonModule } from '@angular/common'
+import { NewTranslationInput } from '@nx-apollo-angular-course/api-interfaces'
+import { SentenceComponent } from '../sentence/sentence.component'
+import { ChangeDetectorRef } from '@angular/core'
 
 const mockAlerService = () => {
   const errMsgSub$ = new Subject<string>()
@@ -51,6 +62,132 @@ const mockActiveRoute = () => {
   }
 }
 
+const languages = [
+  { id: '1', name: 'Chinese', fullname: 'Chinese' },
+  { id: '2', name: 'English', fullname: 'English' },
+  { id: '3', fulnamelname: 'Portuguese', fullname: 'Portuguese' },
+]
+
+const mockCourseService = () => ({
+  getLanguages() {
+    return of(languages)
+  },
+})
+
+const course = {
+  id: '1',
+  name: 'Spanish 101',
+  description: 'Beginner Spanish',
+  language: {
+    id: '4',
+    name: 'Spanish',
+    fullname: 'Spanish',
+    shinyFlag: 'https://www.countryflags.io/es/shiny/64.png',
+  },
+  paginatedLessons: {
+    cursor: 100,
+    lessons: [
+      {
+        id: '100',
+        name: 'Greeting',
+        totalSentences: 0,
+        paginatedSentences: [],
+      },
+    ],
+  },
+}
+
+const lesson = {
+  id: '1',
+  course,
+  name: 'Food and drink',
+  description: 'Beginner Spanish',
+  totalSentences: 1,
+  paginatedSentences: {
+    cursor: 100,
+    sentences: [
+      {
+        id: '100',
+        text: 'Good morning',
+        availableTranslations: [],
+        translations: [],
+      },
+    ],
+  },
+}
+
+const mockLessonService = () => ({
+  getLesson() {
+    return of(lesson)
+  },
+  nextSentences() {
+    const id = Date.now()
+    const sentence = {
+      id: `101 ${id}`,
+      text: `Good evening ${id}`,
+      availableTranslations: [],
+      translations: [],
+    }
+    const cursor = 200
+    lesson.paginatedSentences.cursor = cursor
+    lesson.paginatedSentences.sentences.push(sentence)
+    lesson.totalSentences = lesson.totalSentences + 1
+    return of({
+      cursor,
+      sentences: [sentence],
+    })
+  },
+})
+
+const mockSentenceService = () => ({
+  addSentence(lesson: Lesson, newSentence: AddSentenceInput) {
+    const sentence = {
+      id: `${Date.now()}`,
+      text: newSentence.text,
+      lesson,
+      availableTranslations: [],
+      translations: [],
+    }
+
+    const service = mockAlerService()
+    service.clearMsgs()
+
+    const exist = !!(lesson.paginatedSentences.sentences || []).find((sentence) => sentence.text === newSentence.text)
+
+    if (exist) {
+      service.setError('Sentence exists')
+      return EMPTY
+    } else {
+      lesson.paginatedSentences.sentences.push(sentence)
+      lesson.totalSentences = lesson.totalSentences + 1
+      service.setSuccess('Sentence added successfully')
+      return of(sentence)
+    }
+  },
+  addTranslate(sentence: Sentence, newTranslation: NewTranslationInput) {
+    const translation = {
+      id: `${Date.now()}`,
+      text: newTranslation.text,
+      sentence,
+      language: languages.find((language) => language.id === newTranslation.languageId),
+    }
+
+    const service = mockAlerService()
+    service.clearMsgs()
+
+    const exist = !!(sentence.availableTranslations || []).find((t) => t.id === newTranslation.languageId)
+
+    if (exist) {
+      service.setError('Translation exists')
+      return EMPTY
+    } else {
+      sentence.availableTranslations.push(translation.language)
+      service.setSuccess('Translation added successfully')
+      return of(translation)
+    }
+  },
+})
+
 export default {
   title: 'LessonComponent',
   component: LessonComponent,
@@ -60,16 +197,18 @@ export default {
     LoadMoreButtonComponent,
     AlertErrorComponent,
     AlertSuccessComponent,
+    SentenceComponent,
   },
   decorators: [
     moduleMetadata({
-      imports: [
+      imports: [ReactiveFormsModule, CommonModule],
+      declarations: [
         AddSentenceComponent,
         AddTranslationComponent,
         LoadMoreButtonComponent,
         AlertErrorComponent,
         AlertSuccessComponent,
-        ReactiveFormsModule,
+        SentenceComponent,
       ],
       providers: [
         {
@@ -82,29 +221,33 @@ export default {
         },
         {
           provide: LessonService,
-          useValue: {},
+          useFactory: mockLessonService,
         },
         {
           provide: CourseService,
-          useValue: {},
+          useFactory: mockCourseService,
         },
         {
           provide: SentenceService,
-          useValue: {},
+          useValue: mockSentenceService,
         },
         {
           provide: ChangeDetectorRef,
-          useValue: {},
-        }
-      ]
-    })
+          useValue: {
+            markForCheck() {
+              console.log('markForCheck')
+            },
+          },
+        },
+      ],
+    }),
   ],
-} as Meta<LessonComponent>;
+} as Meta<LessonComponent>
 
 const lessonActionsData = {
   submitNewSentence: action('submitNewSentence'),
   submitNewTranlsation: action('submitNewTranlsation'),
-  loadMore: action('loadMore')
+  loadMore: action('loadMore'),
 }
 
 const Template: Story<LessonComponent> = (args: LessonComponent) => ({
@@ -112,10 +255,8 @@ const Template: Story<LessonComponent> = (args: LessonComponent) => ({
   props: {
     ...args,
     ...lessonActionsData,
-  }
-});
+  },
+})
 
-
-export const Primary = Template.bind({});
-Primary.args = {
-}
+export const Primary = Template.bind({})
+Primary.args = {}
