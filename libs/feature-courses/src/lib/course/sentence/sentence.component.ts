@@ -64,8 +64,12 @@ export class SentenceComponent implements OnInit {
     this.selectedVoice$ = isReady
       ? of(this.voiceService.getSelectedVoice(languageName))
       : this.voiceService.voicesAvailable$.pipe(
-          map((ready: boolean) => (ready && languageName ? this.voiceService.getSelectedVoice(languageName) : undefined)),
+          map((ready: boolean) =>
+            ready && languageName ? this.voiceService.getSelectedVoice(languageName) : undefined,
+          ),
         )
+
+    console.log('sentence component', this.sentence)
   }
 
   trackByFunc(_index: number, availableTranslation: Language): string {

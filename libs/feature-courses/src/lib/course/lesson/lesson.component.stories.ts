@@ -20,7 +20,6 @@ import {
   Sentence,
   SentenceService,
 } from '@nx-apollo-angular-course/data-access'
-// import { action } from '@storybook/addon-actions'
 import { ActivatedRoute } from '@angular/router'
 import { CommonModule } from '@angular/common'
 import { NewTranslationInput } from '@nx-apollo-angular-course/api-interfaces'
@@ -182,9 +181,15 @@ const mockSentenceService = (alertService: AlertService) => ({
       return EMPTY
     } else {
       sentence.availableTranslations.push(translation.language)
+      sentence.translations.push(translation)
       alertService.setSuccess('Translation added successfully')
       return of(translation)
     }
+  },
+  deleteSentence(lesson: Lesson, sentenceId: string) {
+    const sentence = lesson.paginatedSentences.sentences.find((item) => item.id === sentenceId)
+    lesson.paginatedSentences.sentences = lesson.paginatedSentences.sentences.filter((item) => item.id !== sentenceId)
+    return of(sentence)
   },
 })
 
@@ -210,7 +215,7 @@ export default {
         AlertErrorComponent,
         AlertSuccessComponent,
         SentenceComponent,
-        RateControlComponent
+        RateControlComponent,
       ],
       providers: [
         {
@@ -232,7 +237,7 @@ export default {
         {
           provide: SentenceService,
           useFactory: (service: AlertService) => mockSentenceService(service),
-          deps: [AlertService]
+          deps: [AlertService],
         },
         {
           provide: ChangeDetectorRef,
@@ -247,17 +252,10 @@ export default {
   ],
 } as Meta<LessonComponent>
 
-// const lessonActionsData = {
-//   submitNewSentence: action('submitNewSentence'),
-//   submitNewTranlsation: action('submitNewTranlsation'),
-//   loadMore: action('loadMore'),
-// }
-
 const Template: Story<LessonComponent> = (args: LessonComponent) => ({
   component: LessonComponent,
   props: {
     ...args,
-    // ...lessonActionsData,
   },
 })
 
