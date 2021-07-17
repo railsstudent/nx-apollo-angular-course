@@ -1,6 +1,7 @@
-import { moduleMetadata, Story, Meta } from '@storybook/angular';
-import { CourseCardComponent } from './course-card.component';
-import {RouterTestingModule} from '@angular/router/testing';
+import { moduleMetadata, Story, Meta } from '@storybook/angular'
+import { CourseCardComponent } from './course-card.component'
+import { RouterTestingModule } from '@angular/router/testing'
+import { course } from '../storybook'
 
 export default {
   title: 'CourseCardComponent',
@@ -8,38 +9,27 @@ export default {
   decorators: [
     moduleMetadata({
       imports: [RouterTestingModule],
-    })
+    }),
   ],
-} as Meta<CourseCardComponent>;
+} as Meta<CourseCardComponent>
 
 const Template: Story<CourseCardComponent> = (args: CourseCardComponent) => ({
   component: CourseCardComponent,
   props: args,
-});
+})
 
-
-const course = {
-  id: '1',
-  name: 'Spanish 101',
-  description: 'Beginner Spanish',
-  language: {
-    id: '1',
-    fullname: 'Spanish (Espanol)'
-  }
-}
-
-export const Primary = Template.bind({});
+export const Primary = Template.bind({})
 Primary.args = {
-    course
+  course,
 }
 
-export const CourseWithFlag = Template.bind({});
+export const CourseWithFlag = Template.bind({})
 CourseWithFlag.args = {
   course: {
     ...course,
     language: {
       ...course.language,
-      flag: "https://www.countryflags.io/es/flat/32.png"
-    }
-  }
+      flag: 'https://www.countryflags.io/es/flat/32.png',
+    },
+  },
 }

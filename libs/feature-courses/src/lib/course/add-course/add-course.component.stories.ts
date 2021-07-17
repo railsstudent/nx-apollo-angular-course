@@ -2,6 +2,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { moduleMetadata, Story, Meta } from '@storybook/angular';
 import { AddCourseComponent } from './add-course.component';
 import { action } from '@storybook/addon-actions';
+import { languages } from '../storybook'
 
 export default {
   title: 'AddCourseComponent',
@@ -28,10 +29,6 @@ const Template: Story<AddCourseComponent> = (args: AddCourseComponent) => ({
 
 export const Primary = Template.bind({});
 Primary.args = {
-    languages:  [
-      { id: '1', fullname: 'Chinese' },
-      { id: '2', fullname: 'English' },
-      { id: '3', fullname: 'Portuguese' }
-    ],
+    languages
 }
 

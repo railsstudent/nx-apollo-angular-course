@@ -2,6 +2,7 @@ import { action } from '@storybook/addon-actions'
 import { ReactiveFormsModule } from '@angular/forms'
 import { moduleMetadata, Story, Meta } from '@storybook/angular'
 import { AddTranslationComponent } from './add-translation.component'
+import { languages } from '../storybook'
 
 export default {
   title: 'AddTranslationComponent',
@@ -27,11 +28,7 @@ const Template: Story<AddTranslationComponent> = (args: AddTranslationComponent)
 
 export const Primary = Template.bind({})
 Primary.args = {
-  languages: [
-    { id: '1', fullname: 'Chinese' },
-    { id: '2', fullname: 'English' },
-    { id: '3', fullname: 'Portuguese' },
-  ],
+  languages,
   sentences: [
     {
       id: '4',
