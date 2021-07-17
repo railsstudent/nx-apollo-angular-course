@@ -1,8 +1,10 @@
 import { ReactiveFormsModule } from '@angular/forms'
-import { AddTranslationComponent } from './../add-translation/add-translation.component'
-import { AddSentenceComponent } from './../add-sentence/add-sentence.component'
+import { AddTranslationComponent } from '../add-translation/add-translation.component'
+import { AddSentenceComponent } from '../add-sentence/add-sentence.component'
 import { moduleMetadata, Story, Meta } from '@storybook/angular'
 import { LessonComponent } from './lesson.component'
+import { RateControlComponent } from '../../voice/rate-control/rate-control.component'
+
 import {
   AlertErrorComponent,
   AlertSuccessComponent,
@@ -18,7 +20,7 @@ import {
   Sentence,
   SentenceService,
 } from '@nx-apollo-angular-course/data-access'
-import { action } from '@storybook/addon-actions'
+// import { action } from '@storybook/addon-actions'
 import { ActivatedRoute } from '@angular/router'
 import { CommonModule } from '@angular/common'
 import { NewTranslationInput } from '@nx-apollo-angular-course/api-interfaces'
@@ -65,7 +67,7 @@ const mockActiveRoute = () => {
 const languages = [
   { id: '1', name: 'Chinese', fullname: 'Chinese' },
   { id: '2', name: 'English', fullname: 'English' },
-  { id: '3', fulnamelname: 'Portuguese', fullname: 'Portuguese' },
+  { id: '3', name: 'Portuguese', fullname: 'Portuguese' },
 ]
 
 const mockCourseService = () => ({
@@ -139,7 +141,7 @@ const mockLessonService = () => ({
   },
 })
 
-const mockSentenceService = () => ({
+const mockSentenceService = (alertService: AlertService) => ({
   addSentence(lesson: Lesson, newSentence: AddSentenceInput) {
     const sentence = {
       id: `${Date.now()}`,
@@ -149,18 +151,17 @@ const mockSentenceService = () => ({
       translations: [],
     }
 
-    const service = mockAlerService()
-    service.clearMsgs()
+    alertService.clearMsgs()
 
     const exist = !!(lesson.paginatedSentences.sentences || []).find((sentence) => sentence.text === newSentence.text)
 
     if (exist) {
-      service.setError('Sentence exists')
+      alertService.setError('Sentence exists')
       return EMPTY
     } else {
       lesson.paginatedSentences.sentences.push(sentence)
       lesson.totalSentences = lesson.totalSentences + 1
-      service.setSuccess('Sentence added successfully')
+      alertService.setSuccess('Sentence added successfully')
       return of(sentence)
     }
   },
@@ -172,17 +173,16 @@ const mockSentenceService = () => ({
       language: languages.find((language) => language.id === newTranslation.languageId),
     }
 
-    const service = mockAlerService()
-    service.clearMsgs()
+    alertService.clearMsgs()
 
     const exist = !!(sentence.availableTranslations || []).find((t) => t.id === newTranslation.languageId)
 
     if (exist) {
-      service.setError('Translation exists')
+      alertService.setError('Translation exists')
       return EMPTY
     } else {
       sentence.availableTranslations.push(translation.language)
-      service.setSuccess('Translation added successfully')
+      alertService.setSuccess('Translation added successfully')
       return of(translation)
     }
   },
@@ -198,6 +198,7 @@ export default {
     AlertErrorComponent,
     AlertSuccessComponent,
     SentenceComponent,
+    RateControlComponent,
   },
   decorators: [
     moduleMetadata({
@@ -209,6 +210,7 @@ export default {
         AlertErrorComponent,
         AlertSuccessComponent,
         SentenceComponent,
+        RateControlComponent
       ],
       providers: [
         {
@@ -229,7 +231,8 @@ export default {
         },
         {
           provide: SentenceService,
-          useValue: mockSentenceService,
+          useFactory: (service: AlertService) => mockSentenceService(service),
+          deps: [AlertService]
         },
         {
           provide: ChangeDetectorRef,
@@ -244,17 +247,17 @@ export default {
   ],
 } as Meta<LessonComponent>
 
-const lessonActionsData = {
-  submitNewSentence: action('submitNewSentence'),
-  submitNewTranlsation: action('submitNewTranlsation'),
-  loadMore: action('loadMore'),
-}
+// const lessonActionsData = {
+//   submitNewSentence: action('submitNewSentence'),
+//   submitNewTranlsation: action('submitNewTranlsation'),
+//   loadMore: action('loadMore'),
+// }
 
 const Template: Story<LessonComponent> = (args: LessonComponent) => ({
   component: LessonComponent,
   props: {
     ...args,
-    ...lessonActionsData,
+    // ...lessonActionsData,
   },
 })
 
