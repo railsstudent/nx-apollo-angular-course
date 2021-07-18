@@ -1,37 +1,57 @@
-import { CourseService } from '@nx-apollo-angular-course/data-access';
+import { RouterTestingModule } from '@angular/router/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AddCourseComponent } from './../add-course/add-course.component';
+import { AlertService, CourseService } from '@nx-apollo-angular-course/data-access';
 import { moduleMetadata, Story, Meta } from '@storybook/angular';
-import { of } from 'rxjs';
 import { CourseCardComponent } from '../course-card';
 import { CourseListComponent } from './course-list.component';
-
-const mockCourserService = () => {
-  return {
-    getPaginatedCoursesQueryRef() {
-
-    },
-    getLanguages() {
-      return of([
-        { id: '1', fullname: 'Chinese' },
-        { id: '2', fullname: 'English' },
-        { id: '3', fullname: 'Portuguese' },
-        { id: '4', fullname: 'Spanish' }
-      ])
-    }
-  }
-}
+import {
+  AlertErrorComponent,
+  AlertSuccessComponent,
+  LoadMoreButtonComponent,
+} from '@nx-apollo-angular-course/ui-courses'
+import { mockAlerService, mockCourseService } from '../storybook';
+import { ChangeDetectorRef } from '@angular/core';
 
 export default {
   title: 'CourseListComponent',
   component: CourseListComponent,
+  subcomponents: {
+    CourseCardComponent,
+    AlertSuccessComponent,
+    AlertErrorComponent,
+    AddCourseComponent,
+    LoadMoreButtonComponent,
+  },
   decorators: [
     moduleMetadata({
-      declarations: [CourseListComponent, CourseCardComponent],
-      imports: [],
+      declarations: [
+        CourseListComponent,
+        CourseCardComponent,
+        AlertSuccessComponent,
+        AlertErrorComponent,
+        AddCourseComponent,
+        LoadMoreButtonComponent
+      ],
+      imports: [ReactiveFormsModule, RouterTestingModule],
       providers: [
         {
-          provider: CourseService,
-          useFactory: mockCourserService
-        }
+          provide: AlertService,
+          useFactory: mockAlerService,
+        },
+        {
+          provide: CourseService,
+          useFactory: (alertService: AlertService) => mockCourseService(alertService),
+          deps: [AlertService]
+        },
+        {
+          provide: ChangeDetectorRef,
+          useValue: {
+            markForCheck() {
+              console.log('markForCheck')
+            },
+          },
+        },
       ]
     })
   ],

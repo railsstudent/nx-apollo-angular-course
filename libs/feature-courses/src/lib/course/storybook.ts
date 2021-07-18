@@ -1,4 +1,4 @@
-import { NewTranslationInput, TextToSpeech } from '@nx-apollo-angular-course/api-interfaces'
+import { NewCourseInput, NewTranslationInput, TextToSpeech } from '@nx-apollo-angular-course/api-interfaces'
 import {
   AddLessonInput,
   AddSentenceInput,
@@ -188,12 +188,12 @@ export const mockSentenceService = (alertService: AlertService) => ({
     const exist = !!(lesson.paginatedSentences.sentences || []).find((sentence) => sentence.text === newSentence.text)
 
     if (exist) {
-      alertService.setError('Sentence exists')
+      alertService.setError(`Sentence ${sentence.text} exists`)
       return EMPTY
     } else {
       lesson.paginatedSentences.sentences.push(sentence)
       lesson.totalSentences = lesson.totalSentences + 1
-      alertService.setSuccess('Sentence added successfully')
+      alertService.setSuccess(`Sentence ${sentence.text} added successfully`)
       return of(sentence)
     }
   },
@@ -210,12 +210,12 @@ export const mockSentenceService = (alertService: AlertService) => ({
     const exist = !!(sentence.availableTranslations || []).find((t) => t.id === newTranslation.languageId)
 
     if (exist) {
-      alertService.setError('Translation exists')
+      alertService.setError(`Translation ${translation.text} exists`)
       return EMPTY
     } else {
       sentence.availableTranslations.push(translation.language)
       sentence.translations.push(translation)
-      alertService.setSuccess('Translation added successfully')
+      alertService.setSuccess(`Translation ${translation.text} added successfully`)
       return of(translation)
     }
   },
@@ -231,7 +231,31 @@ export const mockSentenceService = (alertService: AlertService) => ({
   },
 })
 
-export const mockCourseService = () => ({
+export const courses: Course[] = [
+  {
+    id: '1',
+    name: 'Spanish 101',
+    description: 'Beginner Spanish',
+    language: {
+      id: '4',
+      name: 'Spanish',
+      fullname: 'Spanish',
+      shinyFlag: 'https://www.countryflags.io/es/shiny/64.png',
+    },
+    paginatedLessons: {
+      cursor: 100,
+      lessons: [
+        {
+          id: '100',
+          name: 'Greeting',
+          totalSentences: 0,
+        },
+      ],
+    },
+  }
+]
+
+export const mockCourseService = (alertService: AlertService) => ({
   getCourse() {
     return of(course)
   },
@@ -253,6 +277,78 @@ export const mockCourseService = () => ({
       cursor,
       lessons: [lesson],
     })
+  },
+  addCourse(newCourseDto: NewCourseInput) {
+    const newCourse: Course = {
+      id: `${Date.now()}`,
+      name: newCourseDto.name,
+      description: newCourseDto.description,
+      language: languages.find((language) => language.id === newCourseDto.languageId),
+    }
+
+    alertService.clearMsgs()
+
+    const exist = courses.find((t) => t.name === newCourse.name)
+
+    if (exist) {
+      alertService.setError(`Course ${newCourseDto.name} exists`)
+      return EMPTY
+    } else {
+      courses.push(newCourse)
+      alertService.setSuccess(`Course ${newCourse.name} added successfully`)
+      return of(newCourse)
+    }
+  },
+  getPaginatedCoursesQueryRef() {
+    return {
+      get valueChanges() {
+        const result = {
+          data: {
+            courses: {
+              cursor: 100,
+              courses,
+            }
+          }
+        }
+        return of(result)
+      },
+      fetchMore() {
+        const spanishLanguage = {
+          id: '4',
+          name: 'Spanish',
+          fullname: 'Spanish',
+          flag: 'https://www.countryflags.io/es/flat/32.png',
+        }
+
+        const randomTime = Date.now()
+        const randomTime2 = Date.now()
+        const moreCourses: Course[] = [
+          {
+            id: '1',
+            name: `Spanish ${randomTime}`,
+            description: `Beginner Spanish ${randomTime}`,
+            language: spanishLanguage,
+          },
+          {
+            id: '1',
+            name: `Spanish ${randomTime2}`,
+            description: `Intermeidate Spanish ${randomTime2}`,
+            language: spanishLanguage,
+          }
+        ]
+        courses.push(...moreCourses)
+        return {
+          catch(callback: (error: string) => void) {
+            callback('fetchmore error')
+            return {
+              finally(fnCallback: () => void) {
+                fnCallback()
+              }
+            }
+          }
+        }
+      }
+    }
   },
 })
 
@@ -290,11 +386,11 @@ export const mockLessonService = (alertService: AlertService) => ({
     const exist = !!course.paginatedLessons.lessons.find((lesson) => lesson.name === newLesson.name)
 
     if (exist) {
-      alertService.setError('Lesson exists')
+      alertService.setError(`Lesson ${lesson.name} exists`)
       return EMPTY
     } else {
       course.paginatedLessons.lessons.push(lesson)
-      alertService.setSuccess('Lesson added successfully')
+      alertService.setSuccess(`Lesson ${lesson.name} added successfully`)
       return of(lesson)
     }
   },

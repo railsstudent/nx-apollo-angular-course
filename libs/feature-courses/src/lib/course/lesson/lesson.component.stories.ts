@@ -62,7 +62,8 @@ export default {
         },
         {
           provide: CourseService,
-          useFactory: mockCourseService,
+          useFactory: (alertService: AlertService) => mockCourseService(alertService),
+          deps: [AlertService],
         },
         {
           provide: SentenceService,
