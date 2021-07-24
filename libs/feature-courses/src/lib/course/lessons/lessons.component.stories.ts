@@ -1,5 +1,6 @@
 import {
   AlertErrorComponent,
+  AlertGroupComponent,
   AlertSuccessComponent,
   LoadMoreButtonComponent,
 } from '@nx-apollo-angular-course/ui-courses'
@@ -22,6 +23,7 @@ export default {
     AlertErrorComponent,
     AlertSuccessComponent,
     AddLessonComponent,
+    AlertGroupComponent,
   },
   decorators: [
     moduleMetadata({
@@ -32,6 +34,7 @@ export default {
         AlertErrorComponent,
         AlertSuccessComponent,
         AddLessonComponent,
+        AlertGroupComponent
       ],
       providers: [
         {

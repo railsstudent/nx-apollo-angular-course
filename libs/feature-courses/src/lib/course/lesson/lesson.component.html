@@ -31,12 +31,8 @@
         (submitNewTranslation)="submitNewTranslation(lesson, $event)"
       ></nx-apollo-angular-course-add-translation>
     </div>
-    <nx-apollo-angular-course-alert-error *ngIf="errMsg$ | async as msg">
-      <span class="text-red-800">{{ msg }}</span>
-    </nx-apollo-angular-course-alert-error>
-    <nx-apollo-angular-course-alert-success *ngIf="successMsg$ | async as msg">
-      <span class="text-green-800">{{ msg }}</span>
-    </nx-apollo-angular-course-alert-success>
+    <nx-apollo-angular-course-alert-group [successMsg]="successMsg$ | async" [errMsg]="errMsg$ | async">
+    </nx-apollo-angular-course-alert-group>
     <div class="m-2 ml-0">
       <span class="title mb-4 mr-4">Sentences</span>
       <nx-apollo-angular-course-load-more-button

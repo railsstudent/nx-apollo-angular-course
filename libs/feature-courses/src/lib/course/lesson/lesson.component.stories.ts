@@ -9,6 +9,7 @@ import {
   AlertErrorComponent,
   AlertSuccessComponent,
   LoadMoreButtonComponent,
+  AlertGroupComponent,
 } from '@nx-apollo-angular-course/ui-courses'
 import { AlertService, CourseService, LessonService, SentenceService } from '@nx-apollo-angular-course/data-access'
 import { ActivatedRoute } from '@angular/router'
@@ -34,6 +35,7 @@ export default {
     AlertSuccessComponent,
     SentenceComponent,
     RateControlComponent,
+    AlertGroupComponent
   },
   decorators: [
     moduleMetadata({
@@ -46,6 +48,7 @@ export default {
         AlertSuccessComponent,
         SentenceComponent,
         RateControlComponent,
+        AlertGroupComponent,
       ],
       providers: [
         {

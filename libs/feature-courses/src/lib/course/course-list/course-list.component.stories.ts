@@ -7,6 +7,7 @@ import { CourseCardComponent } from '../course-card';
 import { CourseListComponent } from './course-list.component';
 import {
   AlertErrorComponent,
+  AlertGroupComponent,
   AlertSuccessComponent,
   LoadMoreButtonComponent,
 } from '@nx-apollo-angular-course/ui-courses'
@@ -22,6 +23,7 @@ export default {
     AlertErrorComponent,
     AddCourseComponent,
     LoadMoreButtonComponent,
+    AlertGroupComponent,
   },
   decorators: [
     moduleMetadata({
@@ -31,7 +33,8 @@ export default {
         AlertSuccessComponent,
         AlertErrorComponent,
         AddCourseComponent,
-        LoadMoreButtonComponent
+        LoadMoreButtonComponent,
+        AlertGroupComponent
       ],
       imports: [ReactiveFormsModule, RouterTestingModule],
       providers: [

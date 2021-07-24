@@ -4,12 +4,8 @@
     [languages]="(languages$ | async) || []"
     (submitNewCourse)="submitNewCourse($event)"
   ></nx-apollo-angular-course-add-course>
-  <nx-apollo-angular-course-alert-error *ngIf="errMsg$ | async as msg">
-    <span class="text-red-800">{{ msg }}</span>
-  </nx-apollo-angular-course-alert-error>
-  <nx-apollo-angular-course-alert-success *ngIf="successMsg$ | async as msg">
-    <span class="text-green-800">{{ msg }}</span>
-  </nx-apollo-angular-course-alert-success>
+  <nx-apollo-angular-course-alert-group [successMsg]="successMsg$ | async" [errMsg]="errMsg$ | async">
+  </nx-apollo-angular-course-alert-group>
   <ng-container *ngIf="courses$ | async as courses">
     <div class="flex m-2">
       <nx-apollo-angular-course-load-more-button (loadMore)="loadMoreCourses()" [loading]="loading">
