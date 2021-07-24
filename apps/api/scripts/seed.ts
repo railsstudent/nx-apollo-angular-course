@@ -12,6 +12,7 @@ import { PlacesOfWorkSentences } from './places-of-work'
 import { PrepositionSentences } from './preposition'
 import { RestaurantSentences } from './restaurant'
 import { WeatherSentences } from './weather'
+import { FoodSentences } from './food'
 
 const prisma = new PrismaClient()
 
@@ -124,13 +125,13 @@ async function main() {
     'Phrase',
     'Restaurant',
     'Shopping 1',
-    'People 1',
     'Activity',
     'Description of persons',
     'Professions',
     'Places and stores of professions',
     'Preposition of place',
     'Weather',
+    'Food and drinks'
   ]
 
   const spanishLevel1LastLessonIdx = 6
@@ -147,26 +148,26 @@ async function main() {
 
   const resolvedLessons = await Promise.all(createLessonPromises)
   const [
-    introductionLesson,
+    greetLesson,
     genderLesson,
     introLesson,
     unused1,
     restaurantLesson,
     unused3,
-    unused4,
     activityLesson,
     descriptionLesson,
     professionalLesson,
     placesOfWorkLesson,
     prepositionPlaceLesson,
     weatherLesson,
+    FoodLesson,
   ] = resolvedLessons
-  console.log(unused1, unused3, unused4)
+  console.log(unused1, unused3)
   console.log('Insert lessons - done')
 
   console.log('Insert sentences - start')
   const createSentences = [
-    insertSentences(GreetingSentences, introductionLesson.id, newLanguages),
+    insertSentences(GreetingSentences, greetLesson.id, newLanguages),
     insertSentences(GenderSentences, genderLesson.id, newLanguages),
     insertSentences(IntroSentences, introLesson.id, newLanguages),
     insertSentences(ActivitySentences, activityLesson.id, newLanguages),
@@ -175,7 +176,8 @@ async function main() {
     insertSentences(PlacesOfWorkSentences, placesOfWorkLesson.id, newLanguages),
     insertSentences(PrepositionSentences, prepositionPlaceLesson.id, newLanguages),
     insertSentences(RestaurantSentences, restaurantLesson.id, newLanguages),
-    insertSentences(WeatherSentences, weatherLesson.id, newLanguages)
+    insertSentences(WeatherSentences, weatherLesson.id, newLanguages),
+    insertSentences(FoodSentences, FoodLesson.id, newLanguages)
   ]
   await Promise.all(createSentences)
   console.log('Insert sentences - end')
